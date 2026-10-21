@@ -1,0 +1,6 @@
+{
+  "name": "សិរីមង្គលអាពាហ៍ពិពាហ៍ | នាង ពៅ & ហូ សំណាង",
+  "description": "គេហទំព័រលិខិតអញ្ជើញអាពាហ៍ពិពាហ៍ផ្លូវការ កូនកំលោះ នាង ពៅ & កូនក្រមុំ ហូ សំណាង - ទីតាំងកម្មវិធី, បាញ់លុយចំណងដៃ KHQR និងសារជូនពរ",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

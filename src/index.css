@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-khmer: 'Kantumruy Pro', system-ui, -apple-system, sans-serif;
+    --font-moul: 'Moul', 'Kantumruy Pro', serif;
+    --font-serif: 'Playfair Display', serif;
+    --font-latin: 'Cinzel', serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-khmer);
+  }
+
+  body {
+    background-color: #FAF8F5;
+    color: #2D241E;
+    font-family: var(--font-khmer);
+    overflow-x: hidden;
+  }
+}
+
+.font-khmer-title {
+  font-family: 'Moul', cursive, serif;
+}
+
+.font-khmer-body {
+  font-family: 'Kantumruy Pro', system-ui, sans-serif;
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+.font-playfair {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Elegant gold gradient accents */
+.bg-gold-gradient {
+  background: linear-gradient(135deg, #DFB76C 0%, #C99635 50%, #996E1D 100%);
+}
+
+.bg-gold-subtle {
+  background: linear-gradient(180deg, #FDFBF7 0%, #F8F3EA 100%);
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #B58428 0%, #875E12 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Subtle traditional decorative pattern overlay */
+.bg-wedding-pattern {
+  background-color: #FAF8F5;
+  background-image: radial-gradient(rgba(197, 160, 89, 0.12) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF8F5;
+}
+::-webkit-scrollbar-thumb {
+  background: #D9C3A3;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #BFA27E;
+}
