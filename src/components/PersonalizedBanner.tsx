@@ -35,7 +35,7 @@ export const PersonalizedBanner: React.FC<PersonalizedBannerProps> = ({ guestNam
 
         <p className="text-xs sm:text-sm text-stone-200 max-w-xl mx-auto leading-relaxed font-khmer-body">
           អញ្ជើញចូលរួមជាអធិបតី និងជាភ្ញៀវកិត្តិយសដ៏ថ្លៃថ្លា ក្នុងពិធីរៀបអាពាហ៍ពិពាហ៍របស់យើងខ្ញុំ <br className="hidden sm:inline" />
-          <strong className="text-amber-300 font-semibold">កូនកំលោះ នាង ពៅ & កូនក្រមុំ ហូ សំណាង</strong>
+          <strong className="text-amber-300 font-semibold">កូនកំលោះ (ឈ្មោះកូនប្រុស) & កូនក្រមុំ (ឈ្មោះកូនស្រី)</strong>
         </p>
 
         <div className="mt-5 flex flex-wrap items-center justify-center gap-3">

@@ -16,8 +16,8 @@ const WEDDING_PHOTOS: PhotoItem[] = [
     src: image01,
     title: 'សិរីសួស្តីក្នុងឈុតមង្គលការបុរាណខ្មែរ',
     category: 'traditional',
-    description: 'កូនកំលោះ នាង ពៅ និង កូនក្រមុំ ហូ សំណាង ក្នុងសម្លៀកបំពាក់ប្រពៃណីពណ៌មាសដ៏ប្រណិត នៅមុខប្រាសាទអង្គរវត្ត',
-    location: 'ប្រាសាទអង្គរវត្ត, ខេត្តសៀមរាប'
+    description: 'កូនកំលោះ (ឈ្មោះកូនប្រុស) និង កូនក្រមុំ (ឈ្មោះកូនស្រី) ក្នុងសម្លៀកបំពាក់ប្រពៃណីពណ៌មាសដ៏ប្រណិត នៅមុខប្រាសាទអង្គរវត្ត',
+    location: 'Phnom Penh, Phnom Penh'
   },
   {
     id: 'photo-2',
@@ -25,7 +25,7 @@ const WEDDING_PHOTOS: PhotoItem[] = [
     title: 'ស្នាមញញឹមនៃសេចក្ដីសុខ និងមកុដមាស',
     category: 'traditional',
     description: 'រូបថតជិតនៃគូស្នេហ៍ដ៏ផ្អែមល្ហែម គ្រងមកុដមង្គលការ និងគ្រឿងអលង្ការមាសក្បាច់បុរាណ',
-    location: 'ប្រាសាទអង្គរវត្ត, ខេត្តសៀមរាប'
+    location: 'Phnom Penh, Phnom Penh'
   },
   {
     id: 'photo-3',
@@ -33,7 +33,7 @@ const WEDDING_PHOTOS: PhotoItem[] = [
     title: 'ក្រោមម្លប់ឆត្រមាស តាមផ្លូវស្ពានបុរាណ',
     category: 'traditional',
     description: 'កូនកំលោះបាំងឆត្រមាសការពារកូនក្រមុំ ដើរកាត់ស្ពានហាលបុរាណថ្មភក់ ពោរពេញដោយភាពកក់ក្តៅ',
-    location: 'ស្ពានហាលអង្គរ, ខេត្តសៀមរាប'
+    location: 'Phnom Penh, Phnom Penh'
   },
   {
     id: 'photo-4',
@@ -41,7 +41,7 @@ const WEDDING_PHOTOS: PhotoItem[] = [
     title: 'ស្នេហាបែបសម័យទំនើបដ៏ស្រស់បំព្រង',
     category: 'modern',
     description: 'កូនកំលោះក្នុងឈុតអាវធំពណ៌ខៀវ និងកូនក្រមុំក្នុងរ៉ូបសរំលេចផ្កាកុលាប និងផ្កាលីលីដ៏ស្រស់ស្អាត',
-    location: 'សួនធម្មជាតិអង្គរ, ខេត្តសៀមរាប'
+    location: 'Phnom Penh, Phnom Penh'
   },
   {
     id: 'photo-5',
@@ -49,7 +49,7 @@ const WEDDING_PHOTOS: PhotoItem[] = [
     title: 'ក្ដីស្នេហ៍អមតៈ កណ្តាលធម្មជាតិបៃតង',
     category: 'modern',
     description: 'ឈរផ្អែកខ្នងគ្នាទៅវិញទៅមក ឆ្លុះបញ្ចាំងពីការជឿជាក់ និងការគាំទ្រគ្នាក្នុងជីវិតអាពាហ៍ពិពាហ៍',
-    location: 'សៀមរាប អង្គរ'
+    location: 'Phnom Penh, Phnom Penh'
   },
   {
     id: 'photo-6',
@@ -57,7 +57,7 @@ const WEDDING_PHOTOS: PhotoItem[] = [
     title: 'ទេសភាពស្ពានហាលអង្គរវត្ត ពេលព្រឹកព្រលឹម',
     category: 'traditional',
     description: 'ទិដ្ឋភាពដ៏អស្ចារ្យនៃប្រាសាទអង្គរវត្ត និងការតុបតែងលម្អផ្កាឈូកសម្រាប់ពិធីសិរីមង្គល',
-    location: 'មហាប្រាសាទអង្គរវត្ត'
+    location: 'Phnom Penh, Phnom Penh'
   },
   {
     id: 'photo-7',
@@ -65,7 +65,7 @@ const WEDDING_PHOTOS: PhotoItem[] = [
     title: 'ទេសភាពស្ពានហាលអង្គរវត្ត ពេលព្រឹកព្រលឹម',
     category: 'traditional',
     description: 'ទិដ្ឋភាពដ៏អស្ចារ្យនៃប្រាសាទអង្គរវត្ត និងការតុបតែងលម្អផ្កាឈូកសម្រាប់ពិធីសិរីមង្គល',
-    location: 'មហាប្រាសាទអង្គរវត្ត'
+    location: 'Phnom Penh, Phnom Penh'
   },
   {
     id: 'photo-8',
@@ -73,7 +73,7 @@ const WEDDING_PHOTOS: PhotoItem[] = [
     title: 'ទេសភាពស្ពានហាលអង្គរវត្ត ពេលព្រឹកព្រលឹម',
     category: 'traditional',
     description: 'ទិដ្ឋភាពដ៏អស្ចារ្យនៃប្រាសាទអង្គរវត្ត និងការតុបតែងលម្អផ្កាឈូកសម្រាប់ពិធីសិរីមង្គល',
-    location: 'មហាប្រាសាទអង្គរវត្ត'
+    location: 'Phnom Penh, Phnom Penh'
   }
 ];
 
@@ -107,7 +107,7 @@ export const Gallery: React.FC = () => {
           ទំព័ររូបភាពអនុស្សាវរីយ៍
         </h2>
         <p className="text-sm text-stone-600 max-w-md mx-auto mt-2">
-          រូបភាព Pre-Wedding ដ៏ស្រស់ស្អាតរបស់គូស្នេហ៍ នាង ពៅ & ហូ សំណាង
+          រូបភាព Pre-Wedding ដ៏ស្រស់ស្អាតរបស់គូស្នេហ៍ (ឈ្មោះកូនប្រុស) & (ឈ្មោះកូនស្រី)
         </p>
 
         {/* Filter Buttons */}

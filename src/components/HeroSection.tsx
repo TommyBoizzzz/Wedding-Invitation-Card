@@ -26,10 +26,10 @@ export const HeroSection: React.FC = () => {
 
             <div className="space-y-1">
               <h1 className="text-3xl sm:text-5xl font-black text-amber-950 font-khmer-title tracking-tight leading-tight">
-                នាង ពៅ <span className="text-rose-600 font-serif">❤️</span> ហូ សំណាង
+                (ឈ្មោះកូនប្រុស) <span className="text-rose-600 font-serif">❤️</span> (ឈ្មោះកូនស្រី)
               </h1>
               <p className="text-sm sm:text-base text-stone-600 font-cinzel font-semibold tracking-wide">
-                Neang Peou & Ho Samnang · Wedding Celebration
+                (Groom Name) & (Bride Name) · Wedding Celebration
               </p>
             </div>
 
@@ -42,13 +42,13 @@ export const HeroSection: React.FC = () => {
               <div className="flex items-center gap-3 text-xs sm:text-sm text-stone-800">
                 <Calendar className="w-4 h-4 text-amber-700 shrink-0" />
                 <span className="font-semibold text-amber-950">
-                  ថ្ងៃអាទិត្យ ទី ២២ ខែ វិច្ឆិកា ឆ្នាំ ២០២៦ (វេលាម៉ោង ៤:០០ ល្ងាច)
+                  Coming Soon
                 </span>
               </div>
               <div className="flex items-center gap-3 text-xs sm:text-sm text-stone-700">
                 <MapPin className="w-4 h-4 text-amber-700 shrink-0" />
                 <span>
-                  គេហដ្ឋានខាងស្រី ភូមិបេង ឃុំជីក្រែង ស្រុកជីក្រែង ខេត្តសៀមរាប
+                  Phnom Penh
                 </span>
               </div>
             </div>
@@ -81,14 +81,14 @@ export const HeroSection: React.FC = () => {
                 <div className="aspect-[3/4] w-full rounded-2xl overflow-hidden bg-stone-100">
                   <img
                     src={image01}
-                    alt="នាង ពៅ & ហូ សំណាង"
+                    alt="(ឈ្មោះកូនប្រុស) & (ឈ្មោះកូនស្រី)"
                     className="w-full h-full object-cover object-top"
                   />
                 </div>
 
                 <div className="text-center py-3 bg-gradient-to-b from-transparent to-amber-50/50 rounded-b-2xl">
                   <p className="text-sm font-bold text-amber-950 font-khmer-title">
-                    នាង ពៅ & ហូ សំណាង
+                    (ឈ្មោះកូនប្រុស) & (ឈ្មោះកូនស្រី)
                   </p>
                   <p className="text-[11px] text-stone-500 font-cinzel mt-0.5">
                     Angkor Wat, Siem Reap · 2026

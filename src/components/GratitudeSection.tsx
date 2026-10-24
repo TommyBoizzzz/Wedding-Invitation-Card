@@ -28,7 +28,7 @@ export const GratitudeSection: React.FC = () => {
             ដោយសេចក្ដីគោរព និងស្រឡាញ់ដ៏ស្មោះស្ម័គ្រ
           </p>
           <p className="text-base sm:text-lg font-bold font-khmer-title text-amber-950">
-            នាង ពៅ & ហូ សំណាង
+            (ឈ្មោះកូនប្រុស) & (ឈ្មោះកូនស្រី)
           </p>
           <p className="text-xs text-stone-500 font-cinzel">
             Chi Kraeng, Siem Reap · 22 November 2026

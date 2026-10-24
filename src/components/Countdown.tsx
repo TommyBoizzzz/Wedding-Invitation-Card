@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Calendar, Clock, Bell } from 'lucide-react';
 
 export const Countdown: React.FC = () => {
-  // Wedding Date: Sunday, 22nd November 2026, 4:00 PM ICT (UTC+7)
-  const targetDate = new Date('2026-11-22T16:00:00+07:00').getTime();
+  // Wedding Date
+  const targetDate = new Date('2027-01-01T07:00:00+07:00').getTime();
 
   const [timeLeft, setTimeLeft] = useState<{
     days: number;
@@ -43,8 +43,8 @@ export const Countdown: React.FC = () => {
   }, [targetDate]);
 
   const handleAddToCalendar = () => {
-    const title = encodeURIComponent('សិរីមង្គលអាពាហ៍ពិពាហ៍ | នាង ពៅ & ហូ សំណាង');
-    const details = encodeURIComponent('សូមគោរពអញ្ជើញចូលរួមពិធីរៀបអាពាហ៍ពិពាហ៍ កូនកំលោះ នាង ពៅ និង កូនក្រមុំ ហូ សំណាង នៅគេហដ្ឋានខាងស្រី ភូមិបេង ឃុំជីក្រែង ស្រុកជីក្រែង ខេត្តសៀមរាប។');
+    const title = encodeURIComponent('សិរីមង្គលអាពាហ៍ពិពាហ៍ | (ឈ្មោះកូនប្រុស) & (ឈ្មោះកូនស្រី)');
+    const details = encodeURIComponent('សូមគោរពអញ្ជើញចូលរួមពិធីរៀបអាពាហ៍ពិពាហ៍ កូនកំលោះ (ឈ្មោះកូនប្រុស) និង កូនក្រមុំ (ឈ្មោះកូនស្រី) នៅPhnom Penh។');
     const location = encodeURIComponent('ភូមិបេង ឃុំជីក្រែង ស្រុកជីក្រែង ខេត្តសៀមរាប');
     // 20261122T090000Z to 20261122T150000Z (4PM to 10PM ICT is 09:00 to 15:00 UTC)
     const dates = '20261122T090000Z/20261122T150000Z';
@@ -64,7 +64,7 @@ export const Countdown: React.FC = () => {
         </div>
 
         <h3 className="text-xl sm:text-2xl font-khmer-title text-amber-950 mb-6">
-          ថ្ងៃអាទិត្យ ទី ២២ ខែ វិច្ឆិកា ឆ្នាំ ២០២៦
+          Coming Soon
         </h3>
 
         {timeLeft.isPast ? (

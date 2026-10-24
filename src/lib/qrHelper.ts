@@ -30,7 +30,7 @@ export const BANK_ACCOUNTS = {
   },
   acleda: {
     bankName: 'ACLEDA BANK (អេស៊ីលីដា)',
-    accountName: 'NEANG PEOU',
+    accountName: '(Groom Name)',
     accountNumber: '012 459 616',
     khqrString: 'https://link.acleda.com.kh/khqr?account=012459616&name=NEANG%20PEOU&bank=ACLEDA'
   }

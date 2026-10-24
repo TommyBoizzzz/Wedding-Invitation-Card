@@ -135,7 +135,7 @@ export const GiftMoneyQR: React.FC<GiftMoneyQRProps> = ({ initialGuestName = '' 
             <div className="w-full max-w-xs">
               <img
                 src={acledaQrImage}
-                alt="ACLEDA Bank KHQR for NEANG PEOU"
+                alt="ACLEDA Bank KHQR for (Groom Name)"
                 className="w-full rounded-2xl shadow-xl"
               />
             </div>

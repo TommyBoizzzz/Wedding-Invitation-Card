@@ -24,9 +24,9 @@ export const InvitationCard: React.FC = () => {
             សិរីមង្គលអាពាហ៍ពិពាហ៍
           </h2>
           <div className="flex items-center justify-center gap-2 text-amber-900 font-semibold text-base sm:text-lg">
-            <span>នាង ពៅ</span>
+            <span>(ឈ្មោះកូនប្រុស)</span>
             <span className="text-rose-600 animate-pulse">❤️</span>
-            <span>ហូ សំណាង</span>
+            <span>(ឈ្មោះកូនស្រី)</span>
           </div>
           <p className="text-xs sm:text-sm text-stone-500 italic mt-0.5 font-khmer-body">
             « ក្ដីស្នេហ៍ អមតៈ »
@@ -40,17 +40,17 @@ export const InvitationCard: React.FC = () => {
               មាតាបិតាខាងកូនប្រុស
             </span>
             <p className="text-base sm:text-lg font-bold text-amber-950 font-khmer-title leading-relaxed">
-              លោក នាង ប៉ន
+              (ឈ្មោះបិតា កូនប្រុស)
             </p>
             <p className="text-sm sm:text-base font-semibold text-stone-700">
-              និង លោកស្រី <span className="font-bold text-amber-900">ណុប ថា</span>
+              និង លោកស្រី <span className="font-bold text-amber-900">(ឈ្មោះមាតា កូនប្រុស)</span>
             </p>
             <div className="pt-2">
               <span className="text-xs text-stone-500">កូនប្រុសនាម៖</span>
               <p className="text-lg sm:text-xl font-bold text-amber-800 font-khmer-title">
-                នាង ពៅ
+                (ឈ្មោះកូនប្រុស)
               </p>
-              <p className="text-xs text-stone-500 font-cinzel">Groom: Neang Peou</p>
+              <p className="text-xs text-stone-500 font-cinzel">Groom: (Groom Name)</p>
             </div>
           </div>
 
@@ -59,17 +59,17 @@ export const InvitationCard: React.FC = () => {
               មាតាបិតាខាងកូនស្រី
             </span>
             <p className="text-base sm:text-lg font-bold text-amber-950 font-khmer-title leading-relaxed">
-              លោក នៀវ វុត
+              (ឈ្មោះបិតា កូនស្រី)
             </p>
             <p className="text-sm sm:text-base font-semibold text-stone-700">
-              និង លោកស្រី <span className="font-bold text-amber-900">ង៉ោ សេងគី</span>
+              និង លោកស្រី <span className="font-bold text-amber-900">(ឈ្មោះមាតា កូនស្រី)</span>
             </p>
             <div className="pt-2">
               <span className="text-xs text-stone-500">កូនស្រីនាម៖</span>
               <p className="text-lg sm:text-xl font-bold text-amber-800 font-khmer-title">
-                ហូ សំណាង
+                (ឈ្មោះកូនស្រី)
               </p>
-              <p className="text-xs text-stone-500 font-cinzel">Bride: Ho Samnang</p>
+              <p className="text-xs text-stone-500 font-cinzel">Bride: (Bride Name)</p>
             </div>
           </div>
         </div>
@@ -89,7 +89,7 @@ export const InvitationCard: React.FC = () => {
               នៅថ្ងៃ អាទិត្យ ១៣កើត ខែកត្តិក ឆ្នាំ មមី អដ្ឋស័ក ព.ស ២៥៧០
             </p>
             <p className="text-lg sm:text-2xl font-bold text-amber-950 font-khmer-title">
-              ត្រូវនឹងថ្ងៃ អាទិត្យ ទី ២២ ខែ វិច្ឆិកា ឆ្នាំ ២០២៦
+              ត្រូវនឹងថ្ងៃ អាទិត្យ ទី ០១ ខែ មករា ឆ្នាំ ២០២៧
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3 text-xs sm:text-sm font-semibold text-amber-900 pt-1">
               <span className="bg-white/80 px-3 py-1 rounded-full border border-amber-200">
@@ -105,10 +105,10 @@ export const InvitationCard: React.FC = () => {
           <div className="space-y-1 text-center">
             <div className="inline-flex items-center gap-1.5 text-amber-800 font-bold text-base sm:text-lg">
               <MapPin className="w-5 h-5 text-amber-700" />
-              <span>នៅ គេហដ្ឋានខាងស្រី</span>
+              <span>នៅ Coming Soon</span>
             </div>
             <p className="text-sm sm:text-base font-semibold text-stone-800">
-              ស្ថិតនៅ ភូមិបេង ឃុំជីក្រែង ស្រុកជីក្រែង ខេត្តសៀមរាប
+              ស្ថិតនៅ ......
             </p>
             <p className="text-xs text-stone-500 font-medium pt-1">
               ដោយមេត្រីភាព (សូមពិនិត្យមើលផ្លង់ និងស្កេនទីតាំងខាងក្រោម)
@@ -119,9 +119,9 @@ export const InvitationCard: React.FC = () => {
         {/* English Summary Block */}
         <div className="mt-8 pt-6 border-t border-amber-200/60 text-center text-xs sm:text-sm text-stone-600 font-cinzel space-y-1">
           <p className="tracking-widest font-bold text-amber-900">THE WEDDING DAY</p>
-          <p className="font-semibold text-stone-800">Groom: Neang Peou · Bride: Ho Samnang</p>
+          <p className="font-semibold text-stone-800">Groom: (Groom Name) · Bride: (Bride Name)</p>
           <p className="text-stone-500">
-            On Sunday, 22nd November 2026, at 4:00 PM, at the bride’s family home.
+            On Sunday, 01st January 2027, at 4:00 PM, at the bride’s family home.
           </p>
           <p className="text-amber-800 font-semibold pt-1">Thank You! (Please See Map)</p>
         </div>

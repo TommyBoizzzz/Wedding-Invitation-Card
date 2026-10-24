@@ -53,15 +53,15 @@ export default function App() {
       {/* Footer */}
       <footer className="border-t border-amber-200/80 bg-[#F5EFE6] py-8 text-center text-xs text-stone-600 space-y-2 mt-12">
         <div className="flex items-center justify-center gap-2 font-khmer-title text-amber-950 text-sm">
-          <span>នាង ពៅ</span>
+          <span>(ឈ្មោះកូនប្រុស)</span>
           <Heart className="w-3.5 h-3.5 fill-rose-600 text-rose-600" />
-          <span>ហូ សំណាង</span>
+          <span>(ឈ្មោះកូនស្រី)</span>
         </div>
         <p className="font-cinzel text-[11px] text-stone-500">
           Sunday 22nd November 2026 · Chi Kraeng, Siem Reap, Cambodia
         </p>
         <p className="text-[11px] text-stone-500">
-          គេហទំព័ររៀបចំដោយក្តីគោរព និងស្រឡាញ់ | រៀបចំ និង បង្កើតដោយ លោក៖ នាង ពៅ
+          គេហទំព័ររៀបចំដោយក្តីគោរព និងស្រឡាញ់ | រៀបចំ និង បង្កើតដោយ លោក៖ (ឈ្មោះកូនប្រុស)
         </p>
       </footer>
 

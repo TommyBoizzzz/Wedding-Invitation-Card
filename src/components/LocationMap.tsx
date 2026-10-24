@@ -177,7 +177,7 @@ export const LocationMap: React.FC = () => {
 
           {/* Landmark guide note */}
           <div className="text-xs text-stone-500 bg-white/70 p-3 rounded-xl border border-stone-100 leading-relaxed">
-            <strong className="text-stone-700 font-semibold">ចំណាំការធ្វើដំណើរ៖</strong> ពិធីប្រព្រឹត្តទៅនៅគេហដ្ឋានខាងស្រី ភូមិបេង ឃុំជីក្រែង ស្រុកជីក្រែង ខេត្តសៀមរាប។ ប្រសិនបើលោកអ្នកពិបាកស្វែងរកទីតាំង សូមទូរស័ព្ទមកកាន់លេខខាងលើ ដើម្បីក្រុមការងាររង់ចាំទទួលស្វាគមន៍។
+            <strong className="text-stone-700 font-semibold">ចំណាំការធ្វើដំណើរ៖</strong> ពិធីប្រព្រឹត្តទៅនៅPhnom Penh។ ប្រសិនបើលោកអ្នកពិបាកស្វែងរកទីតាំង សូមទូរស័ព្ទមកកាន់លេខខាងលើ ដើម្បីក្រុមការងាររង់ចាំទទួលស្វាគមន៍។
           </div>
         </div>
       </div>

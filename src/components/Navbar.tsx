@@ -16,9 +16,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAdmin }) => {
           href="#"
           className="text-base sm:text-lg font-bold tracking-tight text-amber-950 font-khmer-title whitespace-nowrap shrink-0 flex items-center gap-1.5"
         >
-          <span>នាង ពៅ</span>
+          <span>(ឈ្មោះកូនប្រុស)</span>
           <Heart className="w-3.5 h-3.5 fill-rose-600 text-rose-600" />
-          <span>ហូ សំណាង</span>
+          <span>(ឈ្មោះកូនស្រី)</span>
         </a>
 
         {/* Zone 2: 4-5 clean single-line text navigation links */}
