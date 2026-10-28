@@ -64,7 +64,7 @@ export const Countdown: React.FC = () => {
         </div>
 
         <h3 className="text-xl sm:text-2xl font-khmer-title text-white mb-6">
-          Coming Soon
+          ថ្ងៃសៅរ៍ ទី ២៣ ខែ មករា ឆ្នាំ ២០២៧
         </h3>
 
         {timeLeft.isPast ? (
@@ -122,7 +122,7 @@ export const Countdown: React.FC = () => {
           </button>
           <div className="inline-flex items-center gap-1.5 text-xs text-stone-300">
             <Bell className="w-3.5 h-3.5 text-amber-300" />
-            <span>វេលាម៉ោង ៤:០០ ល្ងាច / ពិសារអាហារ ៥:០០ ល្ងាច</span>
+            <span>វេលាម៉ោង ៥:០០ ល្ងាច / ពិសារអាហារ ៥:៣០ ល្ងាច</span>
           </div>
         </div>
       </div>

@@ -31,7 +31,7 @@ export const GratitudeSection: React.FC = () => {
             ហេង គីមហ៊ &​ សន ធារ៉ា
           </p>
           <p className="text-xs text-stone-300 font-cinzel">
-            P · 22 November 2026
+            P · 23 January 2027
           </p>
         </div>
       </div>

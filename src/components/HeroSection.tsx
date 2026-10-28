@@ -25,11 +25,11 @@ export const HeroSection: React.FC = () => {
             </div>
 
             <div className="space-y-1">
-              <h1 className="text-3xl sm:text-5xl font-black text-white font-khmer-title tracking-tight leading-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)]">
-                ហេង គីមហ៊ <span className="text-rose-300 font-serif">❤️</span>សន ធារ៉ា
+              <h1 className="text-3xl sm:text-4xl font-black text-white font-khmer-title tracking-tight leading-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)]">
+                ហេង គីមហ៊ <span className="text-rose-300 font-serif">❤️</span> សន ធារ៉ា
               </h1>
               <p className="text-sm sm:text-base text-amber-50/85 font-cinzel font-semibold tracking-wide">
-                Heng Kimhor & Sorn Theara  · Wedding Celebration
+                Heng Kimhor & Sorn Theara · Wedding Celebration
               </p>
             </div>
 
@@ -42,13 +42,13 @@ export const HeroSection: React.FC = () => {
               <div className="flex items-center gap-3 text-xs sm:text-sm text-stone-100">
                 <Calendar className="w-4 h-4 text-amber-300 shrink-0" />
                 <span className="font-semibold text-amber-100">
-                  Coming Soon
+                  ថ្ងៃសៅរ៍ ទី ២៣ ខែ មករា ឆ្នាំ ២០២៧ (វេលាម៉ោង ៥:០០ ល្ងាច)
                 </span>
               </div>
               <div className="flex items-center gap-3 text-xs sm:text-sm text-stone-300">
                 <MapPin className="w-4 h-4 text-amber-300 shrink-0" />
                 <span>
-                  Phnom Penh
+                  នៅភោជនីយដ្ឋាន និងសាលរៀបចំកម្មវិធី ផ្កាឈូកទេព (​ អគារ G ) រាជធានីភ្នំពេញ
                 </span>
               </div>
             </div>

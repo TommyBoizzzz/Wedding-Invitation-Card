@@ -61,13 +61,13 @@ export default function App() {
         <div className="flex items-center justify-center gap-2 font-khmer-title text-white text-sm">
           <span>ហេង គីមហ៊</span>
           <Heart className="w-3.5 h-3.5 fill-rose-400 text-rose-400" />
-          <span>(ឈ្មោះកូនស្រី)</span>
+          <span>សន ធារ៉ា</span>
         </div>
         <p className="font-cinzel text-[11px] text-stone-300">
           Saturday 23rd January 2027 · Phnom Penh, Cambodia
         </p>
         <p className="text-[11px] text-stone-300">
-          គេហទំព័ររៀបចំដោយក្តីគោរព និងស្រឡាញ់ | រៀបចំ និង បង្កើតដោយ លោក៖ ហេង គីមហ៊
+          គេហទំព័ររៀបចំដោយក្តីគោរព និងស្រឡាញ់ | រៀបចំ និង បង្កើតដោយ លោក ៖ ហេង ចាន់សិលា
         </p>
       </footer>
 

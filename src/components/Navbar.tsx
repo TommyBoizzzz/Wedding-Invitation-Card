@@ -18,7 +18,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAdmin }) => {
         >
           <span>ហេង គីមហ៊</span>
           <Heart className="w-3.5 h-3.5 fill-rose-600 text-rose-600" />
-          <span>(ឈ្មោះកូនស្រី)</span>
+          <span>សន ធារ៉ា</span>
         </a>
 
         {/* Zone 2: 4-5 clean single-line text navigation links */}
