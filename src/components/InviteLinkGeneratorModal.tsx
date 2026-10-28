@@ -10,13 +10,15 @@ interface InviteLinkGeneratorModalProps {
 
 const HONORIFICS = [
   { label: 'គ្មាន (None)', value: '' },
-  { label: 'លោក', value: 'លោក ' },
-  { label: 'លោកស្រី', value: 'លោកស្រី ' },
-  { label: 'អ្នកនាងកញ្ញា', value: 'អ្នកនាងកញ្ញា ' },
   { label: 'ឯកឧត្តម', value: 'ឯកឧត្តម ' },
   { label: 'លោកជំទាវ', value: 'លោកជំទាវ ' },
   { label: 'លោកឧកញ៉ា', value: 'លោកឧកញ៉ា ' },
+  { label: 'លោក', value: 'លោក ' },
+  { label: 'លោកស្រី', value: 'លោកស្រី ' },
+  { label: 'កញ្ញា', value: 'កញ្ញា ' },
   { label: 'បង', value: 'បង ' },
+  { label: 'ប្អូន', value: 'ប្អូន' },
+  { label: 'សម្លាញ់', value: 'សម្លាញ់ ' },
   { label: 'មិត្ត', value: 'មិត្ត ' },
 ];
 
@@ -161,7 +163,7 @@ export const InviteLinkGeneratorModal: React.FC<InviteLinkGeneratorModalProps> =
                 type="text"
                 value={guestName}
                 onChange={e => setGuestName(e.target.value)}
-                placeholder="ឧ. test ឬ សុខា"
+                placeholder="ឧ. លោក ហេង គីមហត និងភរិយា"
                 className="w-full px-3.5 py-2 bg-stone-50 border border-stone-300 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 font-semibold text-stone-900"
               />
             </div>

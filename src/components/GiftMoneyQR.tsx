@@ -195,7 +195,7 @@ export const GiftMoneyQR: React.FC<GiftMoneyQRProps> = ({ initialGuestName = '' 
           {/* Quick Amount Selection Buttons */}
           <div className="grid grid-cols-4 gap-2 mb-4">
             {currency === 'USD' ? (
-              [10, 20, 50, 100].map(amt => (
+              [30, 50, 100, 200].map(amt => (
                 <button
                   key={amt}
                   type="button"
@@ -237,7 +237,7 @@ export const GiftMoneyQR: React.FC<GiftMoneyQRProps> = ({ initialGuestName = '' 
                 required
                 value={senderName}
                 onChange={e => setSenderName(e.target.value)}
-                placeholder="ឧ. លោក សុខា និងភរិយា"
+                placeholder="ឧ. លោក ហេង គីមហត និងភរិយា"
                 className="w-full px-3.5 py-2.5 bg-[#173027] border border-white/10 rounded-xl text-sm text-white placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:bg-[#1d382f]"
               />
             </div>

@@ -35,16 +35,16 @@ export const InvitationCard: React.FC = () => {
               <Heart className="w-6 h-6 sm:w-7 sm:h-7 fill-amber-300 text-amber-300" />
             </div>
 
-            <p className="text-[10px] sm:text-sm font-semibold tracking-[0.2em] sm:tracking-[0.3em] text-amber-200 uppercase">
+            <p className="text-fluid-xs sm:text-sm font-semibold tracking-[0.2em] sm:tracking-[0.3em] text-amber-200 uppercase">
               លិខិតអញ្ជើញអាពាហ៍ពិពាហ៍ផ្លូវការ
             </p>
 
-            <h2 className="text-2xl sm:text-4xl md:text-5xl font-khmer-title text-white mt-3 mb-4 leading-relaxed">
+            <h2 className="text-fluid-2xl font-khmer-title text-white mt-3 mb-4 leading-relaxed">
               សិរីមង្គលអាពាហ៍ពិពាហ៍
             </h2>
 
             {/* Couple Names */}
-            <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-amber-100 font-semibold text-lg sm:text-2xl font-khmer-title">
+            <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-amber-100 font-semibold text-fluid-lg font-khmer-title">
               <span>ហេង គីមហ៊</span>
 
               <Heart className="w-4 h-4 sm:w-5 sm:h-5 fill-rose-300 text-rose-300 shrink-0" />
@@ -52,7 +52,7 @@ export const InvitationCard: React.FC = () => {
               <span>សន ធារ៉ា</span>
             </div>
 
-            <p className="text-xs sm:text-sm text-stone-300 italic mt-3 font-khmer-body">
+            <p className="text-fluid-sm text-stone-300 italic mt-3 font-khmer-body">
               « ក្ដីស្នេហ៍ អមតៈ »
             </p>
 

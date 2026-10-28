@@ -167,7 +167,7 @@ export const WishesGuestbook: React.FC<WishesGuestbookProps> = ({ initialGuestNa
                 required
                 value={senderName}
                 onChange={e => setSenderName(e.target.value)}
-                placeholder="ឧ. ពេជ្រ និងសុភា"
+                placeholder="ឧ. លោក ហេង គីមហត និងភរិយា"
                 className="w-full px-3.5 py-2.5 bg-[#183126] border border-white/10 rounded-xl text-sm text-white placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:bg-[#1d382f]"
               />
             </div>
