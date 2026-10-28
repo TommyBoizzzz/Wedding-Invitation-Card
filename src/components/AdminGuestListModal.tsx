@@ -345,7 +345,7 @@ export const AdminGuestListModal: React.FC<AdminGuestListModalProps> = ({
           </form>}
 
           <p className="text-[11px] text-stone-400 mt-4">
-            សម្រាប់កូនកំលោះ (ឈ្មោះកូនប្រុស) & កូនក្រមុំ (ឈ្មោះកូនស្រី)
+            សម្រាប់កូនកំលោះ ហេង គីមហ៊ & កូនក្រមុំសន ធារ៉ា
           </p>
         </div>
       </div>

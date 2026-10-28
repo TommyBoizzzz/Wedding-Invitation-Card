@@ -10,9 +10,9 @@ export const HeroSection: React.FC = () => {
         <img
           src={image01}
           alt="Angkor Wat Wedding"
-          className="w-full h-full object-cover object-center filter blur-xs opacity-25 scale-105"
+          className="w-full h-full object-cover object-center filter blur-xs opacity-20 scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#FAF8F5]/80 via-[#FAF8F5]/90 to-[#FAF8F5]"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1d2d22]/60 via-[#1d2d22]/75 to-[#1f2d22]" />
       </div>
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
@@ -25,28 +25,28 @@ export const HeroSection: React.FC = () => {
             </div>
 
             <div className="space-y-1">
-              <h1 className="text-3xl sm:text-5xl font-black text-amber-950 font-khmer-title tracking-tight leading-tight">
-                (ឈ្មោះកូនប្រុស) <span className="text-rose-600 font-serif">❤️</span> (ឈ្មោះកូនស្រី)
+              <h1 className="text-3xl sm:text-5xl font-black text-white font-khmer-title tracking-tight leading-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)]">
+                ហេង គីមហ៊ <span className="text-rose-300 font-serif">❤️</span>សន ធារ៉ា
               </h1>
-              <p className="text-sm sm:text-base text-stone-600 font-cinzel font-semibold tracking-wide">
-                (Groom Name) & (Bride Name) · Wedding Celebration
+              <p className="text-sm sm:text-base text-amber-50/85 font-cinzel font-semibold tracking-wide">
+                Heng Kimhor & Sorn Theara  · Wedding Celebration
               </p>
             </div>
 
-            <p className="text-stone-700 text-sm sm:text-base max-w-xl mx-auto lg:mx-0 leading-relaxed font-khmer-body">
+            <p className="text-stone-100 text-sm sm:text-base max-w-xl mx-auto lg:mx-0 leading-relaxed font-khmer-body drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]">
               យើងខ្ញុំមានកិត្តិយស និងសេចក្ដីសោមនស្សរីករាយឥតឧបមា សូមគោរពអញ្ជើញ ឯកឧត្តម លោកជំទាវ លោកឧកញ៉ា លោក លោកស្រី អ្នកនាងកញ្ញា និងប្រិយមិត្តជិតឆ្ងាយ អញ្ជើញចូលរួមជាអធិបតី និងជាភ្ញៀវកិត្តិយស ដើម្បីប្រសិទ្ធពរជ័យ សិរីសួស្តី ជ័យមង្គលក្នុង ពិធីរៀបអាពាហ៍ពិពាហ៍របស់យើងខ្ញុំ។
             </p>
 
             {/* Event Highlights Strip */}
-            <div className="bg-white/90 backdrop-blur-md rounded-2xl border border-amber-200/90 p-4 shadow-xs max-w-lg mx-auto lg:mx-0 space-y-2">
-              <div className="flex items-center gap-3 text-xs sm:text-sm text-stone-800">
-                <Calendar className="w-4 h-4 text-amber-700 shrink-0" />
-                <span className="font-semibold text-amber-950">
+            <div className="bg-[#183126]/80 backdrop-blur-md rounded-2xl border border-amber-200/20 p-4 shadow-lg shadow-[#08140e]/30 max-w-lg mx-auto lg:mx-0 space-y-2">
+              <div className="flex items-center gap-3 text-xs sm:text-sm text-stone-100">
+                <Calendar className="w-4 h-4 text-amber-300 shrink-0" />
+                <span className="font-semibold text-amber-100">
                   Coming Soon
                 </span>
               </div>
-              <div className="flex items-center gap-3 text-xs sm:text-sm text-stone-700">
-                <MapPin className="w-4 h-4 text-amber-700 shrink-0" />
+              <div className="flex items-center gap-3 text-xs sm:text-sm text-stone-300">
+                <MapPin className="w-4 h-4 text-amber-300 shrink-0" />
                 <span>
                   Phnom Penh
                 </span>
@@ -57,14 +57,14 @@ export const HeroSection: React.FC = () => {
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
               <a
                 href="#location"
-                className="px-5 py-3 bg-white hover:bg-stone-50 border border-amber-300 text-amber-950 rounded-xl text-sm font-semibold shadow-xs transition-all flex items-center gap-2"
+                className="px-5 py-3 bg-white/5 hover:bg-white/10 border border-amber-200/30 text-white rounded-xl text-sm font-semibold shadow-xs transition-all flex items-center gap-2"
               >
-                <QrCode className="w-4 h-4 text-amber-700" />
+                <QrCode className="w-4 h-4 text-amber-300" />
                 <span>ស្កេនទីតាំងពិធី</span>
               </a>
               <a
                 href="#gift"
-                className="px-5 py-3 bg-amber-50 hover:bg-amber-100 border border-amber-200 text-amber-900 rounded-xl text-sm font-semibold transition-all flex items-center gap-2"
+                className="px-5 py-3 bg-amber-500/20 hover:bg-amber-500/30 border border-amber-200/30 text-amber-50 rounded-xl text-sm font-semibold transition-all flex items-center gap-2"
               >
                 <span>បាញ់ចំណងដៃ KHQR</span>
               </a>
@@ -81,17 +81,17 @@ export const HeroSection: React.FC = () => {
                 <div className="aspect-[3/4] w-full rounded-2xl overflow-hidden bg-stone-100">
                   <img
                     src={image01}
-                    alt="(ឈ្មោះកូនប្រុស) & (ឈ្មោះកូនស្រី)"
+                    alt="ហេង គីមហ៊ &​ សន ធារ៉ា"
                     className="w-full h-full object-cover object-top"
                   />
                 </div>
 
                 <div className="text-center py-3 bg-gradient-to-b from-transparent to-amber-50/50 rounded-b-2xl">
                   <p className="text-sm font-bold text-amber-950 font-khmer-title">
-                    (ឈ្មោះកូនប្រុស) & (ឈ្មោះកូនស្រី)
+                    ហេង គីមហ៊ &​ សន ធារ៉ា
                   </p>
                   <p className="text-[11px] text-stone-500 font-cinzel mt-0.5">
-                    Angkor Wat, Siem Reap · 2026
+                    Phnom Penh · 2027
                   </p>
                 </div>
               </div>

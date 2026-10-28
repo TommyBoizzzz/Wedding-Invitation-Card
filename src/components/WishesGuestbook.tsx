@@ -111,30 +111,30 @@ export const WishesGuestbook: React.FC<WishesGuestbookProps> = ({ initialGuestNa
   return (
     <section id="wishes" className="w-full max-w-4xl mx-auto px-4 py-8">
       <div className="text-center mb-8">
-        <span className="text-xs font-semibold tracking-widest text-amber-800 uppercase block mb-1">
+        <span className="text-xs font-semibold tracking-widest text-amber-200 uppercase block mb-1">
           សៀវភៅកត់ត្រាពាក្យជូនពរ
         </span>
-        <h2 className="text-2xl sm:text-3xl font-khmer-title text-amber-950">
+        <h2 className="text-2xl sm:text-3xl font-khmer-title text-white">
           ផ្ញើសារជូនពរដល់កូនកំលោះកូនក្រមុំ
         </h2>
-        <p className="text-sm text-stone-600 max-w-lg mx-auto mt-2">
+        <p className="text-sm text-stone-300 max-w-lg mx-auto mt-2">
           សូមចូលរួមផ្ញើសារជូនពរ សេចក្ដីស្រឡាញ់ និងពរជ័យសិរីសួស្តីដល់គូស្វាមីភរិយាថ្មី ពៅ & សំណាង
         </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left Side: Wish Submission Form */}
-        <div className="lg:col-span-5 bg-white/95 backdrop-blur-md rounded-3xl border border-amber-200/90 shadow-md p-6">
+        <div className="lg:col-span-5 bg-[#21372b]/90 backdrop-blur-md rounded-3xl border border-amber-200/25 shadow-lg shadow-[#08140e]/40 p-6">
           <div className="flex items-center gap-2 mb-4">
-            <MessageSquareHeart className="w-5 h-5 text-amber-700" />
-            <h3 className="text-base font-bold text-amber-950 font-khmer-title">
+            <MessageSquareHeart className="w-5 h-5 text-amber-300" />
+            <h3 className="text-base font-bold text-white font-khmer-title">
               សរសេរសារជូនពរ
             </h3>
           </div>
 
           {/* Quick blessing phrases */}
           <div className="mb-4">
-            <span className="block text-[11px] font-semibold text-stone-500 mb-2">
+            <span className="block text-[11px] font-semibold text-stone-300 mb-2">
               ចុចជ្រើសរើសពាក្យជូនពររហ័ស៖
             </span>
             <div className="flex flex-wrap gap-1.5">
@@ -143,7 +143,7 @@ export const WishesGuestbook: React.FC<WishesGuestbookProps> = ({ initialGuestNa
                   key={idx}
                   type="button"
                   onClick={() => handleQuickAdd(text)}
-                  className="px-2.5 py-1 bg-amber-50 hover:bg-amber-100 border border-amber-200/80 rounded-lg text-[11px] text-amber-900 transition-colors text-left"
+                  className="px-2.5 py-1 bg-amber-50/10 hover:bg-amber-50/20 border border-amber-200/20 rounded-lg text-[11px] text-amber-100 transition-colors text-left"
                 >
                   {text}
                 </button>
@@ -159,8 +159,8 @@ export const WishesGuestbook: React.FC<WishesGuestbookProps> = ({ initialGuestNa
 
           <form onSubmit={handleSubmit} className="space-y-3.5">
             <div>
-              <label className="block text-xs font-semibold text-stone-700 mb-1">
-                ឈ្មោះអ្នកជូនពរ <span className="text-red-500">*</span>
+              <label className="block text-xs font-semibold text-stone-200 mb-1">
+                ឈ្មោះអ្នកជូនពរ <span className="text-red-400">*</span>
               </label>
               <input
                 type="text"
@@ -168,18 +168,18 @@ export const WishesGuestbook: React.FC<WishesGuestbookProps> = ({ initialGuestNa
                 value={senderName}
                 onChange={e => setSenderName(e.target.value)}
                 placeholder="ឧ. ពេជ្រ និងសុភា"
-                className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white"
+                className="w-full px-3.5 py-2.5 bg-[#183126] border border-white/10 rounded-xl text-sm text-white placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:bg-[#1d382f]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-stone-700 mb-1">
+              <label className="block text-xs font-semibold text-stone-200 mb-1">
                 ទំនាក់ទំនង
               </label>
               <select
                 value={relationship}
                 onChange={e => setRelationship(e.target.value)}
-                className="w-full px-3 py-2 bg-stone-50 border border-stone-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white"
+                className="w-full px-3 py-2 bg-[#183126] border border-white/10 rounded-xl text-sm text-white focus:outline-none focus:ring-2 focus:ring-amber-400 focus:bg-[#1d382f]"
               >
                 {RELATIONSHIPS.map((rel, idx) => (
                   <option key={idx} value={rel}>{rel}</option>
@@ -188,8 +188,8 @@ export const WishesGuestbook: React.FC<WishesGuestbookProps> = ({ initialGuestNa
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-stone-700 mb-1">
-                ពាក្យជូនពរ <span className="text-red-500">*</span>
+              <label className="block text-xs font-semibold text-stone-200 mb-1">
+                ពាក្យជូនពរ <span className="text-red-400">*</span>
               </label>
               <textarea
                 required
@@ -197,7 +197,7 @@ export const WishesGuestbook: React.FC<WishesGuestbookProps> = ({ initialGuestNa
                 value={message}
                 onChange={e => setMessage(e.target.value)}
                 placeholder="សូមសរសេរពាក្យជូនពរនៅទីនេះ..."
-                className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white"
+                className="w-full px-3.5 py-2.5 bg-[#183126] border border-white/10 rounded-xl text-sm text-white placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:bg-[#1d382f]"
               />
             </div>
 
@@ -215,7 +215,7 @@ export const WishesGuestbook: React.FC<WishesGuestbookProps> = ({ initialGuestNa
         {/* Right Side: Wishes Stream */}
         <div className="lg:col-span-7 space-y-3.5">
           <div className="flex items-center justify-between px-1">
-            <span className="text-xs font-bold text-amber-900">
+            <span className="text-xs font-bold text-amber-100">
               សារជូនពរពីភ្ញៀវកិត្តិយស ({wishes.length})
             </span>
           </div>
@@ -227,15 +227,15 @@ export const WishesGuestbook: React.FC<WishesGuestbookProps> = ({ initialGuestNa
           )}
 
           {isLoading ? (
-            <div className="p-8 text-center bg-white rounded-2xl border border-stone-200 text-xs text-stone-400">
+            <div className="p-8 text-center bg-[#183126]/80 rounded-2xl border border-white/10 text-xs text-stone-300">
               កំពុងផ្ទុកទិន្នន័យសារជូនពរ...
             </div>
           ) : loadError ? (
-            <div role="alert" className="p-8 text-center bg-white rounded-2xl border border-rose-200 text-xs text-rose-600">
+            <div role="alert" className="p-8 text-center bg-[#183126]/80 rounded-2xl border border-rose-400/30 text-xs text-rose-200">
               {loadError}
             </div>
           ) : wishes.length === 0 ? (
-            <div className="p-8 text-center bg-white rounded-2xl border border-stone-200 text-xs text-stone-500">
+            <div className="p-8 text-center bg-[#183126]/80 rounded-2xl border border-white/10 text-xs text-stone-300">
               មិនទាន់មានសារជូនពរនៅឡើយទេ។ សូមក្លាយជាអ្នកដំបូងគេដែលផ្ញើសារជូនពរ!
             </div>
           ) : (
@@ -243,7 +243,7 @@ export const WishesGuestbook: React.FC<WishesGuestbookProps> = ({ initialGuestNa
               {wishes.map(wish => (
                 <div
                   key={wish.id}
-                  className="bg-white/95 rounded-2xl p-4 border border-amber-200/70 shadow-xs hover:border-amber-300 transition-all text-left"
+                  className="bg-[#183126]/80 rounded-2xl p-4 border border-white/10 shadow-sm hover:border-amber-200/30 transition-all text-left"
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex items-center gap-2.5">
@@ -251,10 +251,10 @@ export const WishesGuestbook: React.FC<WishesGuestbookProps> = ({ initialGuestNa
                         {wish.sender_name.charAt(0) || <User className="w-4 h-4" />}
                       </div>
                       <div>
-                        <h4 className="text-sm font-bold text-stone-900 leading-tight">
+                        <h4 className="text-sm font-bold text-white leading-tight">
                           {wish.sender_name}
                         </h4>
-                        <div className="flex items-center gap-2 text-[11px] text-stone-500 mt-0.5">
+                        <div className="flex items-center gap-2 text-[11px] text-stone-300 mt-0.5">
                           <span>{wish.relationship}</span>
                           <span>·</span>
                           <span>{wish.created_at.split(' ')[0]}</span>
@@ -268,8 +268,8 @@ export const WishesGuestbook: React.FC<WishesGuestbookProps> = ({ initialGuestNa
                       onClick={() => handleHeartClick(wish.id)}
                       className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold border transition-all ${
                         likedIds.has(wish.id)
-                          ? 'bg-rose-50 text-rose-600 border-rose-300'
-                          : 'bg-stone-50 text-stone-600 border-stone-200 hover:border-rose-300 hover:text-rose-500'
+                          ? 'bg-rose-500/10 text-rose-200 border-rose-300/40'
+                          : 'bg-white/5 text-stone-200 border-white/10 hover:border-rose-300/40 hover:text-rose-200'
                       }`}
                     >
                       <Heart className={`w-3.5 h-3.5 ${likedIds.has(wish.id) ? 'fill-rose-500 text-rose-500' : ''}`} />
@@ -277,7 +277,7 @@ export const WishesGuestbook: React.FC<WishesGuestbookProps> = ({ initialGuestNa
                     </button>
                   </div>
 
-                  <p className="text-xs sm:text-sm text-stone-700 mt-3 leading-relaxed font-khmer-body whitespace-pre-line pl-1 border-l-2 border-amber-200">
+                  <p className="text-xs sm:text-sm text-stone-200 mt-3 leading-relaxed font-khmer-body whitespace-pre-line pl-1 border-l-2 border-amber-200/60">
                     {wish.message}
                   </p>
                 </div>

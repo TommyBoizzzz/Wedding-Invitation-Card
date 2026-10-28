@@ -11,14 +11,113 @@
   html {
     scroll-behavior: smooth;
     font-family: var(--font-khmer);
+    background: #1a291f;
   }
 
   body {
-    background-color: #FAF8F5;
+    margin: 0;
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at top, rgba(134, 168, 110, 0.18), transparent 32%),
+      linear-gradient(180deg, #213629 0%, #1a2a20 35%, #0d1712 100%);
     color: #2D241E;
     font-family: var(--font-khmer);
     overflow-x: hidden;
   }
+
+  #root {
+    min-height: 100vh;
+  }
+}
+
+.theme-olive {
+  background: transparent;
+}
+
+.theme-olive::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(12, 20, 16, 0.12), rgba(12, 20, 16, 0.28));
+  pointer-events: none;
+  z-index: 0;
+}
+
+.butterfly-sky {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  opacity: 0.9;
+}
+
+.butterfly {
+  position: absolute;
+  width: 42px;
+  height: 24px;
+  animation: flutter 11s ease-in-out infinite alternate, drift 24s linear infinite;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+}
+
+.butterfly::before,
+.butterfly::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 19px;
+  height: 24px;
+  border-radius: 70% 30% 68% 32% / 73% 53% 47% 27%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(220, 233, 210, 0.7));
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.butterfly::before {
+  left: 2px;
+  transform-origin: right center;
+  transform: rotate(-28deg) scaleY(1.1);
+  animation: wingLeft 1.5s ease-in-out infinite alternate;
+}
+
+.butterfly::after {
+  right: 2px;
+  transform-origin: left center;
+  transform: scaleX(-1) rotate(-28deg) scaleY(1.1);
+  animation: wingRight 1.5s ease-in-out infinite alternate;
+}
+
+.butterfly:nth-child(1) { left: 6%; top: 14%; animation-duration: 18s, 28s; }
+.butterfly:nth-child(2) { left: 18%; top: 34%; animation-duration: 15s, 25s; }
+.butterfly:nth-child(3) { left: 33%; top: 20%; animation-duration: 17s, 31s; }
+.butterfly:nth-child(4) { left: 48%; top: 12%; animation-duration: 16s, 27s; }
+.butterfly:nth-child(5) { left: 62%; top: 30%; animation-duration: 20s, 33s; }
+.butterfly:nth-child(6) { left: 76%; top: 18%; animation-duration: 14s, 29s; }
+.butterfly:nth-child(7) { left: 84%; top: 38%; animation-duration: 18s, 26s; }
+.butterfly:nth-child(8) { left: 12%; top: 54%; animation-duration: 19s, 32s; }
+.butterfly:nth-child(9) { left: 68%; top: 56%; animation-duration: 16s, 34s; }
+
+@keyframes flutter {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg) scale(0.86); }
+  25% { transform: translate3d(10px, -10px, 0) rotate(12deg) scale(1); }
+  50% { transform: translate3d(-12px, 8px, 0) rotate(-10deg) scale(0.94); }
+  75% { transform: translate3d(12px, 12px, 0) rotate(10deg) scale(1.04); }
+  100% { transform: translate3d(-8px, -4px, 0) rotate(-8deg) scale(0.92); }
+}
+
+@keyframes drift {
+  0% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(20px, 18px, 0); }
+  100% { transform: translate3d(-12px, -10px, 0); }
+}
+
+@keyframes wingLeft {
+  0% { transform: rotate(-20deg) scaleY(0.95); }
+  100% { transform: rotate(-42deg) scaleY(1.18); }
+}
+
+@keyframes wingRight {
+  0% { transform: scaleX(-1) rotate(-20deg) scaleY(0.95); }
+  100% { transform: scaleX(-1) rotate(-42deg) scaleY(1.18); }
 }
 
 .font-khmer-title {

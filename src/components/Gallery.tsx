@@ -16,7 +16,7 @@ const WEDDING_PHOTOS: PhotoItem[] = [
     src: image01,
     title: 'សិរីសួស្តីក្នុងឈុតមង្គលការបុរាណខ្មែរ',
     category: 'traditional',
-    description: 'កូនកំលោះ (ឈ្មោះកូនប្រុស) និង កូនក្រមុំ (ឈ្មោះកូនស្រី) ក្នុងសម្លៀកបំពាក់ប្រពៃណីពណ៌មាសដ៏ប្រណិត នៅមុខប្រាសាទអង្គរវត្ត',
+    description: 'កូនកំលោះ ហេង គីមហ៊ និង កូនក្រមុំសន ធារ៉ា ក្នុងសម្លៀកបំពាក់ប្រពៃណីពណ៌មាសដ៏ប្រណិត នៅមុខប្រាសាទអង្គរវត្ត',
     location: 'Phnom Penh, Phnom Penh'
   },
   {
@@ -100,23 +100,23 @@ export const Gallery: React.FC = () => {
   return (
     <section id="gallery" className="w-full max-w-5xl mx-auto px-4 py-8">
       <div className="text-center mb-6">
-        <span className="text-xs font-semibold tracking-widest text-amber-800 uppercase block mb-1">
+        <span className="text-xs font-semibold tracking-widest text-amber-200 uppercase block mb-1">
           អាល់ប៊ុមរូបថតអាពាហ៍ពិពាហ៍
         </span>
-        <h2 className="text-2xl sm:text-3xl font-khmer-title text-amber-950">
+        <h2 className="text-2xl sm:text-3xl font-khmer-title text-white">
           ទំព័ររូបភាពអនុស្សាវរីយ៍
         </h2>
-        <p className="text-sm text-stone-600 max-w-md mx-auto mt-2">
-          រូបភាព Pre-Wedding ដ៏ស្រស់ស្អាតរបស់គូស្នេហ៍ (ឈ្មោះកូនប្រុស) & (ឈ្មោះកូនស្រី)
+        <p className="text-sm text-stone-300 max-w-md mx-auto mt-2">
+          រូបភាព Pre-Wedding ដ៏ស្រស់ស្អាតរបស់គូស្នេហ៍ ហេង គីមហ៊ &​ សន ធារ៉ា
         </p>
 
         {/* Filter Buttons */}
-        <div className="inline-flex items-center gap-1 p-1 bg-stone-100 rounded-xl mt-5 border border-stone-200">
+        <div className="inline-flex items-center gap-1 p-1 bg-[#183126]/90 rounded-xl mt-5 border border-white/10">
           <button
             type="button"
             onClick={() => setFilter('all')}
             className={`px-4 py-1.5 text-xs font-medium rounded-lg transition-colors cursor-pointer ${
-              filter === 'all' ? 'bg-amber-700 text-white shadow-xs' : 'text-stone-600 hover:text-stone-900'
+              filter === 'all' ? 'bg-amber-700 text-white shadow-xs' : 'text-stone-300 hover:text-white'
             }`}
           >
             ទាំងអស់ ({WEDDING_PHOTOS.length})
@@ -125,7 +125,7 @@ export const Gallery: React.FC = () => {
             type="button"
             onClick={() => setFilter('traditional')}
             className={`px-4 py-1.5 text-xs font-medium rounded-lg transition-colors cursor-pointer ${
-              filter === 'traditional' ? 'bg-amber-700 text-white shadow-xs' : 'text-stone-600 hover:text-stone-900'
+              filter === 'traditional' ? 'bg-amber-700 text-white shadow-xs' : 'text-stone-300 hover:text-white'
             }`}
           >
             ឈុតបុរាណខ្មែរ
@@ -134,7 +134,7 @@ export const Gallery: React.FC = () => {
             type="button"
             onClick={() => setFilter('modern')}
             className={`px-4 py-1.5 text-xs font-medium rounded-lg transition-colors cursor-pointer ${
-              filter === 'modern' ? 'bg-amber-700 text-white shadow-xs' : 'text-stone-600 hover:text-stone-900'
+              filter === 'modern' ? 'bg-amber-700 text-white shadow-xs' : 'text-stone-300 hover:text-white'
             }`}
           >
             ឈុតសម័យទំនើប
@@ -148,7 +148,7 @@ export const Gallery: React.FC = () => {
           <div
             key={photo.id}
             onClick={() => setLightboxIndex(idx)}
-            className="group relative bg-white rounded-2xl overflow-hidden border border-amber-200/80 shadow-xs hover:shadow-md transition-all cursor-pointer"
+            className="group relative bg-[#20372e]/90 rounded-2xl overflow-hidden border border-amber-200/15 shadow-sm hover:shadow-md transition-all cursor-pointer"
           >
             <div className="aspect-[3/4] w-full overflow-hidden bg-stone-100 relative">
               <img
@@ -180,10 +180,10 @@ export const Gallery: React.FC = () => {
             </div>
 
             <div className="p-3 text-left">
-              <h4 className="text-xs font-bold text-stone-800 line-clamp-1 font-khmer-body">
+              <h4 className="text-xs font-bold text-stone-100 line-clamp-1 font-khmer-body">
                 {photo.title}
               </h4>
-              <p className="text-[11px] text-stone-500 line-clamp-1 mt-0.5">
+              <p className="text-[11px] text-stone-300 line-clamp-1 mt-0.5">
                 {photo.location}
               </p>
             </div>

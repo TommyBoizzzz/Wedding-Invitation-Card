@@ -31,7 +31,13 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-stone-800 font-khmer-body flex flex-col selection:bg-amber-200 selection:text-amber-900">
+    <div className="theme-olive relative min-h-screen overflow-x-hidden text-stone-100 font-khmer-body flex flex-col selection:bg-amber-200 selection:text-amber-900">
+      <div className="butterfly-sky" aria-hidden="true">
+        {Array.from({ length: 9 }).map((_, index) => (
+          <span key={index} className="butterfly" style={{ animationDelay: `${index * 0.7}s` }} />
+        ))}
+      </div>
+
       {/* Top Navbar */}
       <Navbar onOpenAdmin={() => setIsAdminOpen(true)} />
 
@@ -39,7 +45,7 @@ export default function App() {
       {guestName && <PersonalizedBanner guestName={guestName} />}
 
       {/* Main Content Sections */}
-      <main className="flex-1 flex flex-col space-y-4 sm:space-y-8">
+      <main className="relative z-10 flex-1 flex flex-col space-y-4 sm:space-y-8">
         <HeroSection />
         <Countdown />
         <InvitationCard />
@@ -51,17 +57,17 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-amber-200/80 bg-[#F5EFE6] py-8 text-center text-xs text-stone-600 space-y-2 mt-12">
-        <div className="flex items-center justify-center gap-2 font-khmer-title text-amber-950 text-sm">
-          <span>(ឈ្មោះកូនប្រុស)</span>
-          <Heart className="w-3.5 h-3.5 fill-rose-600 text-rose-600" />
+      <footer className="relative z-10 border-t border-white/10 bg-[#1d2d22]/90 py-8 text-center text-xs text-stone-200 space-y-2 mt-12 backdrop-blur-sm">
+        <div className="flex items-center justify-center gap-2 font-khmer-title text-white text-sm">
+          <span>ហេង គីមហ៊</span>
+          <Heart className="w-3.5 h-3.5 fill-rose-400 text-rose-400" />
           <span>(ឈ្មោះកូនស្រី)</span>
         </div>
-        <p className="font-cinzel text-[11px] text-stone-500">
-          Sunday 22nd November 2026 · Chi Kraeng, Siem Reap, Cambodia
+        <p className="font-cinzel text-[11px] text-stone-300">
+          Saturday 23rd January 2027 · Phnom Penh, Cambodia
         </p>
-        <p className="text-[11px] text-stone-500">
-          គេហទំព័ររៀបចំដោយក្តីគោរព និងស្រឡាញ់ | រៀបចំ និង បង្កើតដោយ លោក៖ (ឈ្មោះកូនប្រុស)
+        <p className="text-[11px] text-stone-300">
+          គេហទំព័ររៀបចំដោយក្តីគោរព និងស្រឡាញ់ | រៀបចំ និង បង្កើតដោយ លោក៖ ហេង គីមហ៊
         </p>
       </footer>
 

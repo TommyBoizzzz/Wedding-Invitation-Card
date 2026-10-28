@@ -33,22 +33,22 @@ export const LocationMap: React.FC = () => {
   return (
     <section id="location" className="w-full max-w-4xl mx-auto px-4 py-8">
       <div className="text-center mb-8">
-        <span className="text-xs font-semibold tracking-widest text-amber-800 uppercase block mb-1">
+        <span className="text-xs font-semibold tracking-widest text-amber-200 uppercase block mb-1">
           ទីតាំងកម្មវិធី & ផែនទី
         </span>
-        <h2 className="text-2xl sm:text-3xl font-khmer-title text-amber-950">
+        <h2 className="text-2xl sm:text-3xl font-khmer-title text-white">
           ស្កេន QR និងព័ត៌មានទីតាំង
         </h2>
-        <p className="text-sm text-stone-600 max-w-xl mx-auto mt-2">
+        <p className="text-sm text-stone-300 max-w-xl mx-auto mt-2">
           សូមស្កេន QR Code ឬចុចលើផែនទីដើម្បីកំណត់ទិសដៅមកកាន់គេហដ្ឋានរៀបចំពិធី
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 bg-white/90 backdrop-blur-md rounded-3xl border border-amber-200/90 shadow-md p-6 sm:p-8">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 bg-[#21372b]/90 backdrop-blur-md rounded-3xl border border-amber-200/25 shadow-lg shadow-[#08140e]/40 p-6 sm:p-8">
         {/* Left column: QR Code for Location Map */}
-        <div className="md:col-span-5 flex flex-col items-center justify-center p-4 bg-amber-50/40 rounded-2xl border border-amber-100 text-center">
-          <div className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-900 mb-2">
-            <QrCode className="w-4 h-4 text-amber-700" />
+        <div className="md:col-span-5 flex flex-col items-center justify-center p-4 bg-[#183126]/80 rounded-2xl border border-amber-200/20 text-center">
+          <div className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-100 mb-2">
+            <QrCode className="w-4 h-4 text-amber-300" />
             <span>ស្កេនទីតាំងកម្មវិធី (Location QR)</span>
           </div>
 
@@ -65,7 +65,7 @@ export const LocationMap: React.FC = () => {
             </div>
           </div>
 
-          <p className="text-xs text-stone-500 mt-2">
+          <p className="text-xs text-stone-300 mt-2">
             ស្កេនដោយផ្ទាល់ ឬចុចទាញយកដើម្បីរក្សាទុក
           </p>
 
@@ -73,16 +73,16 @@ export const LocationMap: React.FC = () => {
             <button
               onClick={handleDownloadQr}
               type="button"
-              className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 bg-white hover:bg-stone-50 border border-amber-200 text-stone-700 rounded-lg text-xs font-medium transition-colors"
+              className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 bg-white/5 hover:bg-white/10 border border-amber-200/30 text-stone-100 rounded-lg text-xs font-medium transition-colors"
             >
-              <Download className="w-3.5 h-3.5 text-amber-700" />
+              <Download className="w-3.5 h-3.5 text-amber-300" />
               <span>ទាញយក QR</span>
             </button>
             <a
               href={WEDDING_LOCATION.mapsUrl}
               target="_blank"
               rel="noreferrer"
-              className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 bg-amber-700 hover:bg-amber-800 text-white rounded-lg text-xs font-medium transition-colors"
+              className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 bg-amber-600 hover:bg-amber-500 text-white rounded-lg text-xs font-medium transition-colors"
             >
               <Navigation className="w-3.5 h-3.5" />
               <span>នាំផ្លូវទៅកាន់ទីនោះ</span>
@@ -98,13 +98,13 @@ export const LocationMap: React.FC = () => {
                 <MapPin className="w-5 h-5 text-amber-700" />
               </div>
               <div>
-                <h4 className="text-base sm:text-lg font-bold text-amber-950 font-khmer-title">
+                <h4 className="text-base sm:text-lg font-bold text-white font-khmer-title">
                   {WEDDING_LOCATION.name}
                 </h4>
-                <p className="text-sm font-medium text-stone-700 mt-0.5 leading-relaxed">
+                <p className="text-sm font-medium text-stone-200 mt-0.5 leading-relaxed">
                   {WEDDING_LOCATION.fullKhmer}
                 </p>
-                <p className="text-xs text-stone-500 font-cinzel mt-1">
+                <p className="text-xs text-stone-300 font-cinzel mt-1">
                   {WEDDING_LOCATION.fullEnglish}
                 </p>
               </div>
@@ -114,9 +114,9 @@ export const LocationMap: React.FC = () => {
               <button
                 onClick={handleCopyAddress}
                 type="button"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-amber-50 hover:bg-amber-100 border border-amber-200 text-amber-900 rounded-lg text-xs font-medium transition-colors"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-amber-50/10 hover:bg-amber-50/20 border border-amber-200/30 text-amber-100 rounded-lg text-xs font-medium transition-colors"
               >
-                {copied ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
+                {copied ? <Check className="w-3.5 h-3.5 text-emerald-300" /> : <Copy className="w-3.5 h-3.5" />}
                 <span>{copied ? 'បានចម្លងអាសយដ្ឋានរួច!' : 'ចម្លងអាសយដ្ឋាន'}</span>
               </button>
 
@@ -124,7 +124,7 @@ export const LocationMap: React.FC = () => {
                 href={WEDDING_LOCATION.mapsUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1 px-3 py-1.5 bg-stone-100 hover:bg-stone-200 text-stone-700 rounded-lg text-xs font-medium transition-colors"
+                className="inline-flex items-center gap-1 px-3 py-1.5 bg-white/5 hover:bg-white/10 text-stone-100 rounded-lg text-xs font-medium transition-colors"
               >
                 <ExternalLink className="w-3.5 h-3.5" />
                 <span>បើកក្នុង Google Maps</span>
@@ -133,9 +133,9 @@ export const LocationMap: React.FC = () => {
           </div>
 
           {/* Host Contact Phone Numbers */}
-          <div className="bg-[#FAF7F0] border border-amber-200/80 rounded-2xl p-4">
-            <div className="flex items-center gap-2 text-xs font-bold text-amber-900 mb-2">
-              <Phone className="w-3.5 h-3.5 text-amber-700" />
+          <div className="bg-[#183126]/80 border border-amber-200/20 rounded-2xl p-4">
+            <div className="flex items-center gap-2 text-xs font-bold text-amber-100 mb-2">
+              <Phone className="w-3.5 h-3.5 text-amber-300" />
               <span>ទូរស័ព្ទម្ចាស់កម្មវិធី (ទំនាក់ទំនងសាកសួរព័ត៌មាន)</span>
             </div>
 
@@ -143,21 +143,21 @@ export const LocationMap: React.FC = () => {
               {WEDDING_LOCATION.hostsPhones.map((phone, idx) => (
                 <div
                   key={idx}
-                  className="bg-white p-2.5 rounded-xl border border-stone-200/80 flex flex-col justify-between"
+                  className="bg-[#1f2d22] p-2.5 rounded-xl border border-white/10 flex flex-col justify-between"
                 >
-                  <span className="text-[10px] text-stone-500 font-medium">
+                  <span className="text-[10px] text-stone-300 font-medium">
                     {phone.label}
                   </span>
                   <a
                     href={`tel:${phone.tel}`}
-                    className="text-sm font-bold text-amber-950 font-cinzel hover:text-amber-700 transition-colors my-1"
+                    className="text-sm font-bold text-amber-100 font-cinzel hover:text-amber-300 transition-colors my-1"
                   >
                     {phone.number}
                   </a>
-                  <div className="flex items-center justify-between pt-1 border-t border-stone-100">
+                  <div className="flex items-center justify-between pt-1 border-t border-white/10">
                     <a
                       href={`tel:${phone.tel}`}
-                      className="text-[11px] font-semibold text-emerald-700 hover:underline inline-flex items-center gap-0.5"
+                      className="text-[11px] font-semibold text-emerald-300 hover:underline inline-flex items-center gap-0.5"
                     >
                       <Phone className="w-2.5 h-2.5" />
                       <span>ហៅទូរស័ព្ទ</span>

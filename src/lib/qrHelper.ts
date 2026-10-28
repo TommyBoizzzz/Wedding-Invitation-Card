@@ -48,7 +48,7 @@ export const WEDDING_LOCATION = {
 //   },
 //   acleda: {
 //     bankName: 'ACLEDA BANK (អេស៊ីលីដា)',
-//     accountName: '(Groom Name)',
+//     accountName: 'Heng Kimhor',
 //     accountNumber: '012 459 616',
 //     khqrString: 'https://link.acleda.com.kh/khqr?account=012459616&name=NEANG%20PEOU&bank=ACLEDA'
 //   }
@@ -57,14 +57,14 @@ export const WEDDING_LOCATION = {
 export const BANK_ACCOUNTS = {
   aba: {
     bankName: 'ABA BANK',
-    accountName: 'LLC (Groom Name)',
+    accountName: 'LLC Heng Kimhor',
     khrAccount: '111 222 333',
     usdAccount: '111 222 334',
     khqrString: '1111111111111111111111111111111111111111111111111111111111111111'
   },
   acleda: {
     bankName: 'ACLEDA BANK (អេស៊ីលីដា)',
-    accountName: 'LLC (Groom Name)',
+    accountName: 'LLC Heng Kimhor',
     khrAccount: '111 222 333',
     usdAccount: '111 222 334',
     khqrString: '1111111111111111111111111111111111111111111111111111111111111111'

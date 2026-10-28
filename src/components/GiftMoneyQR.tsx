@@ -82,13 +82,13 @@ export const GiftMoneyQR: React.FC<GiftMoneyQRProps> = ({ initialGuestName = '' 
   return (
     <section id="gift" className="w-full max-w-4xl mx-auto px-4 py-8">
       <div className="text-center mb-8">
-        <span className="text-xs font-semibold tracking-widest text-amber-800 uppercase block mb-1">
+        <span className="text-xs font-semibold tracking-widest text-amber-200 uppercase block mb-1">
           ចំណងដៃអាពាហ៍ពិពាហ៍
         </span>
-        <h2 className="text-2xl sm:text-3xl font-khmer-title text-amber-950">
+        <h2 className="text-2xl sm:text-3xl font-khmer-title text-white">
           បាញ់លុយចំណងដៃតាមរយៈ KHQR
         </h2>
-        <p className="text-sm text-stone-600 max-w-xl mx-auto mt-2">
+        <p className="text-sm text-stone-300 max-w-xl mx-auto mt-2">
           លោកអ្នកអាចចូលរួមចំណងដៃតាមរយៈការស្កេន KHQR (ABA ឬ អេស៊ីលីដា) ជាមួយគ្រប់កម្មវិធីធនាគារទាំងអស់ក្នុងប្រទេសកម្ពុជា
         </p>
       </div>
@@ -97,14 +97,14 @@ export const GiftMoneyQR: React.FC<GiftMoneyQRProps> = ({ initialGuestName = '' 
         {/* Left Side: Authentic KHQR Bank Card */}
         <div className="lg:col-span-6 flex flex-col items-center">
           {/* Bank selector tabs */}
-          <div className="flex p-1 bg-stone-200/70 rounded-xl mb-4 w-full max-w-sm">
+          <div className="flex p-1 bg-[#193126]/90 rounded-xl mb-4 w-full max-w-sm border border-amber-200/20">
             <button
               onClick={() => setActiveBank('ABA')}
               type="button"
               className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all ${
                 activeBank === 'ABA'
                   ? 'bg-[#002744] text-white shadow-sm'
-                  : 'text-stone-700 hover:text-stone-900'
+                  : 'text-stone-300 hover:text-white'
               }`}
             >
               ABA BANK
@@ -115,7 +115,7 @@ export const GiftMoneyQR: React.FC<GiftMoneyQRProps> = ({ initialGuestName = '' 
               className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all ${
                 activeBank === 'ACLEDA'
                   ? 'bg-[#0F2D59] text-white shadow-sm'
-                  : 'text-stone-700 hover:text-stone-900'
+                  : 'text-stone-300 hover:text-white'
               }`}
             >
               អេស៊ីលីដា ACLEDA
@@ -135,7 +135,7 @@ export const GiftMoneyQR: React.FC<GiftMoneyQRProps> = ({ initialGuestName = '' 
             <div className="w-full max-w-xs">
               <img
                 src={acledaQrImage}
-                alt="ACLEDA Bank KHQR for (Groom Name)"
+                alt="ACLEDA Bank KHQR for Heng Kimhor"
                 className="w-full rounded-2xl shadow-xl"
               />
             </div>
@@ -146,36 +146,36 @@ export const GiftMoneyQR: React.FC<GiftMoneyQRProps> = ({ initialGuestName = '' 
             <button
               onClick={handleDownloadQr}
               type="button"
-              className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 bg-white hover:bg-stone-50 border border-stone-300 rounded-xl text-xs font-semibold text-stone-700 shadow-sm transition-colors"
+              className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 bg-white/5 hover:bg-white/10 border border-amber-200/30 rounded-xl text-xs font-semibold text-stone-100 shadow-sm transition-colors"
             >
-              <Download className="w-3.5 h-3.5 text-amber-700" />
+              <Download className="w-3.5 h-3.5 text-amber-300" />
               <span>រក្សាទុក QR Code</span>
             </button>
           </div>
         </div>
 
         {/* Right Side: Quick Amount & Gift Registry Form */}
-        <div className="lg:col-span-6 bg-white/90 backdrop-blur-md rounded-3xl border border-amber-200/90 shadow-md p-6 sm:p-7">
+        <div className="lg:col-span-6 bg-[#21372b]/90 backdrop-blur-md rounded-3xl border border-amber-200/25 shadow-lg shadow-[#08140e]/40 p-6 sm:p-7">
           <div className="flex items-center gap-2 mb-4">
-            <Gift className="w-5 h-5 text-amber-700" />
-            <h3 className="text-lg font-bold text-amber-950 font-khmer-title">
+            <Gift className="w-5 h-5 text-amber-300" />
+            <h3 className="text-lg font-bold text-white font-khmer-title">
               កត់ត្រាចំណងដៃ & ពាក្យជូនពរ
             </h3>
           </div>
 
-          <p className="text-xs text-stone-600 mb-5 leading-relaxed">
+          <p className="text-xs text-stone-300 mb-5 leading-relaxed">
             បន្ទាប់ពីលោកអ្នកបានស្កេនផ្ញើចំណងដៃរួចហើយ លោកអ្នកអាចកត់ត្រាឈ្មោះ និងពាក្យជូនពរនៅទីនេះ ដើម្បីឱ្យកូនកំលោះកូនក្រមុំបានដឹង និងចងចាំនូវទឹកចិត្តដ៏ថ្លៃថ្លារបស់លោកអ្នក។
           </p>
 
           {/* Currency Toggle */}
           <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-semibold text-stone-700">ជ្រើសរើសរូបិយប័ណ្ណ៖</span>
-            <div className="flex p-0.5 bg-stone-100 rounded-lg text-xs font-semibold">
+            <span className="text-xs font-semibold text-stone-200">ជ្រើសរើសរូបិយប័ណ្ណ៖</span>
+            <div className="flex p-0.5 bg-[#193126] rounded-lg text-xs font-semibold border border-white/10">
               <button
                 type="button"
                 onClick={() => setCurrency('USD')}
                 className={`px-3 py-1 rounded-md transition-all ${
-                  currency === 'USD' ? 'bg-amber-700 text-white shadow-xs' : 'text-stone-600 hover:text-stone-900'
+                  currency === 'USD' ? 'bg-amber-700 text-white shadow-xs' : 'text-stone-300 hover:text-white'
                 }`}
               >
                 USD ($)
@@ -184,7 +184,7 @@ export const GiftMoneyQR: React.FC<GiftMoneyQRProps> = ({ initialGuestName = '' 
                 type="button"
                 onClick={() => setCurrency('KHR')}
                 className={`px-3 py-1 rounded-md transition-all ${
-                  currency === 'KHR' ? 'bg-amber-700 text-white shadow-xs' : 'text-stone-600 hover:text-stone-900'
+                  currency === 'KHR' ? 'bg-amber-700 text-white shadow-xs' : 'text-stone-300 hover:text-white'
                 }`}
               >
                 KHR (៛)
@@ -203,7 +203,7 @@ export const GiftMoneyQR: React.FC<GiftMoneyQRProps> = ({ initialGuestName = '' 
                   className={`py-2 text-xs font-bold rounded-xl border transition-all ${
                     selectedAmount === amt
                       ? 'bg-amber-100 border-amber-500 text-amber-900'
-                      : 'bg-stone-50 border-stone-200 text-stone-700 hover:bg-stone-100'
+                      : 'bg-[#1b2e26] border-white/10 text-stone-200 hover:bg-[#223a2f]'
                   }`}
                 >
                   ${amt}
@@ -218,7 +218,7 @@ export const GiftMoneyQR: React.FC<GiftMoneyQRProps> = ({ initialGuestName = '' 
                   className={`py-2 text-[11px] font-bold rounded-xl border transition-all ${
                     selectedAmount === amt
                       ? 'bg-amber-100 border-amber-500 text-amber-900'
-                      : 'bg-stone-50 border-stone-200 text-stone-700 hover:bg-stone-100'
+                      : 'bg-[#1b2e26] border-white/10 text-stone-200 hover:bg-[#223a2f]'
                   }`}
                 >
                   {(amt / 1000)}k ៛
@@ -229,8 +229,8 @@ export const GiftMoneyQR: React.FC<GiftMoneyQRProps> = ({ initialGuestName = '' 
 
           <form onSubmit={handleRecordGift} className="space-y-4">
             <div>
-              <label className="block text-xs font-semibold text-stone-700 mb-1">
-                ឈ្មោះភ្ញៀវកិត្តិយស <span className="text-red-500">*</span>
+              <label className="block text-xs font-semibold text-stone-200 mb-1">
+                ឈ្មោះភ្ញៀវកិត្តិយស <span className="text-red-400">*</span>
               </label>
               <input
                 type="text"
@@ -238,13 +238,13 @@ export const GiftMoneyQR: React.FC<GiftMoneyQRProps> = ({ initialGuestName = '' 
                 value={senderName}
                 onChange={e => setSenderName(e.target.value)}
                 placeholder="ឧ. លោក សុខា និងភរិយា"
-                className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white"
+                className="w-full px-3.5 py-2.5 bg-[#173027] border border-white/10 rounded-xl text-sm text-white placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:bg-[#1d382f]"
               />
             </div>
 
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs font-semibold text-stone-700 mb-1">
+                <label className="block text-xs font-semibold text-stone-200 mb-1">
                   ចំនួនទឹកប្រាក់
                 </label>
                 <div className="relative">
@@ -256,22 +256,22 @@ export const GiftMoneyQR: React.FC<GiftMoneyQRProps> = ({ initialGuestName = '' 
                       setSelectedAmount(null);
                     }}
                     placeholder={currency === 'USD' ? 'ឧ. 50' : 'ឧ. 100000'}
-                    className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white"
+                      className="w-full px-3.5 py-2.5 bg-[#173027] border border-white/10 rounded-xl text-sm text-white placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:bg-[#1d382f]"
                   />
-                  <span className="absolute right-3 top-2.5 text-xs font-semibold text-stone-500 pointer-events-none">
+                    <span className="absolute right-3 top-2.5 text-xs font-semibold text-stone-300 pointer-events-none">
                     {currency === 'USD' ? '$' : '៛'}
                   </span>
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-stone-700 mb-1">
+                <label className="block text-xs font-semibold text-stone-200 mb-1">
                   ផ្ញើតាមធនាគារ
                 </label>
                 <select
                   value={activeBank}
                   onChange={e => setActiveBank(e.target.value as 'ABA' | 'ACLEDA')}
-                  className="w-full px-3 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white"
+                    className="w-full px-3 py-2.5 bg-[#173027] border border-white/10 rounded-xl text-sm text-white focus:outline-none focus:ring-2 focus:ring-amber-400 focus:bg-[#1d382f]"
                 >
                   <option value="ABA">ABA Bank</option>
                   <option value="ACLEDA">ACLEDA Bank</option>
@@ -280,7 +280,7 @@ export const GiftMoneyQR: React.FC<GiftMoneyQRProps> = ({ initialGuestName = '' 
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-stone-700 mb-1">
+              <label className="block text-xs font-semibold text-stone-200 mb-1">
                 សារជូនពរភ្ជាប់ជាមួយចំណងដៃ
               </label>
               <textarea
@@ -288,7 +288,7 @@ export const GiftMoneyQR: React.FC<GiftMoneyQRProps> = ({ initialGuestName = '' 
                 value={giftNote}
                 onChange={e => setGiftNote(e.target.value)}
                 placeholder="ឧ. សូមជូនពរកូនកំលោះកូនក្រមុំស្រឡាញ់គ្នាផ្អែមល្ហែម និងរកស៊ីមានបាន..."
-                className="w-full px-3.5 py-2 bg-stone-50 border border-stone-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white"
+                className="w-full px-3.5 py-2 bg-[#173027] border border-white/10 rounded-xl text-sm text-white placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:bg-[#1d382f]"
               />
             </div>
 
@@ -308,7 +308,7 @@ export const GiftMoneyQR: React.FC<GiftMoneyQRProps> = ({ initialGuestName = '' 
             </button>
 
             {submitSuccess && (
-              <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-center text-xs font-medium text-emerald-800 animate-fade-in">
+              <div className="p-3 bg-emerald-500/10 border border-emerald-400/30 rounded-xl text-center text-xs font-medium text-emerald-200 animate-fade-in">
                 សូមថ្លែងអំណរគុណយ៉ាងជ្រាលជ្រៅចំពោះចំណងដៃ និងពរជ័យដ៏ថ្លៃថ្លារបស់លោកអ្នក!
               </div>
             )}
