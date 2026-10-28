@@ -19,33 +19,33 @@ export const HeroSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           {/* Left Column: Text & Ceremony Lead-in */}
           <div className="lg:col-span-7 text-center lg:text-left space-y-4 sm:space-y-5">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-100/80 border border-amber-300 text-amber-900 text-fluid-xs font-semibold">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-100/80 border border-amber-300 text-amber-900 text-xs font-semibold">
               <Sparkles className="w-3.5 h-3.5 text-amber-600" />
               <span>សិរីមង្គលអាពាហ៍ពិពាហ៍ · ក្ដីស្នេហ៍ អមតៈ</span>
             </div>
 
             <div className="space-y-1">
-              <h1 className="text-fluid-2xl font-black text-white font-khmer-title tracking-tight leading-[1.1] drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)]">
+              <h1 className="text-3xl sm:text-4xl font-black text-white font-khmer-title tracking-tight leading-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)]">
                 ហេង គីមហ៊ <span className="text-rose-300 font-serif">❤️</span> សន ធារ៉ា
               </h1>
-              <p className="text-fluid-sm text-amber-50/85 font-cinzel font-semibold tracking-wide">
+              <p className="text-sm sm:text-base text-amber-50/85 font-cinzel font-semibold tracking-wide">
                 Heng Kimhor & Sorn Theara · Wedding Celebration
               </p>
             </div>
 
-            <p className="text-stone-100 text-fluid-base max-w-xl mx-auto lg:mx-0 leading-relaxed font-khmer-body drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]">
+            <p className="text-stone-100 text-sm sm:text-base max-w-xl mx-auto lg:mx-0 leading-relaxed font-khmer-body drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)] text-center lg:text-left">
               យើងខ្ញុំមានកិត្តិយស និងសេចក្ដីសោមនស្សរីករាយឥតឧបមា សូមគោរពអញ្ជើញ ឯកឧត្តម លោកជំទាវ លោកឧកញ៉ា លោក លោកស្រី អ្នកនាងកញ្ញា និងប្រិយមិត្តជិតឆ្ងាយ អញ្ជើញចូលរួមជាអធិបតី និងជាភ្ញៀវកិត្តិយស ដើម្បីប្រសិទ្ធពរជ័យ សិរីសួស្តី ជ័យមង្គលក្នុង ពិធីរៀបអាពាហ៍ពិពាហ៍របស់យើងខ្ញុំ។
             </p>
 
             {/* Event Highlights Strip */}
             <div className="bg-[#183126]/80 backdrop-blur-md rounded-2xl border border-amber-200/20 p-4 shadow-lg shadow-[#08140e]/30 max-w-lg mx-auto lg:mx-0 space-y-2">
-              <div className="flex items-center gap-3 text-fluid-sm text-stone-100">
+              <div className="flex items-center gap-3 text-xs sm:text-sm text-stone-100">
                 <Calendar className="w-4 h-4 text-amber-300 shrink-0" />
                 <span className="font-semibold text-amber-100">
                   ថ្ងៃសៅរ៍ ទី ២៣ ខែ មករា ឆ្នាំ ២០២៧ (វេលាម៉ោង ៥:០០ ល្ងាច)
                 </span>
               </div>
-              <div className="flex items-center gap-3 text-fluid-sm text-stone-300">
+              <div className="flex items-center gap-3 text-xs sm:text-sm text-stone-300">
                 <MapPin className="w-4 h-4 text-amber-300 shrink-0" />
                 <span>
                   នៅភោជនីយដ្ឋាន និងសាលរៀបចំកម្មវិធី ផ្កាឈូកទេព (​ អគារ G ) រាជធានីភ្នំពេញ

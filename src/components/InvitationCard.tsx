@@ -143,7 +143,7 @@ export const InvitationCard: React.FC = () => {
               មានកិត្តិយសសូមគោរពអញ្ជើញ
             </p>
 
-            <p className="text-justify sm:text-center leading-8">
+            <p className="text-center leading-8">
               ឯកឧត្តម លោកជំទាវ លោកឧកញ៉ា លោក លោកស្រី អ្នកនាងកញ្ញា និងប្រិយមិត្ត
               អញ្ជើញចូលរួមជាអធិបតី និងជាភ្ញៀវកិត្តិយស ដើម្បីប្រសិទ្ធពរជ័យ
               សិរីសួស្តី ជ័យមង្គលក្នុងពិធីរៀបអាពាហ៍ពិពាហ៍ កូនប្រុស-កូនស្រី
@@ -207,25 +207,20 @@ export const InvitationCard: React.FC = () => {
           {/* ========================================
               VENUE
           ======================================== */}
-          <div className="mt-8 sm:mt-10 text-center px-1 sm:px-3">
+          <div className="mt-8 sm:mt-10 text-center px-2 sm:px-3">
+            <div className="flex items-center justify-center gap-2 text-amber-200 font-bold text-sm sm:text-base md:text-lg leading-relaxed">
+              <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-amber-300 shrink-0" />
 
-            <div className="inline-flex items-start justify-center gap-2 text-amber-200 font-bold text-sm sm:text-base md:text-lg leading-relaxed">
-              <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-amber-300 shrink-0 mt-1" />
-
-              <span>
-                នៅភោជនីយដ្ឋាន និងសាលរៀបចំកម្មវិធី
-                <br className="sm:hidden" />
-                {' '}ផ្កាឈូកទេព (អគារ G)
+              <span className="text-center">
+                នៅភោជនីយដ្ឋាន និងសាលរៀបចំកម្មវិធី ផ្កាឈូកទេព (អគារ G)
               </span>
             </div>
 
-            <p className="text-xs sm:text-sm md:text-base font-medium text-stone-100 leading-relaxed mt-3">
-              ស្ថិតនៅ សង្កាត់ផ្សារដើមគរ ខណ្ឌទួលគោក
-              <br className="sm:hidden" />
-              {' '}រាជធានីភ្នំពេញ
+            <p className="text-center text-xs sm:text-sm md:text-base font-medium text-stone-100 leading-relaxed mt-3">
+              ស្ថិតនៅ សង្កាត់ផ្សារដើមគរ ខណ្ឌទួលគោក រាជធានីភ្នំពេញ
             </p>
 
-            <p className="text-xs sm:text-sm text-stone-300 font-medium leading-relaxed pt-2">
+            <p className="text-center text-xs sm:text-sm text-stone-300 font-medium leading-relaxed pt-2">
               ដោយមេត្រីភាព (សូមពិនិត្យមើលផ្លង់ និងស្កេនទីតាំងខាងក្រោម)
             </p>
           </div>

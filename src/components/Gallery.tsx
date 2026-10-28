@@ -8,6 +8,7 @@ import {
   ZoomIn,
   Heart,
 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 import { PhotoItem } from '../types/wedding';
 
@@ -95,51 +96,39 @@ const WEDDING_PHOTOS: PhotoItem[] = [
   },
 ];
 
-export const Gallery: React.FC = () => {
-  const [filter, setFilter] = useState<
-    'all' | 'traditional' | 'modern'
-  >('all');
+type GalleryFilter = 'all' | 'traditional' | 'modern';
 
-  const [lightboxIndex, setLightboxIndex] = useState<number | null>(
-    null
-  );
+export const Gallery: React.FC = () => {
+  const [filter, setFilter] = useState<GalleryFilter>('all');
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const filteredPhotos =
     filter === 'all'
       ? WEDDING_PHOTOS
-      : WEDDING_PHOTOS.filter(
-          (photo) => photo.category === filter
-        );
+      : WEDDING_PHOTOS.filter((photo) => photo.category === filter);
 
   const activePhoto =
-    lightboxIndex !== null
-      ? filteredPhotos[lightboxIndex]
-      : null;
+    lightboxIndex !== null ? filteredPhotos[lightboxIndex] : null;
 
   const handleNext = () => {
-    if (lightboxIndex === null || filteredPhotos.length === 0) {
-      return;
-    }
+    if (lightboxIndex === null || filteredPhotos.length === 0) return;
 
-    setLightboxIndex(
-      (lightboxIndex + 1) % filteredPhotos.length
+    setLightboxIndex((current) =>
+      current === null ? null : (current + 1) % filteredPhotos.length
     );
   };
 
   const handlePrev = () => {
-    if (lightboxIndex === null || filteredPhotos.length === 0) {
-      return;
-    }
+    if (lightboxIndex === null || filteredPhotos.length === 0) return;
 
-    setLightboxIndex(
-      (lightboxIndex - 1 + filteredPhotos.length) %
-        filteredPhotos.length
+    setLightboxIndex((current) =>
+      current === null
+        ? null
+        : (current - 1 + filteredPhotos.length) % filteredPhotos.length
     );
   };
 
-  const handleFilterChange = (
-    newFilter: 'all' | 'traditional' | 'modern'
-  ) => {
+  const handleFilterChange = (newFilter: GalleryFilter) => {
     setFilter(newFilter);
     setLightboxIndex(null);
   };
@@ -147,10 +136,16 @@ export const Gallery: React.FC = () => {
   return (
     <section
       id="gallery"
-      className="w-full max-w-5xl mx-auto px-3 sm:px-4 py-8"
+      className="w-full max-w-5xl mx-auto px-3 sm:px-4 py-8 sm:py-12"
     >
       {/* Gallery Heading */}
-      <div className="text-center mb-6">
+      <motion.div
+        initial={{ opacity: 0, y: 25 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.7, ease: 'easeOut' }}
+        className="text-center mb-6 sm:mb-8"
+      >
         <span className="text-xs font-semibold tracking-widest text-amber-200 uppercase block mb-2">
           អាល់ប៊ុមរូបថតអាពាហ៍ពិពាហ៍
         </span>
@@ -159,7 +154,7 @@ export const Gallery: React.FC = () => {
           ទំព័ររូបភាពអនុស្សាវរីយ៍
         </h2>
 
-        <p className="text-sm text-stone-300 max-w-md mx-auto mt-2">
+        <p className="text-sm text-stone-300 max-w-md mx-auto mt-2 leading-relaxed font-khmer-body">
           រូបភាព Pre-Wedding ដ៏ស្រស់ស្អាតរបស់គូស្នេហ៍
           ហេង គីមហ៊ &amp; សន ធារ៉ា
         </p>
@@ -169,10 +164,11 @@ export const Gallery: React.FC = () => {
           <button
             type="button"
             onClick={() => handleFilterChange('all')}
-            className={`px-3 sm:px-4 py-2 text-xs font-medium rounded-lg transition-colors ${
+            aria-pressed={filter === 'all'}
+            className={`px-3 sm:px-4 py-2 text-xs font-medium rounded-lg transition-all duration-300 ${
               filter === 'all'
                 ? 'bg-amber-700 text-white shadow-sm'
-                : 'text-stone-300 hover:text-white'
+                : 'text-stone-300 hover:text-white hover:bg-white/5'
             }`}
           >
             ទាំងអស់ ({WEDDING_PHOTOS.length})
@@ -181,10 +177,11 @@ export const Gallery: React.FC = () => {
           <button
             type="button"
             onClick={() => handleFilterChange('traditional')}
-            className={`px-3 sm:px-4 py-2 text-xs font-medium rounded-lg transition-colors ${
+            aria-pressed={filter === 'traditional'}
+            className={`px-3 sm:px-4 py-2 text-xs font-medium rounded-lg transition-all duration-300 ${
               filter === 'traditional'
                 ? 'bg-amber-700 text-white shadow-sm'
-                : 'text-stone-300 hover:text-white'
+                : 'text-stone-300 hover:text-white hover:bg-white/5'
             }`}
           >
             ឈុតបុរាណខ្មែរ
@@ -193,147 +190,179 @@ export const Gallery: React.FC = () => {
           <button
             type="button"
             onClick={() => handleFilterChange('modern')}
-            className={`px-3 sm:px-4 py-2 text-xs font-medium rounded-lg transition-colors ${
+            aria-pressed={filter === 'modern'}
+            className={`px-3 sm:px-4 py-2 text-xs font-medium rounded-lg transition-all duration-300 ${
               filter === 'modern'
                 ? 'bg-amber-700 text-white shadow-sm'
-                : 'text-stone-300 hover:text-white'
+                : 'text-stone-300 hover:text-white hover:bg-white/5'
             }`}
           >
             ឈុតសម័យទំនើប
           </button>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Gallery Grid: Always 2 Columns on Every Screen */}
-      <div className="grid grid-cols-2 gap-3 sm:gap-4">
-        {filteredPhotos.map((photo, idx) => (
-          <button
-            key={photo.id}
-            type="button"
-            onClick={() => setLightboxIndex(idx)}
-            aria-label={`View photo: ${photo.title}`}
-            className="group relative min-w-0 overflow-hidden rounded-xl sm:rounded-2xl bg-[#20372e]/90 border border-amber-200/15 text-left shadow-sm hover:shadow-lg hover:border-amber-200/40 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-amber-300"
-          >
-            {/* Image */}
-            <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#e9dfcc]">
-              <img
-                src={photo.src}
-                alt={photo.title}
-                loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
+      {/* Animated Gallery Grid: 2 Columns on All Screens */}
+      <motion.div
+        layout
+        className="grid grid-cols-2 gap-3 sm:gap-4"
+      >
+        <AnimatePresence mode="popLayout">
+          {filteredPhotos.map((photo, idx) => (
+            <motion.button
+              layout
+              key={photo.id}
+              type="button"
+              onClick={() => setLightboxIndex(idx)}
+              aria-label={`View photo: ${photo.title}`}
+              initial={{ opacity: 0, y: 40, scale: 0.96 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.12 }}
+              exit={{ opacity: 0, scale: 0.92, y: 15 }}
+              transition={{
+                opacity: { duration: 0.45, delay: (idx % 4) * 0.07 },
+                y: { duration: 0.55, delay: (idx % 4) * 0.07 },
+                scale: { duration: 0.45 },
+                layout: { duration: 0.35 },
+              }}
+              whileHover={{ y: -5 }}
+              whileTap={{ scale: 0.98 }}
+              className="group relative min-w-0 overflow-hidden rounded-xl sm:rounded-2xl bg-[#20372e]/90 border border-amber-200/15 text-left shadow-sm hover:shadow-lg hover:border-amber-200/40 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-amber-300"
+            >
+              {/* Photo */}
+              <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#e9dfcc]">
+                <img
+                  src={photo.src}
+                  alt={photo.title}
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
 
-              {/* Image Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/5 to-transparent opacity-80 sm:opacity-60 sm:group-hover:opacity-100 transition-opacity duration-300" />
+                {/* Image Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/5 to-transparent opacity-80 sm:opacity-60 sm:group-hover:opacity-100 transition-opacity duration-300" />
 
-              {/* Zoom Icon */}
-              <div className="absolute top-2 right-2 sm:top-3 sm:right-3 p-1.5 sm:p-2 rounded-full bg-black/40 backdrop-blur-sm text-white sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
-                <ZoomIn className="w-4 h-4" />
+                {/* Zoom Icon */}
+                <div className="absolute top-2 right-2 sm:top-3 sm:right-3 p-1.5 sm:p-2 rounded-full bg-black/40 backdrop-blur-sm text-white sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300">
+                  <ZoomIn className="w-4 h-4" />
+                </div>
+
+                {/* Image Caption */}
+                <div className="absolute inset-x-0 bottom-0 p-2 sm:p-4">
+                  <p className="text-[11px] sm:text-sm font-semibold text-white line-clamp-2 font-khmer-body leading-relaxed">
+                    {photo.title}
+                  </p>
+
+                  <p className="text-[9px] sm:text-xs text-amber-200 mt-1">
+                    {photo.location}
+                  </p>
+                </div>
               </div>
 
-              {/* Image Caption Overlay */}
-              <div className="absolute inset-x-0 bottom-0 p-2 sm:p-4">
-                <p className="text-[11px] sm:text-sm font-semibold text-white line-clamp-2 font-khmer-body leading-relaxed">
+              {/* Photo Details */}
+              <div className="p-2 sm:p-3 text-left">
+                <h3 className="text-[11px] sm:text-sm font-bold text-stone-100 line-clamp-2 font-khmer-body leading-relaxed">
                   {photo.title}
-                </p>
+                </h3>
 
-                <p className="text-[9px] sm:text-xs text-amber-200 mt-1">
-                  {photo.location}
+                <p className="text-[10px] sm:text-xs text-stone-300 line-clamp-2 mt-1 leading-relaxed font-khmer-body">
+                  {photo.description}
                 </p>
               </div>
-            </div>
-
-            {/* Photo Details */}
-            <div className="p-2 sm:p-3 text-left">
-              <h3 className="text-[11px] sm:text-sm font-bold text-stone-100 line-clamp-2 font-khmer-body leading-relaxed">
-                {photo.title}
-              </h3>
-
-              <p className="text-[10px] sm:text-xs text-stone-300 line-clamp-2 mt-1">
-                {photo.description}
-              </p>
-            </div>
-          </button>
-        ))}
-      </div>
+            </motion.button>
+          ))}
+        </AnimatePresence>
+      </motion.div>
 
       {/* Lightbox Modal */}
-      {lightboxIndex !== null && activePhoto && (
-        <div
-          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6"
-          onClick={() => setLightboxIndex(null)}
-          role="dialog"
-          aria-modal="true"
-          aria-label="Wedding photo viewer"
-        >
-          {/* Close Button */}
-          <button
-            type="button"
+      <AnimatePresence>
+        {lightboxIndex !== null && activePhoto && (
+          <motion.div
+            key="wedding-lightbox"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6"
             onClick={() => setLightboxIndex(null)}
-            aria-label="Close photo viewer"
-            className="absolute top-3 right-3 sm:top-5 sm:right-5 z-[60] p-2 text-white/80 hover:text-white rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Wedding photo viewer"
           >
-            <X className="w-6 h-6" />
-          </button>
+            {/* Close Button */}
+            <button
+              type="button"
+              onClick={() => setLightboxIndex(null)}
+              aria-label="Close photo viewer"
+              className="absolute top-3 right-3 sm:top-5 sm:right-5 z-[60] p-2 text-white/80 hover:text-white rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+            >
+              <X className="w-6 h-6" />
+            </button>
 
-          {/* Previous Button */}
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              handlePrev();
-            }}
-            aria-label="Previous photo"
-            className="absolute left-1 sm:left-4 top-1/2 -translate-y-1/2 z-[60] p-2 sm:p-3 text-white rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-          >
-            <ChevronLeft className="w-5 h-5 sm:w-7 sm:h-7" />
-          </button>
+            {/* Previous Button */}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                handlePrev();
+              }}
+              aria-label="Previous photo"
+              className="absolute left-1 sm:left-4 top-1/2 -translate-y-1/2 z-[60] p-2 sm:p-3 text-white rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+            >
+              <ChevronLeft className="w-5 h-5 sm:w-7 sm:h-7" />
+            </button>
 
-          {/* Next Button */}
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              handleNext();
-            }}
-            aria-label="Next photo"
-            className="absolute right-1 sm:right-4 top-1/2 -translate-y-1/2 z-[60] p-2 sm:p-3 text-white rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-          >
-            <ChevronRight className="w-5 h-5 sm:w-7 sm:h-7" />
-          </button>
+            {/* Next Button */}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                handleNext();
+              }}
+              aria-label="Next photo"
+              className="absolute right-1 sm:right-4 top-1/2 -translate-y-1/2 z-[60] p-2 sm:p-3 text-white rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+            >
+              <ChevronRight className="w-5 h-5 sm:w-7 sm:h-7" />
+            </button>
 
-          {/* Active Photo */}
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-4xl max-h-[90vh] flex flex-col items-center justify-center"
-          >
-            <img
-              src={activePhoto.src}
-              alt={activePhoto.title}
-              className="max-h-[65vh] sm:max-h-[72vh] max-w-full w-auto object-contain rounded-lg shadow-2xl"
-            />
+            {/* Active Photo */}
+            <motion.div
+              key={activePhoto.id}
+              initial={{ opacity: 0, scale: 0.94, y: 12 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.96 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+              onClick={(e) => e.stopPropagation()}
+              className="w-full max-w-4xl max-h-[90vh] flex flex-col items-center justify-center"
+            >
+              <img
+                src={activePhoto.src}
+                alt={activePhoto.title}
+                className="max-h-[65vh] sm:max-h-[72vh] max-w-full w-auto object-contain rounded-lg shadow-2xl"
+              />
 
-            {/* Photo Caption */}
-            <div className="mt-4 text-center text-white max-w-2xl px-8 sm:px-12">
-              <h3 className="text-base sm:text-xl font-bold font-khmer-title text-amber-200 leading-relaxed">
-                {activePhoto.title}
-              </h3>
+              {/* Photo Caption */}
+              <div className="mt-4 text-center text-white max-w-2xl px-8 sm:px-12">
+                <h3 className="text-base sm:text-xl font-bold font-khmer-title text-amber-200 leading-relaxed">
+                  {activePhoto.title}
+                </h3>
 
-              <p className="text-xs sm:text-sm text-stone-300 mt-2 leading-relaxed">
-                {activePhoto.description}
-              </p>
+                <p className="text-xs sm:text-sm text-stone-300 mt-2 leading-relaxed font-khmer-body">
+                  {activePhoto.description}
+                </p>
 
-              <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-[10px] sm:text-xs text-stone-400 mt-3">
-                <span>{activePhoto.location}</span>
-                <span>·</span>
-                <span>
-                  {lightboxIndex + 1} / {filteredPhotos.length}
-                </span>
+                <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-[10px] sm:text-xs text-stone-400 mt-3">
+                  <span>{activePhoto.location}</span>
+                  <span>·</span>
+                  <span>
+                    {lightboxIndex + 1} / {filteredPhotos.length}
+                  </span>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-      )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
