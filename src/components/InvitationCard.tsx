@@ -76,7 +76,7 @@ export const InvitationCard: React.FC = () => {
               </p>
 
               <p className="text-base sm:text-lg font-bold text-white font-khmer-title leading-relaxed">
-                មាស សុផល
+                លោក​ មាស សុផល
               </p>
 
               <p className="text-sm sm:text-base font-semibold text-stone-200 leading-relaxed">
@@ -108,13 +108,13 @@ export const InvitationCard: React.FC = () => {
               </p>
 
               <p className="text-base sm:text-lg font-bold text-white font-khmer-title leading-relaxed">
-                (ឈ្មោះបិតា កូនស្រី)
+                លោក​ សន ចិត្រា
               </p>
 
               <p className="text-sm sm:text-base font-semibold text-stone-200 leading-relaxed">
                 និង លោកស្រី{' '}
                 <span className="font-bold text-amber-100">
-                  (ឈ្មោះមាតា កូនស្រី)
+                  សួង ចន្ធី
                 </span>
               </p>
 
