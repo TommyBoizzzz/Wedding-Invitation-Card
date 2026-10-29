@@ -8,9 +8,7 @@ import {
   QrCode,
   Check,
   Sparkles,
-  MapPin,
   Wallet,
-  Phone,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
@@ -36,7 +34,6 @@ export const GiftMoneyQR: React.FC<GiftMoneyQRProps> = ({
 
   const [senderName, setSenderName] = useState(initialGuestName);
   const [customAmount, setCustomAmount] = useState('');
-  const [giftNote, setGiftNote] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState('');
@@ -98,7 +95,6 @@ export const GiftMoneyQR: React.FC<GiftMoneyQRProps> = ({
         bank: activeBank,
         amount: parsedAmount,
         currency,
-        wish_message: giftNote.trim(),
       });
 
       confetti({
@@ -111,7 +107,6 @@ export const GiftMoneyQR: React.FC<GiftMoneyQRProps> = ({
       setSubmitSuccess(true);
       setSenderName(initialGuestName);
       setCustomAmount('');
-      setGiftNote('');
       setSelectedAmount(null);
 
       window.setTimeout(() => setSubmitSuccess(false), 5000);
@@ -138,7 +133,7 @@ export const GiftMoneyQR: React.FC<GiftMoneyQRProps> = ({
     >
       {/* Decorative background */}
       <div className="pointer-events-none absolute left-1/2 top-24 -z-10 h-72 w-72 -translate-x-1/2 rounded-full bg-amber-500/10 blur-[100px]" />
-      <div className="pointer-events-none absolute bottom-20 right-0 -z-10 h-64 w-64 rounded-full bg-emerald-500/10 blur-[100px]" />
+      <div className="pointer-events-none absolute bottom-20 right-0 h-64 w-64 -z-10 rounded-full bg-emerald-500/10 blur-[100px]" />
 
       {/* Section heading */}
       <motion.div
@@ -278,8 +273,8 @@ export const GiftMoneyQR: React.FC<GiftMoneyQRProps> = ({
           <div className="mt-5 flex items-start gap-3 rounded-2xl border border-white/10 bg-black/10 p-4">
             <Wallet className="mt-0.5 h-5 w-5 shrink-0 text-amber-300" />
             <p className="text-xs leading-6 text-stone-300">
-              បន្ទាប់ពីផ្ទេរចំណងដៃរួច លោកអ្នកអាចបំពេញឈ្មោះ ចំនួនទឹកប្រាក់
-              និងពាក្យជូនពរនៅក្នុងទម្រង់ខាងស្តាំ។
+              បន្ទាប់ពីផ្ទេរចំណងដៃរួច លោកអ្នកអាចបំពេញឈ្មោះ និងចំនួនទឹកប្រាក់
+              នៅក្នុងទម្រង់ខាងស្តាំ។
             </p>
           </div>
         </motion.div>
@@ -305,7 +300,7 @@ export const GiftMoneyQR: React.FC<GiftMoneyQRProps> = ({
                   កត់ត្រាចំណងដៃ
                 </h3>
                 <p className="mt-1 text-xs text-stone-400">
-                  Gift registration & wishes
+                  Gift registration
                 </p>
               </div>
             </div>
@@ -467,31 +462,11 @@ export const GiftMoneyQR: React.FC<GiftMoneyQRProps> = ({
                 </div>
               </div>
 
-              {/* Wish message */}
-              <div>
-                <label htmlFor="gift-wish" className={labelClass}>
-                  ពាក្យជូនពរ
-                  <span className="ml-2 font-normal text-stone-400">
-                    (មិនចាំបាច់)
-                  </span>
-                </label>
-
-                <textarea
-                  id="gift-wish"
-                  rows={3}
-                  value={giftNote}
-                  onChange={(e) => setGiftNote(e.target.value)}
-                  placeholder="សូមជូនពរកូនកំលោះកូនក្រមុំស្រឡាញ់គ្នាផ្អែមល្ហែម និងរកស៊ីមានបាន..."
-                  className={`${inputClass} resize-y leading-7`}
-                />
-              </div>
-
               {/* Privacy / reminder */}
               <div className="flex items-start gap-2 rounded-xl border border-amber-200/10 bg-amber-100/[0.04] p-3">
                 <Heart className="mt-0.5 h-4 w-4 shrink-0 text-amber-300" />
                 <p className="text-xs leading-6 text-stone-300">
-                  ព័ត៌មានដែលអ្នកបញ្ចូលនឹងត្រូវបានប្រើសម្រាប់កត់ត្រាចំណងដៃ
-                  និងពាក្យជូនពររបស់អ្នក។
+                  ព័ត៌មានដែលអ្នកបញ្ចូលនឹងត្រូវបានប្រើសម្រាប់កត់ត្រាចំណងដៃរបស់អ្នក។
                 </p>
               </div>
 
