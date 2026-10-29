@@ -71,9 +71,8 @@ export const GratitudeSection: React.FC = () => {
           </div>
 
           {/* Heading */}
-          <h3 className="relative mb-2 text-center font-khmer-title text-base font-bold leading-relaxed text-amber-100 sm:text-xl md:text-2xl">
-            <span className="block sm:inline">សេចក្ដីថ្លែងអំណរគុណ និង </span>
-            <span className="block sm:inline">សូមអភ័យទោស</span>
+          <h3 className="relative mb-2 whitespace-nowrap text-center font-khmer-title text-[clamp(11px,3.2vw,16px)] font-bold leading-relaxed text-amber-100 sm:text-xl md:text-2xl">
+            សេចក្ដីថ្លែងអំណរគុណ និង សូមអភ័យទោស
           </h3>
 
           {/* English Subtitle */}
