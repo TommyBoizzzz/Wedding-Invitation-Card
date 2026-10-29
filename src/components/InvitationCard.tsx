@@ -39,7 +39,7 @@ export const InvitationCard: React.FC = () => {
               លិខិតអញ្ជើញអាពាហ៍ពិពាហ៍ផ្លូវការ
             </p>
 
-            <h2 className="text-fluid-2xl font-khmer-title text-white mt-3 mb-4 leading-relaxed">
+            <h2 className="whitespace-nowrap text-center font-khmer-title text-xl leading-relaxed text-white mt-3 mb-4 sm:text-5xl md:text-fluid-2xl lg:text-fluid-2xl">
               សិរីមង្គលអាពាហ៍ពិពាហ៍
             </h2>
 
