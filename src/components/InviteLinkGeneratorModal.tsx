@@ -45,7 +45,7 @@ export const InviteLinkGeneratorModal: React.FC<InviteLinkGeneratorModalProps> =
     ? `${baseUrl}?to=${encodeURIComponent(fullName)}`
     : baseUrl;
 
-  const inviteCaption = `សូមគោរពអញ្ជើញ ${fullName || 'ភ្ញៀវកិត្តិយស'} ចូលរួមពិធីសិរីមង្គលអាពាហ៍ពិពាហ៍ ហេង គីមហ៊ &​ សន ធារ៉ា (២២ វិច្ឆិកា ២០២៦)`;
+  const inviteCaption = `សូមគោរពអញ្ជើញ ${fullName || 'ភ្ញៀវកិត្តិយស'} ចូលរួមពិធីសិរីមង្គលអាពាហ៍ពិពាហ៍ ហេង គីមហ៊ &​ សន ធារ៉ា (២៣ មករា ២០២៦)`;
   const shareMessage = `${inviteCaption}\n${inviteUrl}`;
 
   useEffect(() => {

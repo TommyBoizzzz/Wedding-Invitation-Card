@@ -1,46 +1,170 @@
+
 @import "tailwindcss";
+
+/* ========================================
+   1. GLOBAL WEDDING THEME
+   Olive Green • Ivory White • Champagne Gold
+   ======================================== */
 
 @layer base {
   :root {
+    /* Fonts */
     --font-khmer: 'Kantumruy Pro', system-ui, -apple-system, sans-serif;
     --font-moul: 'Moul', 'Kantumruy Pro', serif;
     --font-serif: 'Playfair Display', serif;
     --font-latin: 'Cinzel', serif;
+
+    /* Main palette */
+    --color-olive-dark: #1a291f;
+    --color-olive: #213629;
+    --color-olive-light: #344b37;
+    --color-olive-soft: #65745b;
+
+    --color-gold: #c99635;
+    --color-gold-light: #dfb76c;
+    --color-gold-dark: #996e1d;
+
+    --color-ivory: #fdfbf7;
+    --color-ivory-dark: #f5efe2;
+    --color-white: #ffffff;
+
+    /* Text */
+    --color-text-dark: #292524;
+    --color-text-light: #ffffff;
+    --color-text-muted: #78716c;
+
+    /* Decorative borders */
+    --border-gold: rgba(201, 150, 53, 0.55);
+    --border-ivory: rgba(253, 251, 247, 0.3);
+
+    /* Shadows */
+    --shadow-card: 0 18px 50px rgba(0, 0, 0, 0.16);
+    --shadow-gold: 0 8px 24px rgba(153, 110, 29, 0.2);
   }
 
   html {
+    min-height: 100%;
     scroll-behavior: smooth;
     font-family: var(--font-khmer);
-    background: #1a291f;
     font-size: clamp(14px, 0.7vw + 12px, 18px);
+    background-color: var(--color-olive-dark);
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
-    margin: 0;
+    min-width: 320px;
     min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+
     background:
-      radial-gradient(circle at top, rgba(134, 168, 110, 0.18), transparent 32%),
-      linear-gradient(180deg, #213629 0%, #1a2a20 35%, #0d1712 100%);
-    color: #2D241E;
+      radial-gradient(
+        ellipse at 50% 0%,
+        rgba(134, 168, 110, 0.18),
+        transparent 42%
+      ),
+      linear-gradient(
+        180deg,
+        var(--color-olive) 0%,
+        var(--color-olive-dark) 55%,
+        #111b14 100%
+      );
+
+    color: var(--color-text-light);
     font-family: var(--font-khmer);
     font-size: 1rem;
-    line-height: 1.6;
-    overflow-x: hidden;
+    line-height: 1.7;
+
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
 
   #root {
     min-height: 100vh;
+    isolation: isolate;
   }
 
-  h1, h2, h3, h4, h5, h6,
-  p, span, a, button, li, label,
-  input, textarea, select {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  img,
+  video,
+  canvas,
+  svg {
+    max-width: 100%;
+  }
+
+  img {
+    display: block;
+    height: auto;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+  }
+
+  input,
+  select,
+  textarea {
+    color: var(--color-text-dark);
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #a8a29e;
+    opacity: 1;
+  }
+
+  select option {
+    color: var(--color-text-dark);
+    background-color: var(--color-white);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  span,
+  a,
+  button,
+  li,
+  label,
+  input,
+  textarea,
+  select {
     overflow-wrap: anywhere;
-    word-break: break-word;
     text-wrap: pretty;
   }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  ::selection {
+    color: var(--color-olive-dark);
+    background: var(--color-gold-light);
+  }
+
+  /* Responsive typography */
 
   .text-fluid-xs {
     font-size: clamp(0.62rem, 1.5vw, 0.75rem);
@@ -67,7 +191,118 @@
   }
 }
 
+/* ========================================
+   2. FONT UTILITIES
+   ======================================== */
+
+.font-khmer-title {
+  font-family: var(--font-moul);
+}
+
+.font-khmer-body {
+  font-family: var(--font-khmer);
+}
+
+.font-cinzel {
+  font-family: var(--font-latin);
+}
+
+.font-playfair {
+  font-family: var(--font-serif);
+}
+
+/* ========================================
+   3. COLOR UTILITIES
+   ======================================== */
+
+.bg-olive-dark {
+  background-color: var(--color-olive-dark);
+}
+
+.bg-olive {
+  background-color: var(--color-olive);
+}
+
+.bg-ivory {
+  background-color: var(--color-ivory);
+}
+
+.text-olive {
+  color: var(--color-olive);
+}
+
+.text-olive-dark {
+  color: var(--color-olive-dark);
+}
+
+.text-gold {
+  color: var(--color-gold);
+}
+
+.text-ivory {
+  color: var(--color-ivory);
+}
+
+/* Gold gradient */
+
+.bg-gold-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--color-gold-light) 0%,
+    var(--color-gold) 50%,
+    var(--color-gold-dark) 100%
+  );
+
+  transition:
+    filter 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+.bg-gold-gradient:hover {
+  filter: brightness(1.04);
+  box-shadow: var(--shadow-gold);
+}
+
+.text-gold-gradient {
+  color: var(--color-gold-light);
+  background: linear-gradient(
+    135deg,
+    var(--color-gold-light) 0%,
+    var(--color-gold) 50%,
+    #f0dca9 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Ivory backgrounds */
+
+.bg-gold-subtle {
+  background: linear-gradient(
+    180deg,
+    var(--color-ivory) 0%,
+    #f8f3ea 100%
+  );
+}
+
+.bg-wedding-pattern {
+  background-color: var(--color-ivory);
+  background-image: radial-gradient(
+    rgba(197, 160, 89, 0.14) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+}
+
+/* ========================================
+   4. GLOBAL THEME OVERLAY
+   ======================================== */
+
 .theme-olive {
+  position: relative;
+  isolation: isolate;
   background: transparent;
 }
 
@@ -75,26 +310,41 @@
   content: "";
   position: fixed;
   inset: 0;
-  background: linear-gradient(180deg, rgba(12, 20, 16, 0.12), rgba(12, 20, 16, 0.28));
+  z-index: -1;
+  background: linear-gradient(
+    180deg,
+    rgba(12, 20, 16, 0.08),
+    rgba(12, 20, 16, 0.22)
+  );
   pointer-events: none;
-  z-index: 0;
 }
+
+/* ========================================
+   5. BUTTERFLY BACKGROUND
+   ======================================== */
 
 .butterfly-sky {
   position: fixed;
   inset: 0;
-  pointer-events: none;
   z-index: 0;
   overflow: hidden;
-  opacity: 0.9;
+  opacity: 0.8;
+  pointer-events: none;
 }
 
 .butterfly {
   position: absolute;
   width: 42px;
   height: 24px;
-  animation: flutter 11s ease-in-out infinite alternate, drift 24s linear infinite;
-  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+
+  /* One animation controls the whole butterfly.
+     This avoids conflicting transform animations. */
+  animation: butterfly-flight 12s ease-in-out infinite alternate;
+
+  filter: drop-shadow(
+    0 0 8px rgba(255, 255, 255, 0.28)
+  );
+  will-change: transform;
 }
 
 .butterfly::before,
@@ -104,109 +354,749 @@
   top: 0;
   width: 19px;
   height: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
   border-radius: 70% 30% 68% 32% / 73% 53% 47% 27%;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(220, 233, 210, 0.7));
-  border: 1px solid rgba(255, 255, 255, 0.5);
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(220, 233, 210, 0.75)
+  );
 }
 
 .butterfly::before {
   left: 2px;
   transform-origin: right center;
-  transform: rotate(-28deg) scaleY(1.1);
-  animation: wingLeft 1.5s ease-in-out infinite alternate;
+  animation: wing-left 0.8s ease-in-out infinite alternate;
 }
 
 .butterfly::after {
   right: 2px;
   transform-origin: left center;
-  transform: scaleX(-1) rotate(-28deg) scaleY(1.1);
-  animation: wingRight 1.5s ease-in-out infinite alternate;
+  animation: wing-right 0.8s ease-in-out infinite alternate;
 }
 
-.butterfly:nth-child(1) { left: 6%; top: 14%; animation-duration: 18s, 28s; }
-.butterfly:nth-child(2) { left: 18%; top: 34%; animation-duration: 15s, 25s; }
-.butterfly:nth-child(3) { left: 33%; top: 20%; animation-duration: 17s, 31s; }
-.butterfly:nth-child(4) { left: 48%; top: 12%; animation-duration: 16s, 27s; }
-.butterfly:nth-child(5) { left: 62%; top: 30%; animation-duration: 20s, 33s; }
-.butterfly:nth-child(6) { left: 76%; top: 18%; animation-duration: 14s, 29s; }
-.butterfly:nth-child(7) { left: 84%; top: 38%; animation-duration: 18s, 26s; }
-.butterfly:nth-child(8) { left: 12%; top: 54%; animation-duration: 19s, 32s; }
-.butterfly:nth-child(9) { left: 68%; top: 56%; animation-duration: 16s, 34s; }
+/* Butterfly positions */
 
-@keyframes flutter {
-  0% { transform: translate3d(0, 0, 0) rotate(0deg) scale(0.86); }
-  25% { transform: translate3d(10px, -10px, 0) rotate(12deg) scale(1); }
-  50% { transform: translate3d(-12px, 8px, 0) rotate(-10deg) scale(0.94); }
-  75% { transform: translate3d(12px, 12px, 0) rotate(10deg) scale(1.04); }
-  100% { transform: translate3d(-8px, -4px, 0) rotate(-8deg) scale(0.92); }
+.butterfly:nth-child(1) {
+  left: 6%;
+  top: 14%;
+  animation-duration: 17s;
 }
 
-@keyframes drift {
-  0% { transform: translate3d(0, 0, 0); }
-  50% { transform: translate3d(20px, 18px, 0); }
-  100% { transform: translate3d(-12px, -10px, 0); }
+.butterfly:nth-child(2) {
+  left: 18%;
+  top: 34%;
+  animation-duration: 14s;
+  animation-delay: -3s;
 }
 
-@keyframes wingLeft {
-  0% { transform: rotate(-20deg) scaleY(0.95); }
-  100% { transform: rotate(-42deg) scaleY(1.18); }
+.butterfly:nth-child(3) {
+  left: 33%;
+  top: 20%;
+  animation-duration: 19s;
+  animation-delay: -7s;
 }
 
-@keyframes wingRight {
-  0% { transform: scaleX(-1) rotate(-20deg) scaleY(0.95); }
-  100% { transform: scaleX(-1) rotate(-42deg) scaleY(1.18); }
+.butterfly:nth-child(4) {
+  left: 48%;
+  top: 12%;
+  animation-duration: 15s;
+  animation-delay: -5s;
 }
 
-.font-khmer-title {
-  font-family: 'Moul', cursive, serif;
+.butterfly:nth-child(5) {
+  left: 62%;
+  top: 30%;
+  animation-duration: 20s;
+  animation-delay: -9s;
 }
 
-.font-khmer-body {
-  font-family: 'Kantumruy Pro', system-ui, sans-serif;
+.butterfly:nth-child(6) {
+  left: 76%;
+  top: 18%;
+  animation-duration: 16s;
+  animation-delay: -2s;
 }
 
-.font-cinzel {
-  font-family: 'Cinzel', serif;
+.butterfly:nth-child(7) {
+  left: 84%;
+  top: 38%;
+  animation-duration: 18s;
+  animation-delay: -6s;
 }
 
-.font-playfair {
-  font-family: 'Playfair Display', serif;
+.butterfly:nth-child(8) {
+  left: 12%;
+  top: 54%;
+  animation-duration: 21s;
+  animation-delay: -4s;
 }
 
-/* Elegant gold gradient accents */
-.bg-gold-gradient {
-  background: linear-gradient(135deg, #DFB76C 0%, #C99635 50%, #996E1D 100%);
+.butterfly:nth-child(9) {
+  left: 68%;
+  top: 56%;
+  animation-duration: 17s;
+  animation-delay: -8s;
 }
 
-.bg-gold-subtle {
-  background: linear-gradient(180deg, #FDFBF7 0%, #F8F3EA 100%);
+/* Butterfly movement */
+
+@keyframes butterfly-flight {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(0.88);
+  }
+
+  25% {
+    transform: translate3d(18px, -16px, 0) rotate(10deg) scale(1);
+  }
+
+  50% {
+    transform: translate3d(-12px, 14px, 0) rotate(-8deg) scale(0.94);
+  }
+
+  75% {
+    transform: translate3d(22px, 20px, 0) rotate(12deg) scale(1.04);
+  }
+
+  100% {
+    transform: translate3d(-10px, -12px, 0) rotate(-7deg) scale(0.92);
+  }
 }
 
-.text-gold-gradient {
-  background: linear-gradient(135deg, #B58428 0%, #875E12 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+@keyframes wing-left {
+  from {
+    transform: rotate(-20deg) scaleY(0.95);
+  }
+
+  to {
+    transform: rotate(-42deg) scaleY(1.18);
+  }
 }
 
-/* Subtle traditional decorative pattern overlay */
-.bg-wedding-pattern {
-  background-color: #FAF8F5;
-  background-image: radial-gradient(rgba(197, 160, 89, 0.12) 1px, transparent 0);
-  background-size: 24px 24px;
+@keyframes wing-right {
+  from {
+    transform: scaleX(-1) rotate(-20deg) scaleY(0.95);
+  }
+
+  to {
+    transform: scaleX(-1) rotate(-42deg) scaleY(1.18);
+  }
 }
 
-/* Custom scrollbar */
+/* ========================================
+   6. SCROLLBAR
+   ======================================== */
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #bfa27e var(--color-ivory);
+}
+
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #FAF8F5;
+  background: var(--color-ivory);
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #D9C3A3;
+  border: 1px solid var(--color-ivory);
   border-radius: 9999px;
+  background: #c7b18b;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #BFA27E;
+  background: var(--color-gold);
+}
+
+/* ========================================
+   7. WEDDING SPLASH SCREEN
+   Olive cover with ivory and gold details
+   ======================================== */
+
+.splash-screen {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 15%,
+      rgba(113, 143, 91, 0.24),
+      transparent 45%
+    ),
+    linear-gradient(
+      155deg,
+      #2c4433 0%,
+      var(--color-olive) 48%,
+      var(--color-olive-dark) 100%
+    );
+
+  color: var(--color-ivory);
+}
+
+/* Optional inner ivory card */
+
+.wedding-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-gold);
+  border-radius: 24px;
+
+  background: linear-gradient(
+    145deg,
+    #ffffff 0%,
+    var(--color-ivory) 65%,
+    var(--color-ivory-dark) 100%
+  );
+
+  color: var(--color-text-dark);
+  box-shadow: var(--shadow-card);
+}
+
+/* Elegant gold divider */
+
+.wedding-divider {
+  width: 72px;
+  height: 1px;
+  margin-inline: auto;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-gold),
+    transparent
+  );
+}
+
+/* Gold border utility */
+
+.border-gold-soft {
+  border: 1px solid var(--border-gold);
+}
+
+/* Soft gold hover effect */
+
+.wedding-hover {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.wedding-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-gold);
+}
+
+/* ========================================
+   8. SPLASH SCREEN ANIMATIONS
+   ======================================== */
+
+.splash-enter {
+  animation: splash-page-enter 0.8s ease both;
+}
+
+.splash-opening {
+  pointer-events: none;
+  animation: splash-page-exit 0.65s
+    cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+
+.splash-opening .splash-content {
+  animation: splash-content-exit 0.45s ease both;
+}
+
+.splash-opening .splash-guest-section {
+  animation: splash-card-exit 0.45s ease both;
+}
+
+.splash-opening .splash-floral-arch {
+  transform-origin: center top;
+  animation: splash-arch-exit 0.65s ease both;
+}
+
+.invitation-page-enter {
+  animation: invitation-page-enter 0.85s
+    cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes splash-page-enter {
+  from {
+    opacity: 0;
+    transform: scale(1.025);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes splash-page-exit {
+  from {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(0.96) translateY(-14px);
+    filter: blur(5px);
+  }
+}
+
+@keyframes splash-content-exit {
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes splash-card-exit {
+  to {
+    opacity: 0;
+    transform: translateY(-25px) scale(0.96);
+  }
+}
+
+@keyframes splash-arch-exit {
+  to {
+    opacity: 0;
+    transform: translateY(-35px) scale(1.04);
+  }
+}
+
+@keyframes invitation-page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.985);
+    filter: blur(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* ========================================
+   9. SPLASH SCREEN CONTROLS
+   Optional classes for your cover component
+   ======================================== */
+
+.splash-control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 8px 13px;
+
+  border: 1px solid var(--border-gold);
+  border-radius: 9999px;
+  background: rgba(26, 41, 31, 0.92);
+
+  color: var(--color-ivory);
+  font-size: 12px;
+  backdrop-filter: blur(12px);
+
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.splash-control:hover {
+  background: var(--color-olive-light);
+  transform: translateY(-1px);
+}
+
+.splash-language-switch {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 4px;
+
+  border: 1px solid var(--border-gold);
+  border-radius: 9999px;
+  background: var(--color-ivory);
+}
+
+.splash-language-button {
+  padding: 7px 10px;
+  border: 0;
+  border-radius: 9999px;
+
+  background: transparent;
+  color: var(--color-olive);
+
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.splash-language-active {
+  background: linear-gradient(
+    135deg,
+    var(--color-gold-light),
+    var(--color-gold)
+  );
+
+  color: var(--color-olive-dark);
+}
+
+.splash-monogram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 52px;
+  height: 52px;
+  margin-inline: auto;
+
+  border: 1px solid var(--border-gold);
+  border-radius: 50%;
+
+  background: rgba(253, 251, 247, 0.07);
+  box-shadow: 0 0 28px rgba(201, 150, 53, 0.12);
+}
+
+.splash-guest-card {
+  position: relative;
+  overflow: hidden;
+
+  border: 1px solid rgba(201, 150, 53, 0.8);
+  border-radius: 20px;
+
+  background: linear-gradient(
+    145deg,
+    #ffffff 0%,
+    var(--color-ivory) 65%,
+    var(--color-ivory-dark) 100%
+  );
+
+  box-shadow:
+    0 18px 55px rgba(0, 0, 0, 0.2),
+    0 0 0 5px rgba(201, 150, 53, 0.045);
+
+  transition: box-shadow 0.3s ease;
+}
+
+.splash-guest-card:hover {
+  box-shadow:
+    0 22px 60px rgba(0, 0, 0, 0.24),
+    0 0 0 5px rgba(201, 150, 53, 0.08);
+}
+
+.splash-guest-input {
+  display: block;
+  width: 100%;
+  padding: 10px 6px;
+
+  border: 0;
+  border-bottom: 2px solid var(--color-gold);
+  border-radius: 0;
+
+  background: transparent;
+  color: var(--color-olive-dark);
+  text-align: center;
+}
+
+.splash-guest-input:focus {
+  outline: none;
+  border-bottom-color: var(--color-olive);
+}
+
+.splash-save-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 9px 20px;
+  border: 1px solid var(--color-gold-light);
+  border-radius: 9999px;
+
+  background: linear-gradient(
+    135deg,
+    var(--color-gold-light),
+    var(--color-gold)
+  );
+
+  color: var(--color-olive-dark);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+
+  transition: transform 0.2s ease;
+}
+
+.splash-save-button:hover {
+  transform: translateY(-1px);
+}
+
+/* Open invitation button */
+
+.splash-open-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  width: 100%;
+  min-height: 58px;
+  padding: 15px 22px;
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 232, 176, 0.8);
+  border-radius: 9999px;
+
+  background: linear-gradient(
+    115deg,
+    #e4c681 0%,
+    var(--color-gold) 48%,
+    #a77a2a 100%
+  );
+
+  color: var(--color-olive-dark);
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.2),
+    0 0 25px rgba(201, 150, 53, 0.13);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
+
+  animation: splash-button-glow 3s ease-in-out infinite;
+}
+
+.splash-open-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+
+  width: 70%;
+  height: 100%;
+
+  transform: skewX(-25deg);
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+
+  animation: splash-button-shine 5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.splash-open-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.23),
+    0 0 30px rgba(201, 150, 53, 0.22);
+}
+
+.splash-open-button:active {
+  transform: scale(0.97);
+}
+
+.splash-open-button:disabled {
+  cursor: not-allowed;
+}
+
+.splash-open-button-active {
+  transform: scale(0.97);
+  animation: none;
+  filter: brightness(1.08);
+}
+
+.splash-open-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform 0.45s ease;
+}
+
+.splash-open-button:hover .splash-open-icon {
+  transform: translateY(-2px) rotate(-8deg);
+}
+
+/* Extra ambient decorations */
+
+.splash-ambient {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 9999px;
+  filter: blur(75px);
+  pointer-events: none;
+
+  animation: splash-ambient-float 8s ease-in-out infinite alternate;
+}
+
+.splash-ambient-one {
+  top: 10%;
+  left: -160px;
+  background: rgba(126, 154, 103, 0.17);
+}
+
+.splash-ambient-two {
+  right: -170px;
+  bottom: 5%;
+  background: rgba(201, 150, 53, 0.12);
+  animation-delay: -4s;
+}
+
+.splash-petal {
+  position: absolute;
+  color: var(--color-gold-light);
+  opacity: 0.55;
+  animation: splash-petal-float 7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.splash-petal-one {
+  top: 27%;
+  left: 8%;
+  font-size: 22px;
+}
+
+.splash-petal-two {
+  top: 42%;
+  right: 9%;
+  font-size: 24px;
+  animation-delay: -2s;
+}
+
+.splash-petal-three {
+  bottom: 24%;
+  left: 7%;
+  font-size: 20px;
+  animation-delay: -4s;
+}
+
+.splash-petal-four {
+  right: 7%;
+  bottom: 32%;
+  font-size: 18px;
+  animation-delay: -1s;
+}
+
+.splash-floral-arch {
+  height: 205px;
+  opacity: 0.92;
+}
+
+.splash-couple-name {
+  color: var(--color-ivory);
+  line-height: 1.8;
+  text-shadow: 0 3px 24px rgba(0, 0, 0, 0.16);
+}
+
+@keyframes splash-button-glow {
+  0%, 100% {
+    box-shadow:
+      0 8px 25px rgba(0, 0, 0, 0.2),
+      0 0 15px rgba(201, 150, 53, 0.1);
+  }
+
+  50% {
+    box-shadow:
+      0 8px 25px rgba(0, 0, 0, 0.2),
+      0 0 26px rgba(201, 150, 53, 0.3);
+  }
+}
+
+@keyframes splash-button-shine {
+  0%, 65% {
+    left: -120%;
+  }
+
+  85%, 100% {
+    left: 150%;
+  }
+}
+
+@keyframes splash-ambient-float {
+  from {
+    transform: translate3d(0, -10px, 0) scale(0.95);
+  }
+
+  to {
+    transform: translate3d(15px, 15px, 0) scale(1.08);
+  }
+}
+
+@keyframes splash-petal-float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-12px) rotate(12deg);
+  }
+}
+
+/* ========================================
+   10. ACCESSIBILITY & RESPONSIVE
+   ======================================== */
+
+:focus-visible {
+  outline: 2px solid var(--color-gold-light);
+  outline-offset: 3px;
+}
+
+@media (max-width: 380px) {
+  .splash-control {
+    gap: 5px;
+    padding: 7px 9px;
+    font-size: 10px;
+  }
+
+  .splash-language-button {
+    padding: 7px 8px;
+    font-size: 10px;
+  }
+
+  .splash-floral-arch {
+    height: 175px;
+  }
+
+  .splash-guest-card {
+    padding: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
