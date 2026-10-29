@@ -110,6 +110,12 @@
     font: inherit;
   }
 
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+
   button {
     -webkit-tap-highlight-color: transparent;
   }
@@ -852,6 +858,7 @@ html {
   display: block;
   width: 100%;
   padding: 10px 6px;
+  font-size: 16px;
 
   border: 0;
   border-bottom: 2px solid var(--color-gold);
