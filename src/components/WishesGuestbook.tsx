@@ -153,39 +153,55 @@ export const WishesGuestbook: React.FC<WishesGuestbookProps> = ({
       <div className="pointer-events-none absolute left-1/2 top-24 -z-10 h-72 w-72 -translate-x-1/2 rounded-full bg-amber-500/10 blur-[100px]" />
       <div className="pointer-events-none absolute bottom-20 right-0 -z-10 h-64 w-64 rounded-full bg-emerald-500/10 blur-[100px]" />
 
-      {/* Section heading */}
+      {/* Section Heading */}
       <motion.div
-        initial={{ opacity: 0, y: 24 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.65 }}
-        className="mx-auto mb-10 max-w-3xl text-center sm:mb-12"
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+        className="mx-auto mb-10 max-w-3xl px-4 text-center sm:mb-12"
       >
-        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-200/25 bg-[#20392b]/80 px-4 py-2 text-amber-200 shadow-lg shadow-black/10">
-          <Sparkles className="h-4 w-4" />
-          <span className="text-[11px] font-semibold tracking-[0.15em] sm:text-xs">
+        {/* Elegant Label */}
+        <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-amber-200/20 bg-[#20392b]/70 px-4 py-2 shadow-sm shadow-black/10 backdrop-blur-sm">
+          <Sparkles className="h-3.5 w-3.5 text-amber-300/90" />
+
+          <span className="text-[10px] font-medium tracking-[0.18em] text-amber-100/90 sm:text-xs sm:tracking-[0.2em]">
             WEDDING GUESTBOOK
           </span>
-          <Heart className="h-4 w-4 fill-amber-200/20" />
+
+          <Heart className="h-3.5 w-3.5 fill-amber-300/15 text-amber-300/90" />
         </div>
 
-        <p className="mb-2 text-xs font-semibold tracking-[0.2em] text-amber-300 sm:text-sm">
+        {/* Khmer Subtitle */}
+        <p className="mb-3 font-khmer-title text-xs tracking-wide text-amber-300/80 sm:text-sm">
           សៀវភៅកត់ត្រាពាក្យជូនពរ
         </p>
 
-        <h2 className="whitespace-nowrap text-center font-khmer-title text-xl leading-relaxed text-white sm:text-3xl md:text-4xl">
+        {/* Main Heading */}
+        <h2 className="mx-auto max-w-2xl font-khmer-title text-xl font-bold leading-relaxed text-amber-50 sm:text-2xl md:text-4xl">
           ផ្ញើសារជូនពរដល់ កូនកំលោះកូនក្រមុំ
         </h2>
 
-        <div className="my-4 flex items-center justify-center gap-3">
-          <span className="h-px w-10 bg-gradient-to-r from-transparent to-amber-300/70 sm:w-16" />
-          <Heart className="h-4 w-4 text-amber-300" />
-          <span className="h-px w-10 bg-gradient-to-l from-transparent to-amber-300/70 sm:w-16" />
+        {/* Decorative Divider */}
+        <div className="mx-auto my-5 flex items-center justify-center gap-3">
+          <span className="h-px w-10 bg-gradient-to-r from-transparent to-amber-300/50 sm:w-16" />
+
+          <Heart className="h-4 w-4 fill-amber-300/10 text-amber-300/90" />
+
+          <span className="h-px w-10 bg-gradient-to-l from-transparent to-amber-300/50 sm:w-16" />
         </div>
 
-        <p className="mx-auto max-w-2xl text-center text-sm leading-8 text-stone-300 sm:text-base">
-          <span className="block sm:inline">សូមចូលរួមផ្ញើសារជូនពរ សេចក្ដីស្រឡាញ់ និងពរជ័យសិរីសួស្តី</span>{' '}
-          <span className="block sm:inline">ដល់គូស្វាមីភរិយាថ្មី គីមហ៊ &amp; ធារ៉ា។</span>
+        {/* Description */}
+        <p className="mx-auto max-w-1xl font-khmer-title text-xs leading-8 text-stone-300/90 sm:text-sm sm:leading-9 md:text-base">
+          <span className="block sm:inline">
+            សូមចូលរួមផ្ញើសារជូនពរ សេចក្ដីស្រឡាញ់ និងពរជ័យសិរីសួស្តី
+          </span>{' '}
+          <span className="block sm:inline">
+            ដល់គូស្វាមីភរិយាថ្មី{' '}
+            <span className="font-semibold text-amber-200">
+              គីមហ៊ &amp; ធារ៉ា ។
+            </span>
+          </span>
         </p>
       </motion.div>
 

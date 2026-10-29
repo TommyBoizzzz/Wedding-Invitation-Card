@@ -1,85 +1,301 @@
-
 import React from 'react';
 import { Heart, MapPin, Sparkles } from 'lucide-react';
+import { motion, useReducedMotion } from 'framer-motion';
 
 export const InvitationCard: React.FC = () => {
+  const shouldReduceMotion = useReducedMotion();
+
+  // Reusable entrance animation for every section.
+  const fadeUp = (delay = 0) => ({
+    initial: shouldReduceMotion
+      ? { opacity: 1 }
+      : { opacity: 0, y: 22 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, amount: 0.12 },
+    transition: {
+      duration: shouldReduceMotion ? 0 : 0.75,
+      delay: shouldReduceMotion ? 0 : delay,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
+  });
+
+  const floatAnimation = shouldReduceMotion
+    ? {}
+    : {
+        animate: { y: [0, -5, 0] },
+        transition: {
+          duration: 4,
+          repeat: Infinity,
+          ease: 'easeInOut' as const,
+        },
+      };
+
   return (
     <section
       id="invitation"
-      className="w-full max-w-4xl mx-auto px-3 sm:px-5 py-8 sm:py-12"
+      className="mx-auto w-full max-w-4xl overflow-hidden px-3 py-8 sm:px-5 sm:py-12"
     >
       {/* Main Wedding Invitation Card */}
-      <div className="relative overflow-hidden rounded-3xl border-2 border-amber-300/40 bg-[#21372b]/95 p-5 sm:p-10 md:p-12 shadow-2xl shadow-[#08140e]/50">
+      <motion.div
+        initial={
+          shouldReduceMotion
+            ? false
+            : { opacity: 0, y: 25, scale: 0.985 }
+        }
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true, amount: 0.05 }}
+        transition={{
+          duration: shouldReduceMotion ? 0 : 0.9,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        className="relative overflow-hidden rounded-3xl border-2 border-amber-300/40 bg-[#21372b]/95 p-5 shadow-2xl shadow-[#08140e]/50 sm:p-10 md:p-12"
+      >
+        {/* Animated decorative background */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          <motion.div
+            animate={
+              shouldReduceMotion
+                ? undefined
+                : { opacity: [0.5, 1, 0.5], scale: [1, 1.12, 1] }
+            }
+            transition={{
+              duration: 7,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+            className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-amber-300/[0.06] blur-3xl"
+          />
 
-        {/* Subtle Decorative Background */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute -top-24 -right-24 w-64 h-64 rounded-full bg-amber-300/[0.04] blur-3xl" />
-          <div className="absolute -bottom-24 -left-24 w-64 h-64 rounded-full bg-emerald-300/[0.04] blur-3xl" />
-          <div className="absolute inset-3 sm:inset-4 rounded-2xl border border-amber-300/10" />
+          <motion.div
+            animate={
+              shouldReduceMotion
+                ? undefined
+                : { opacity: [0.4, 0.9, 0.4], scale: [1.1, 1, 1.1] }
+            }
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+            className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-emerald-300/[0.06] blur-3xl"
+          />
+
+          <div className="absolute inset-3 rounded-2xl border border-amber-300/10 sm:inset-4" />
         </div>
 
-        {/* Decorative Corners */}
-        <div className="absolute top-3 left-3 w-8 h-8 border-t-2 border-l-2 border-amber-400/80 rounded-tl-lg pointer-events-none" />
-        <div className="absolute top-3 right-3 w-8 h-8 border-t-2 border-r-2 border-amber-400/80 rounded-tr-lg pointer-events-none" />
-        <div className="absolute bottom-3 left-3 w-8 h-8 border-b-2 border-l-2 border-amber-400/80 rounded-bl-lg pointer-events-none" />
-        <div className="absolute bottom-3 right-3 w-8 h-8 border-b-2 border-r-2 border-amber-400/80 rounded-br-lg pointer-events-none" />
+        {/* Decorative corners */}
+        {[
+          'left-3 top-3 rounded-tl-lg border-l-2 border-t-2',
+          'right-3 top-3 rounded-tr-lg border-r-2 border-t-2',
+          'bottom-3 left-3 rounded-bl-lg border-b-2 border-l-2',
+          'bottom-3 right-3 rounded-br-lg border-b-2 border-r-2',
+        ].map((position, index) => (
+          <motion.div
+            key={position}
+            aria-hidden="true"
+            animate={
+              shouldReduceMotion
+                ? undefined
+                : { opacity: [0.55, 1, 0.55] }
+            }
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              delay: index * 0.35,
+              ease: 'easeInOut',
+            }}
+            className={`pointer-events-none absolute h-8 w-8 border-amber-400/80 sm:h-10 sm:w-10 ${position}`}
+          />
+        ))}
+
+        {/* Floating decorations */}
+        {!shouldReduceMotion && (
+          <>
+            <motion.div
+              aria-hidden="true"
+              animate={{
+                y: [0, -10, 0],
+                rotate: [0, 12, 0],
+                opacity: [0.35, 0.8, 0.35],
+              }}
+              transition={{
+                duration: 5,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+              className="pointer-events-none absolute right-8 top-20 text-amber-300/50"
+            >
+              <Sparkles className="h-5 w-5" />
+            </motion.div>
+
+            <motion.div
+              aria-hidden="true"
+              animate={{
+                y: [0, 8, 0],
+                rotate: [0, -10, 0],
+                opacity: [0.25, 0.65, 0.25],
+              }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                delay: 1,
+                ease: 'easeInOut',
+              }}
+              className="pointer-events-none absolute bottom-28 left-7 text-rose-300/40"
+            >
+              <Heart className="h-4 w-4 fill-current" />
+            </motion.div>
+          </>
+        )}
 
         <div className="relative z-10">
-
           {/* ========================================
               HEADER
           ======================================== */}
-          <header className="text-center mb-8 sm:mb-10">
+          <header className="mb-8 text-center sm:mb-10">
+            {/* Animated heart badge */}
+            <motion.div
+              {...fadeUp(0.05)}
+              {...floatAnimation}
+              className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-full border border-amber-300/40 bg-amber-200/10 shadow-lg shadow-black/10 sm:h-16 sm:w-16"
+            >
+              <motion.div
+                animate={
+                  shouldReduceMotion
+                    ? undefined
+                    : { scale: [1, 1.12, 1] }
+                }
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
+              >
+                <Heart className="h-6 w-6 fill-amber-300 text-amber-300 sm:h-7 sm:w-7" />
+              </motion.div>
+            </motion.div>
 
-            <div className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-amber-200/10 border border-amber-300/40 shadow-lg shadow-black/10 mb-4">
-              <Heart className="w-6 h-6 sm:w-7 sm:h-7 fill-amber-300 text-amber-300" />
-            </div>
-
-            <p className="text-fluid-xs sm:text-sm font-semibold tracking-[0.2em] sm:tracking-[0.3em] text-amber-200 uppercase">
+            <motion.p
+              {...fadeUp(0.12)}
+              className="text-fluid-xs font-semibold tracking-[0.15em] text-amber-200 sm:text-sm sm:tracking-[0.3em]"
+            >
               លិខិតអញ្ជើញអាពាហ៍ពិពាហ៍ផ្លូវការ
-            </p>
+            </motion.p>
 
-            <h2 className="whitespace-nowrap text-center font-khmer-title text-xl leading-relaxed text-white mt-3 mb-4 sm:text-5xl md:text-fluid-2xl lg:text-fluid-2xl">
+            <motion.h2
+              {...fadeUp(0.2)}
+              className="mt-3 mb-4 text-center font-khmer-title text-xl leading-relaxed text-white sm:text-5xl md:text-fluid-2xl lg:text-fluid-2xl"
+            >
               សិរីមង្គលអាពាហ៍ពិពាហ៍
-            </h2>
+            </motion.h2>
 
-            {/* Couple Names */}
-            <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-amber-100 font-semibold text-fluid-lg font-khmer-title">
-              <span>ហេង គីមហ៊</span>
+            {/* Couple names */}
+            <motion.div
+              {...fadeUp(0.28)}
+              className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 font-khmer-title text-fluid-lg font-semibold text-amber-100"
+            >
+              <motion.span
+                whileHover={
+                  shouldReduceMotion ? undefined : { y: -2 }
+                }
+              >
+                ហេង គីមហ៊
+              </motion.span>
 
-              <Heart className="w-4 h-4 sm:w-5 sm:h-5 fill-rose-300 text-rose-300 shrink-0" />
+              <motion.span
+                animate={
+                  shouldReduceMotion
+                    ? undefined
+                    : { scale: [1, 1.2, 1], rotate: [0, -8, 8, 0] }
+                }
+                transition={{
+                  duration: 2.5,
+                  repeat: Infinity,
+                  repeatDelay: 1,
+                }}
+                className="inline-flex"
+              >
+                <Heart className="h-4 w-4 shrink-0 fill-rose-300 text-rose-300 sm:h-5 sm:w-5" />
+              </motion.span>
 
-              <span>សន ធារ៉ា</span>
-            </div>
+              <motion.span
+                whileHover={
+                  shouldReduceMotion ? undefined : { y: -2 }
+                }
+              >
+                សន ធារ៉ា
+              </motion.span>
+            </motion.div>
 
-            <p className="text-fluid-sm text-stone-300 italic mt-3 font-khmer-body">
+            <motion.p
+              {...fadeUp(0.35)}
+              className="mt-3 font-khmer-body text-fluid-sm italic text-stone-300"
+            >
               « ក្ដីស្នេហ៍ អមតៈ »
-            </p>
+            </motion.p>
 
-            {/* Header Ornament */}
-            <div className="flex items-center justify-center gap-3 mt-6">
-              <span className="h-px w-12 sm:w-20 bg-gradient-to-r from-transparent to-amber-400/70" />
-              <Sparkles className="w-4 h-4 text-amber-300" />
-              <span className="h-px w-12 sm:w-20 bg-gradient-to-l from-transparent to-amber-400/70" />
-            </div>
+            {/* Animated header ornament */}
+            <motion.div
+              {...fadeUp(0.4)}
+              className="mt-6 flex items-center justify-center gap-3"
+            >
+              <motion.span
+                initial={shouldReduceMotion ? false : { scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="h-px w-12 origin-right bg-gradient-to-r from-transparent to-amber-400/70 sm:w-20"
+              />
+
+              <motion.span
+                animate={
+                  shouldReduceMotion
+                    ? undefined
+                    : { rotate: [0, 180, 360] }
+                }
+                transition={{
+                  duration: 12,
+                  repeat: Infinity,
+                  ease: 'linear',
+                }}
+              >
+                <Sparkles className="h-4 w-4 text-amber-300" />
+              </motion.span>
+
+              <motion.span
+                initial={shouldReduceMotion ? false : { scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="h-px w-12 origin-left bg-gradient-to-l from-transparent to-amber-400/70 sm:w-20"
+              />
+            </motion.div>
           </header>
 
           {/* ========================================
               PARENTS & COUPLE INFORMATION
           ======================================== */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 py-6 sm:py-8 border-y border-amber-200/25 my-7 bg-[#183126]/70 rounded-2xl p-4 sm:p-7 text-center">
-
-            {/* Groom's Family */}
-            <div className="space-y-2">
-              <p className="text-xs sm:text-sm tracking-wide text-amber-200 font-semibold">
+          <motion.div
+            {...fadeUp(0.1)}
+            className="my-7 grid grid-cols-1 gap-5 rounded-2xl border-y border-amber-200/25 bg-[#183126]/70 p-4 py-6 text-center sm:my-8 sm:gap-6 sm:p-7 md:grid-cols-2"
+          >
+            {/* Groom's family */}
+            <motion.div
+              {...fadeUp(0.1)}
+              whileHover={
+                shouldReduceMotion ? undefined : { y: -3 }
+              }
+              className="space-y-2 rounded-xl p-2 transition-colors duration-300 hover:bg-white/[0.02] sm:p-3"
+            >
+              <p className="text-xs font-semibold tracking-wide text-amber-200 sm:text-sm">
                 មាតាបិតាខាងកូនប្រុស
               </p>
 
-              <p className="text-base sm:text-lg font-bold text-white font-khmer-title leading-relaxed">
-                លោក​ មាស សុផល
+              <p className="font-khmer-title text-base font-bold leading-relaxed text-white sm:text-lg">
+                លោក មាស សុផល
               </p>
 
-              <p className="text-sm sm:text-base font-semibold text-stone-200 leading-relaxed">
+              <p className="text-sm font-semibold leading-relaxed text-stone-200 sm:text-base">
                 និង លោកស្រី{' '}
                 <span className="font-bold text-amber-100">
                   ប្រាក់ ប៊ុនអេង
@@ -87,31 +303,37 @@ export const InvitationCard: React.FC = () => {
               </p>
 
               <div className="pt-3">
-                <span className="text-xs sm:text-sm text-stone-300">
+                <span className="text-xs text-stone-300 sm:text-sm">
                   កូនប្រុសនាម៖
                 </span>
 
-                <p className="text-lg sm:text-xl font-bold text-amber-200 font-khmer-title mt-1">
+                <p className="mt-1 font-khmer-title text-lg font-bold text-amber-200 sm:text-xl">
                   ហេង គីមហ៊
                 </p>
 
-                <p className="text-xs text-stone-300 font-cinzel mt-1">
+                <p className="mt-1 font-cinzel text-xs text-stone-300">
                   Groom: Heng Kimhor
                 </p>
               </div>
-            </div>
+            </motion.div>
 
-            {/* Bride's Family */}
-            <div className="space-y-2 border-t md:border-t-0 md:border-l border-amber-200/25 pt-5 md:pt-0 md:pl-5">
-              <p className="text-xs sm:text-sm tracking-wide text-amber-200 font-semibold">
+            {/* Bride's family */}
+            <motion.div
+              {...fadeUp(0.2)}
+              whileHover={
+                shouldReduceMotion ? undefined : { y: -3 }
+              }
+              className="space-y-2 rounded-xl border-t border-amber-200/25 p-2 pt-5 transition-colors duration-300 hover:bg-white/[0.02] sm:p-3 sm:pt-5 md:border-l md:border-t-0 md:pl-5 md:pt-3"
+            >
+              <p className="text-xs font-semibold tracking-wide text-amber-200 sm:text-sm">
                 មាតាបិតាខាងកូនស្រី
               </p>
 
-              <p className="text-base sm:text-lg font-bold text-white font-khmer-title leading-relaxed">
-                លោក​ សន ចិត្រា
+              <p className="font-khmer-title text-base font-bold leading-relaxed text-white sm:text-lg">
+                លោក សន ចិត្រា
               </p>
 
-              <p className="text-sm sm:text-base font-semibold text-stone-200 leading-relaxed">
+              <p className="text-sm font-semibold leading-relaxed text-stone-200 sm:text-base">
                 និង លោកស្រី{' '}
                 <span className="font-bold text-amber-100">
                   សួង ចន្ធី
@@ -119,199 +341,362 @@ export const InvitationCard: React.FC = () => {
               </p>
 
               <div className="pt-3">
-                <span className="text-xs sm:text-sm text-stone-300">
+                <span className="text-xs text-stone-300 sm:text-sm">
                   កូនស្រីនាម៖
                 </span>
 
-                <p className="text-lg sm:text-xl font-bold text-amber-200 font-khmer-title mt-1">
+                <p className="mt-1 font-khmer-title text-lg font-bold text-amber-200 sm:text-xl">
                   សន ធារ៉ា
                 </p>
 
-                <p className="text-xs text-stone-300 font-cinzel mt-1">
+                <p className="mt-1 font-cinzel text-xs text-stone-300">
                   Bride: Sorn Theara
                 </p>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* ========================================
               INVITATION MESSAGE
           ======================================== */}
-          <div className="max-w-2xl mx-auto space-y-4 text-stone-200 leading-8 font-khmer-body text-sm sm:text-base">
-
-            <p className="text-center font-semibold text-amber-200 text-base sm:text-lg">
+          <motion.div
+            {...fadeUp(0.1)}
+            className="mx-auto max-w-2xl space-y-4 font-khmer-body text-sm leading-8 text-stone-200 sm:text-base"
+          >
+            <motion.p
+              {...fadeUp(0.1)}
+              className="text-center text-base font-semibold text-amber-200 sm:text-lg"
+            >
               មានកិត្តិយសសូមគោរពអញ្ជើញ
-            </p>
+            </motion.p>
 
-            <p className="text-center leading-8">
+            <motion.p
+              {...fadeUp(0.2)}
+              className="text-center leading-8"
+            >
               ឯកឧត្តម លោកជំទាវ លោកឧកញ៉ា លោក លោកស្រី អ្នកនាងកញ្ញា និងប្រិយមិត្ត
               អញ្ជើញចូលរួមជាអធិបតី និងជាភ្ញៀវកិត្តិយស ដើម្បីប្រសិទ្ធពរជ័យ
               សិរីសួស្តី ជ័យមង្គលក្នុងពិធីរៀបអាពាហ៍ពិពាហ៍ កូនប្រុស-កូនស្រី
               របស់យើងខ្ញុំ និងពិសារបាយអាហារ ដែលនឹងប្រព្រឹត្តទៅតាមពេលវេលា
               និងទីកន្លែងដូចខាងក្រោម៖
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
           {/* ========================================
               DATE & TIME
           ======================================== */}
-          <div className="mt-7 sm:mt-8 bg-[#183126]/85 border border-amber-300/30 rounded-2xl p-5 sm:p-7 text-center shadow-lg shadow-black/10">
+          <motion.div
+            {...fadeUp(0.1)}
+            whileHover={
+              shouldReduceMotion ? undefined : { y: -3 }
+            }
+            className="mt-7 rounded-2xl border border-amber-300/30 bg-[#183126]/85 p-5 text-center shadow-lg shadow-black/10 transition-colors duration-300 hover:border-amber-300/45 sm:mt-8 sm:p-7"
+          >
+            <div className="mb-4 flex items-center justify-center gap-2">
+              <motion.span
+                initial={shouldReduceMotion ? false : { scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7 }}
+                className="h-px w-7 origin-right bg-amber-400/50 sm:w-12"
+              />
 
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <span className="h-px w-7 sm:w-12 bg-amber-400/50" />
-              <Sparkles className="w-4 h-4 text-amber-300" />
-              <span className="h-px w-7 sm:w-12 bg-amber-400/50" />
+              <motion.span
+                animate={
+                  shouldReduceMotion
+                    ? undefined
+                    : { rotate: [0, 180, 360] }
+                }
+                transition={{
+                  duration: 10,
+                  repeat: Infinity,
+                  ease: 'linear',
+                }}
+              >
+                <Sparkles className="h-4 w-4 text-amber-300" />
+              </motion.span>
+
+              <motion.span
+                initial={shouldReduceMotion ? false : { scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7 }}
+                className="h-px w-7 origin-left bg-amber-400/50 sm:w-12"
+              />
             </div>
 
-            <p className="text-xs sm:text-sm font-semibold text-amber-100 leading-relaxed">
+            <motion.p
+              {...fadeUp(0.1)}
+              className="text-xs font-semibold leading-relaxed text-amber-100 sm:text-sm"
+            >
               នៅថ្ងៃសៅរ៍ ១រោច ខែបុស្ស ឆ្នាំមមី អដ្ឋស័ក ពុទ្ធសករាជ ២៥៧០
-            </p>
+            </motion.p>
 
-            <h3 className="text-lg sm:text-2xl md:text-3xl font-bold text-white font-khmer-title leading-relaxed mt-3">
+            <motion.h3
+              {...fadeUp(0.2)}
+              className="mt-3 font-khmer-title text-lg font-bold leading-relaxed text-white sm:text-2xl md:text-3xl"
+            >
               ត្រូវនឹងថ្ងៃសៅរ៍ ទី ២៣ ខែមករា ឆ្នាំ ២០២៧
-            </h3>
+            </motion.h3>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6">
-
-              <div className="flex flex-col items-center justify-center gap-1 bg-white/[0.04] border border-amber-200/20 rounded-xl px-3 py-4">
-                <span className="text-[10px] sm:text-xs uppercase tracking-widest text-amber-300">
+            <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+              {/* Reception */}
+              <motion.div
+                {...fadeUp(0.1)}
+                whileHover={
+                  shouldReduceMotion
+                    ? undefined
+                    : { y: -4, scale: 1.015 }
+                }
+                className="flex flex-col items-center justify-center gap-1 rounded-xl border border-amber-200/20 bg-white/[0.04] px-3 py-4"
+              >
+                <span className="text-[10px] uppercase tracking-widest text-amber-300 sm:text-xs">
                   Reception
                 </span>
 
-                <span className="text-sm sm:text-base font-semibold text-amber-100 font-khmer-body">
+                <span className="font-khmer-body text-sm font-semibold text-amber-100 sm:text-base">
                   វេលាម៉ោង ៥:០០ ល្ងាច
                 </span>
 
-                <span className="text-xs text-stone-300 font-khmer-body">
+                <span className="font-khmer-body text-xs text-stone-300">
                   ទទួលភ្ញៀវ
                 </span>
-              </div>
+              </motion.div>
 
-              <div className="flex flex-col items-center justify-center gap-1 bg-white/[0.04] border border-amber-200/20 rounded-xl px-3 py-4">
-                <span className="text-[10px] sm:text-xs uppercase tracking-widest text-amber-300">
+              {/* Dinner */}
+              <motion.div
+                {...fadeUp(0.2)}
+                whileHover={
+                  shouldReduceMotion
+                    ? undefined
+                    : { y: -4, scale: 1.015 }
+                }
+                className="flex flex-col items-center justify-center gap-1 rounded-xl border border-amber-200/20 bg-white/[0.04] px-3 py-4"
+              >
+                <span className="text-[10px] uppercase tracking-widest text-amber-300 sm:text-xs">
                   Dinner
                 </span>
 
-                <span className="text-sm sm:text-base font-semibold text-amber-100 font-khmer-body">
+                <span className="font-khmer-body text-sm font-semibold text-amber-100 sm:text-base">
                   វេលាម៉ោង ៥:៣០ ល្ងាច
                 </span>
 
-                <span className="text-xs text-stone-300 font-khmer-body">
+                <span className="font-khmer-body text-xs text-stone-300">
                   ពិសារភោជនាហារ
                 </span>
-              </div>
-
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
 
           {/* ========================================
               VENUE
           ======================================== */}
-          <div className="mt-8 sm:mt-10 text-center px-2 sm:px-3">
-            <div className="flex items-center justify-center gap-2 text-amber-200 font-bold text-sm sm:text-base md:text-lg leading-relaxed">
-              <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-amber-300 shrink-0" />
+          <motion.div
+            {...fadeUp(0.1)}
+            className="mt-8 px-2 text-center sm:mt-10 sm:px-3"
+          >
+            <motion.div
+              whileHover={
+                shouldReduceMotion ? undefined : { scale: 1.015 }
+              }
+              className="flex items-center justify-center gap-2 font-bold leading-relaxed text-amber-200 sm:text-base md:text-lg"
+            >
+              <motion.span
+                animate={
+                  shouldReduceMotion
+                    ? undefined
+                    : { y: [0, -4, 0] }
+                }
+                transition={{
+                  duration: 2.5,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
+                className="shrink-0"
+              >
+                <MapPin className="h-5 w-5 text-amber-300 sm:h-6 sm:w-6" />
+              </motion.span>
 
-              <span className="text-center">
+              <span className="text-center text-sm sm:text-base md:text-lg">
                 នៅភោជនីយដ្ឋាន និងសាលរៀបចំកម្មវិធី ផ្កាឈូកទិព្វ (អគារ G)
               </span>
-            </div>
+            </motion.div>
 
-            <p className="text-center text-xs sm:text-sm md:text-base font-medium text-stone-100 leading-relaxed mt-3">
+            <motion.p
+              {...fadeUp(0.15)}
+              className="mt-3 text-center text-xs font-medium leading-relaxed text-stone-100 sm:text-sm md:text-base"
+            >
               ស្ថិតនៅ សង្កាត់ផ្សារដើមគរ ខណ្ឌទួលគោក រាជធានីភ្នំពេញ
-            </p>
+            </motion.p>
 
-            <p className="text-center text-xs sm:text-sm text-stone-300 font-medium leading-relaxed pt-2">
+            <motion.p
+              {...fadeUp(0.2)}
+              className="pt-2 text-center text-xs font-medium leading-relaxed text-stone-300 sm:text-sm"
+            >
               ដោយមេត្រីភាព (សូមពិនិត្យមើលផ្លង់ និងស្កេនទីតាំងខាងក្រោម)
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
           {/* ========================================
               ELEGANT ENGLISH SUMMARY
           ======================================== */}
-          <div className="relative mt-9 sm:mt-12 pt-7 sm:pt-8 border-t border-amber-200/20 text-center px-1 sm:px-4">
+          <motion.div
+            {...fadeUp(0.1)}
+            className="relative mt-9 border-t border-amber-200/20 px-1 pt-7 text-center sm:mt-12 sm:px-4 sm:pt-8"
+          >
+            {/* Decorative divider */}
+            <div className="mb-5 flex items-center justify-center gap-3 sm:mb-6">
+              <motion.span
+                initial={shouldReduceMotion ? false : { scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="h-px w-10 origin-right bg-gradient-to-r from-transparent to-amber-400/80 sm:w-20"
+              />
 
-            {/* Decorative Divider */}
-            <div className="flex items-center justify-center gap-3 mb-5 sm:mb-6">
-              <span className="h-px w-10 sm:w-20 bg-gradient-to-r from-transparent to-amber-400/80" />
-              <span className="text-amber-300 text-lg leading-none">✦</span>
-              <span className="h-px w-10 sm:w-20 bg-gradient-to-l from-transparent to-amber-400/80" />
+              <motion.span
+                animate={
+                  shouldReduceMotion
+                    ? undefined
+                    : { rotate: [0, 180, 360], scale: [1, 1.15, 1] }
+                }
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
+                className="text-lg leading-none text-amber-300"
+              >
+                ✦
+              </motion.span>
+
+              <motion.span
+                initial={shouldReduceMotion ? false : { scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="h-px w-10 origin-left bg-gradient-to-l from-transparent to-amber-400/80 sm:w-20"
+              />
             </div>
 
-            <p className="font-cinzel text-[10px] sm:text-xs tracking-[0.25em] sm:tracking-[0.35em] text-amber-300 font-semibold uppercase mb-3">
+            <motion.p
+              {...fadeUp(0.1)}
+              className="mb-3 font-cinzel text-[10px] font-semibold uppercase tracking-[0.2em] text-amber-300 sm:text-xs sm:tracking-[0.35em]"
+            >
               Together With Our Families
-            </p>
+            </motion.p>
 
-            <h3 className="font-cinzel text-lg sm:text-2xl tracking-[0.1em] sm:tracking-[0.12em] text-amber-100 font-semibold">
+            <motion.h3
+              {...fadeUp(0.2)}
+              className="font-cinzel text-lg font-semibold tracking-[0.1em] text-amber-100 sm:text-2xl sm:tracking-[0.12em]"
+            >
               THE WEDDING DAY
-            </h3>
+            </motion.h3>
 
-            {/* Couple Names */}
-            <div className="mt-5 space-y-2">
-              <p className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-sm sm:text-base text-stone-100 font-medium tracking-wide">
+            {/* Couple names */}
+            <motion.div
+              {...fadeUp(0.3)}
+              className="mt-5 space-y-2"
+            >
+              <p className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-sm font-medium tracking-wide text-stone-100 sm:text-base">
                 <span>Heng Kimhor</span>
-                <Heart className="w-3.5 h-3.5 fill-amber-400 text-amber-400 shrink-0" />
+
+                <motion.span
+                  animate={
+                    shouldReduceMotion
+                      ? undefined
+                      : { scale: [1, 1.2, 1] }
+                  }
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="inline-flex"
+                >
+                  <Heart className="h-3.5 w-3.5 shrink-0 fill-amber-400 text-amber-400" />
+                </motion.span>
+
                 <span>Sorn Theara</span>
               </p>
 
-              <p className="text-[10px] sm:text-xs tracking-[0.2em] sm:tracking-[0.25em] text-amber-300/80 uppercase">
+              <p className="text-[10px] uppercase tracking-[0.2em] text-amber-300/80 sm:text-xs sm:tracking-[0.25em]">
                 Groom &nbsp; · &nbsp; Bride
               </p>
-            </div>
+            </motion.div>
 
-            {/* Date, Time & Venue */}
-            <div className="mt-6 py-5 px-3 sm:px-6 border-y border-amber-300/20 bg-amber-100/[0.04] rounded-xl">
-
-              <p className="font-cinzel text-sm sm:text-base text-amber-200 tracking-wide sm:tracking-wider">
+            {/* Date, time and venue */}
+            <motion.div
+              {...fadeUp(0.2)}
+              whileHover={
+                shouldReduceMotion ? undefined : { y: -3 }
+              }
+              className="mt-6 rounded-xl border-y border-amber-300/20 bg-amber-100/[0.04] px-3 py-5 transition-colors duration-300 hover:border-amber-300/40 sm:px-6"
+            >
+              <p className="font-cinzel text-sm tracking-wide text-amber-200 sm:text-base sm:tracking-wider">
                 Saturday, 23 January 2027
               </p>
 
-              <div className="mt-3 inline-flex items-center gap-2 text-xs sm:text-sm text-stone-100">
+              <div className="mt-3 inline-flex flex-wrap items-center justify-center gap-2 text-xs text-stone-100 sm:text-sm">
                 <span className="text-amber-300">✦</span>
                 <span>Guest Reception: 5:00 PM</span>
                 <span className="text-amber-300">✦</span>
               </div>
 
-              <p className="mt-2 text-xs sm:text-sm text-stone-200">
+              <p className="mt-2 text-xs text-stone-200 sm:text-sm">
                 Dinner: 5:30 PM
               </p>
 
-              <p className="mt-4 text-xs sm:text-sm text-stone-200 leading-relaxed">
+              <p className="mt-4 text-xs leading-relaxed text-stone-200 sm:text-sm">
                 Phka Chhouk Tep Wedding Hall
                 <br />
                 <span className="text-amber-200/80">
                   Building G · Phnom Penh, Cambodia
                 </span>
               </p>
-            </div>
+            </motion.div>
 
-            {/* Closing Message */}
-            <div className="mt-6 space-y-2">
-              <p className="font-cinzel text-xs sm:text-sm tracking-[0.15em] sm:tracking-[0.2em] text-amber-300 font-semibold">
+            {/* Closing message */}
+            <motion.div
+              {...fadeUp(0.2)}
+              className="mt-6 space-y-2"
+            >
+              <p className="font-cinzel text-xs font-semibold tracking-[0.15em] text-amber-300 sm:text-sm sm:tracking-[0.2em]">
                 WITH LOVE &amp; GRATITUDE
               </p>
 
-              <p className="text-xs sm:text-sm text-stone-300 leading-relaxed">
+              <p className="text-xs leading-relaxed text-stone-300 sm:text-sm">
                 Thank you for sharing in our special day.
               </p>
 
-              <p className="text-[10px] sm:text-xs text-amber-200/80 italic leading-relaxed">
+              <p className="text-[10px] italic leading-relaxed text-amber-200/80 sm:text-xs">
                 Kindly refer to the map below for directions.
               </p>
-            </div>
+            </motion.div>
 
-            {/* Bottom Ornament */}
-            <div className="mt-6 text-amber-400/80 text-sm tracking-[0.5em]">
+            {/* Bottom ornament */}
+            <motion.div
+              animate={
+                shouldReduceMotion
+                  ? undefined
+                  : { opacity: [0.5, 1, 0.5] }
+              }
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+              className="mt-6 text-sm tracking-[0.5em] text-amber-400/80"
+            >
               ❧ ✦ ❧
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          {/* Bottom Greeting */}
-          <p className="mt-8 text-center text-[10px] sm:text-xs text-stone-400 tracking-wider">
+          {/* Bottom greeting */}
+          <motion.p
+            {...fadeUp(0.15)}
+            className="mt-8 text-center text-[10px] tracking-wider text-stone-400 sm:text-xs"
+          >
             WITH JOYFUL HEARTS, WE LOOK FORWARD TO CELEBRATING WITH YOU
-          </p>
-
+          </motion.p>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

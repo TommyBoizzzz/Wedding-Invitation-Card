@@ -75,39 +75,47 @@ export const LocationMap: React.FC = () => {
       </div>
 
       <div className="mx-auto w-full max-w-5xl">
-        {/* Section heading */}
-        <motion.div
-          variants={cardReveal}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.7, ease: 'easeOut' }}
-          className="mb-8 text-center sm:mb-10"
-        >
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-200/20 bg-amber-100/[0.06] px-4 py-2">
-            <Sparkles className="h-3.5 w-3.5 text-amber-300" />
-            <span className="text-[10px] font-semibold tracking-[0.2em] text-amber-200 sm:text-xs">
-              WEDDING VENUE
-            </span>
-            <Sparkles className="h-3.5 w-3.5 text-amber-300" />
-          </div>
+      {/* Section Heading */}
+      <motion.div
+        variants={cardReveal}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.75, ease: 'easeOut' }}
+        className="mx-auto mb-9 max-w-3xl px-4 text-center sm:mb-12"
+      >
+        {/* Elegant Label */}
+        <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-amber-200/20 bg-[#20392b]/60 px-4 py-2 shadow-sm shadow-black/10 backdrop-blur-sm">
+          <Sparkles className="h-3.5 w-3.5 text-amber-300/80" />
 
-          <h2 className="font-khmer-title text-2xl leading-relaxed text-white sm:text-3xl md:text-4xl">
-            ស្កេន QR និងព័ត៌មានទីតាំង
-          </h2>
+          <span className="text-[10px] font-medium tracking-[0.2em] text-amber-100/90 sm:text-xs">
+            WEDDING VENUE
+          </span>
 
-          <div className="mx-auto my-4 flex items-center justify-center gap-3">
-            <span className="h-px w-10 bg-gradient-to-r from-transparent to-amber-300/70 sm:w-16" />
-            <Heart className="h-4 w-4 fill-amber-300/20 text-amber-300" />
-            <span className="h-px w-10 bg-gradient-to-l from-transparent to-amber-300/70 sm:w-16" />
-          </div>
+          <Sparkles className="h-3.5 w-3.5 text-amber-300/80" />
+        </div>
 
-          <p className="mx-auto max-w-xl text-center text-sm leading-7 text-stone-300 sm:text-base">
-            សូមស្កេន QR Code ឬចុចប៊ូតុងខាងក្រោម
-            ដើម្បីស្វែងរកទីតាំង និងធ្វើដំណើរមកចូលរួម
-            ក្នុងពិធីមង្គលការដ៏មានអត្ថន័យរបស់យើងខ្ញុំ។
-          </p>
-        </motion.div>
+        {/* Main Heading */}
+        <h2 className="font-khmer-title text-xl font-bold leading-relaxed text-amber-50 sm:text-2xl md:text-4xl">
+          ស្កេន QR និងព័ត៌មានទីតាំង
+        </h2>
+
+        {/* Decorative Divider */}
+        <div className="mx-auto my-5 flex items-center justify-center gap-3">
+          <span className="h-px w-10 bg-gradient-to-r from-transparent to-amber-300/50 sm:w-16" />
+
+          <Heart className="h-4 w-4 fill-amber-300/10 text-amber-300/90" />
+
+          <span className="h-px w-10 bg-gradient-to-l from-transparent to-amber-300/50 sm:w-16" />
+        </div>
+
+        {/* Description */}
+        <p className="mx-auto max-w-xl font-khmer-title text-xs leading-8 text-stone-300/90 sm:text-sm sm:leading-9 md:text-base">
+          សូមស្កេន QR Code ឬចុចប៊ូតុងខាងក្រោម
+          ដើម្បីស្វែងរកទីតាំង និងធ្វើដំណើរមកចូលរួម
+          ក្នុងពិធីមង្គលការដ៏មានអត្ថន័យរបស់យើងខ្ញុំ។
+        </p>
+      </motion.div>
 
         {/* Main panel */}
         <motion.div

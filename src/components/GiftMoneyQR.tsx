@@ -135,37 +135,46 @@ export const GiftMoneyQR: React.FC<GiftMoneyQRProps> = ({
       <div className="pointer-events-none absolute left-1/2 top-24 -z-10 h-72 w-72 -translate-x-1/2 rounded-full bg-amber-500/10 blur-[100px]" />
       <div className="pointer-events-none absolute bottom-20 right-0 h-64 w-64 -z-10 rounded-full bg-emerald-500/10 blur-[100px]" />
 
-      {/* Section heading */}
+      {/* Section Heading */}
       <motion.div
-        initial={{ opacity: 0, y: 24 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.65 }}
-        className="mx-auto mb-10 max-w-3xl text-center sm:mb-12"
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+        className="mx-auto mb-10 max-w-3xl px-4 text-center sm:mb-12"
       >
-        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-200/25 bg-[#20392b]/80 px-4 py-2 text-amber-200 shadow-lg shadow-black/10">
-          <Sparkles className="h-4 w-4" />
-          <span className="text-[11px] font-semibold tracking-[0.15em] sm:text-xs">
+        {/* Elegant Label */}
+        <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-amber-200/20 bg-[#20392b]/70 px-4 py-2 shadow-sm shadow-black/10 backdrop-blur-sm">
+          <Sparkles className="h-3.5 w-3.5 text-amber-300/80" />
+
+          <span className="text-[10px] font-medium tracking-[0.2em] text-amber-100/90 sm:text-xs">
             WEDDING GIFT
           </span>
-          <Heart className="h-4 w-4 fill-amber-200/20" />
+
+          <Heart className="h-3.5 w-3.5 text-amber-300/80" />
         </div>
 
-        <p className="mb-2 text-xs font-semibold tracking-[0.2em] text-amber-300 sm:text-sm">
+        {/* Khmer Subtitle */}
+        <p className="mb-3 font-khmer-title text-xs tracking-wide text-amber-300/80 sm:text-sm">
           ចំណងដៃអាពាហ៍ពិពាហ៍
         </p>
 
-        <h2 className="font-khmer-title text-2xl leading-relaxed text-white sm:text-3xl md:text-4xl">
+        {/* Main Heading */}
+        <h2 className="font-khmer-title text-2xl font-bold leading-relaxed text-amber-50 sm:text-3xl md:text-4xl">
           ចំណងដៃតាមរយៈ KHQR
         </h2>
 
-        <div className="mx-auto my-4 flex items-center justify-center gap-3">
-          <span className="h-px w-10 bg-gradient-to-r from-transparent to-amber-300/70 sm:w-16" />
-          <Heart className="h-4 w-4 text-amber-300" />
-          <span className="h-px w-10 bg-gradient-to-l from-transparent to-amber-300/70 sm:w-16" />
+        {/* Decorative Divider */}
+        <div className="mx-auto my-5 flex items-center justify-center gap-3">
+          <span className="h-px w-10 bg-gradient-to-r from-transparent to-amber-300/50 sm:w-16" />
+
+          <Heart className="h-4 w-4 fill-amber-300/10 text-amber-300/90" />
+
+          <span className="h-px w-10 bg-gradient-to-l from-transparent to-amber-300/50 sm:w-16" />
         </div>
 
-        <p className="mx-auto max-w-2xl text-center text-sm leading-8 text-stone-300 sm:text-base">
+        {/* Description */}
+        <p className="mx-auto max-w-xl font-khmer-title text-xs leading-8 text-stone-300/90 sm:text-sm sm:leading-9 md:text-base">
           លោកអ្នកអាចចូលរួមចំណងដៃតាមរយៈការស្កេន KHQR របស់ធនាគារ ABA
           ឬ អេស៊ីលីដា ដោយប្រើកម្មវិធីធនាគារដែលគាំទ្រ KHQR។
         </p>
@@ -529,18 +538,24 @@ export const GiftMoneyQR: React.FC<GiftMoneyQRProps> = ({
         </motion.div>
       </div>
 
-      {/* Footer note */}
+      {/* Closing Note */}
       <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.7, delay: 0.2 }}
-        className="mx-auto mt-8 flex max-w-2xl items-start justify-center gap-2 px-2 text-center sm:mt-10"
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+        className="mx-auto mt-10 max-w-xl px-5 pb-6 text-center sm:mt-12"
       >
-        <Heart className="mt-1 h-4 w-4 shrink-0 text-amber-300/80" />
-        <p className="text-xs leading-7 text-stone-400 sm:text-sm">
+        <Heart className="mx-auto mb-4 h-4 w-4 text-amber-300/70" />
+
+        <p className="font-khmer-title text-xs leading-8 text-stone-400 sm:text-sm sm:leading-9">
           វត្តមាន និងទឹកចិត្តរបស់លោកអ្នក គឺជាកាដូដ៏មានតម្លៃបំផុតសម្រាប់យើងខ្ញុំ។
-          សូមអរគុណដែលបានចូលរួមចែករំលែកសុភមង្គលក្នុងថ្ងៃពិសេសនេះ។
+          សូមអរគុណយ៉ាងជ្រាលជ្រៅ ដែលបានចំណាយពេលដ៏មានតម្លៃ
+          ដើម្បីចូលរួមចែករំលែកសុភមង្គលក្នុងថ្ងៃពិសេសរបស់យើងខ្ញុំ។
+        </p>
+
+        <p className="mt-4 font-serif text-[10px] italic tracking-[0.2em] text-amber-200/50 sm:text-xs">
+          With Love &amp; Gratitude
         </p>
       </motion.div>
     </section>
