@@ -24,7 +24,7 @@ interface GiftMoneyQRProps {
 
 const QUICK_AMOUNTS: Record<'USD' | 'KHR', number[]> = {
   USD: [30, 50, 100, 200],
-  KHR: [20000, 40000, 100000, 200000],
+  KHR: [80000, 100000, 200000, 400000],
 };
 
 export const GiftMoneyQR: React.FC<GiftMoneyQRProps> = ({
