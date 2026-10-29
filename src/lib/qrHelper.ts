@@ -2,7 +2,7 @@ import QRCode from 'qrcode';
 
 // Target location in Beng Village, Chi Kraeng, Chi Kraeng District, Siem Reap
 export const WEDDING_LOCATION = {
-  name: 'ភោជនីយដ្ឋានផ្កាឈូកទេព (​ អគារ G )',
+  name: 'ភោជនីយដ្ឋានផ្កាឈូកទិព្វ (​ អគារ G )',
   village: 'ពុំមាន',
   commune: 'សង្កាត់ផ្សារដើមគរ',
   district: 'ខណ្ឌទួលគោក',

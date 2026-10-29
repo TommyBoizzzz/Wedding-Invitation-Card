@@ -173,9 +173,8 @@ export const WishesGuestbook: React.FC<WishesGuestbookProps> = ({
           សៀវភៅកត់ត្រាពាក្យជូនពរ
         </p>
 
-        <h2 className="text-center font-khmer-title text-xl leading-relaxed text-white sm:text-3xl md:text-4xl">
-          <span className="block sm:inline">ផ្ញើសារជូនពរដល់</span>{' '}
-          <span className="block sm:inline">កូនកំលោះកូនក្រមុំ</span>
+        <h2 className="whitespace-nowrap text-center font-khmer-title text-xl leading-relaxed text-white sm:text-3xl md:text-4xl">
+          ផ្ញើសារជូនពរដល់ កូនកំលោះកូនក្រមុំ
         </h2>
 
         <div className="my-4 flex items-center justify-center gap-3">
@@ -185,8 +184,8 @@ export const WishesGuestbook: React.FC<WishesGuestbookProps> = ({
         </div>
 
         <p className="mx-auto max-w-2xl text-center text-sm leading-8 text-stone-300 sm:text-base">
-          សូមចូលរួមផ្ញើសារជូនពរ សេចក្ដីស្រឡាញ់ និងពរជ័យសិរីសួស្តី
-          ដល់គូស្វាមីភរិយាថ្មី ពៅ &amp; សំណាង។
+          <span className="block sm:inline">សូមចូលរួមផ្ញើសារជូនពរ សេចក្ដីស្រឡាញ់ និងពរជ័យសិរីសួស្តី</span>{' '}
+          <span className="block sm:inline">ដល់គូស្វាមីភរិយាថ្មី គីមហ៊ &amp; ធារ៉ា។</span>
         </p>
       </motion.div>
 

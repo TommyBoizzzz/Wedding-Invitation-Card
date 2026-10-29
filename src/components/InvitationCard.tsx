@@ -212,7 +212,7 @@ export const InvitationCard: React.FC = () => {
               <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-amber-300 shrink-0" />
 
               <span className="text-center">
-                នៅភោជនីយដ្ឋាន និងសាលរៀបចំកម្មវិធី ផ្កាឈូកទេព (អគារ G)
+                នៅភោជនីយដ្ឋាន និងសាលរៀបចំកម្មវិធី ផ្កាឈូកទិព្វ (អគារ G)
               </span>
             </div>
 

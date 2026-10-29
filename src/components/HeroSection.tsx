@@ -25,15 +25,15 @@ export const HeroSection: React.FC = () => {
             </div>
 
             <div className="space-y-1">
-              <h1 className="text-3xl sm:text-4xl font-black text-white font-khmer-title tracking-tight leading-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)]">
+              <h1 className="text-[1.9rem] leading-[1.2] sm:text-4xl font-black text-white font-khmer-title tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)]">
                 ហេង គីមហ៊ <span className="text-rose-300 font-serif">❤️</span> សន ធារ៉ា
               </h1>
-              <p className="text-sm sm:text-base text-amber-50/85 font-cinzel font-semibold tracking-wide">
+              <p className="text-[0.72rem] sm:text-base text-amber-50/85 font-cinzel font-semibold tracking-wide">
                 Heng Kimhor & Sorn Theara · Wedding Celebration
               </p>
             </div>
 
-            <p className="text-stone-100 text-sm sm:text-base max-w-xl mx-auto lg:mx-0 leading-relaxed font-khmer-body drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)] text-center lg:text-left">
+            <p className="text-stone-100 text-[0.76rem] sm:text-base max-w-xl mx-auto lg:mx-0 leading-relaxed font-khmer-body drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)] text-center lg:text-left">
               យើងខ្ញុំមានកិត្តិយស និងសេចក្ដីសោមនស្សរីករាយឥតឧបមា សូមគោរពអញ្ជើញ ឯកឧត្តម លោកជំទាវ លោកឧកញ៉ា លោក លោកស្រី អ្នកនាងកញ្ញា និងប្រិយមិត្តជិតឆ្ងាយ អញ្ជើញចូលរួមជាអធិបតី និងជាភ្ញៀវកិត្តិយស ដើម្បីប្រសិទ្ធពរជ័យ សិរីសួស្តី ជ័យមង្គលក្នុង ពិធីរៀបអាពាហ៍ពិពាហ៍របស់យើងខ្ញុំ។
             </p>
 
@@ -48,7 +48,7 @@ export const HeroSection: React.FC = () => {
               <div className="flex items-center gap-3 text-xs sm:text-sm text-stone-300">
                 <MapPin className="w-4 h-4 text-amber-300 shrink-0" />
                 <span>
-                  នៅភោជនីយដ្ឋាន និងសាលរៀបចំកម្មវិធី ផ្កាឈូកទេព (​ អគារ G ) រាជធានីភ្នំពេញ
+                  នៅភោជនីយដ្ឋាន និងសាលរៀបចំកម្មវិធី ផ្កាឈូកទិព្វ (​ អគារ G ) រាជធានីភ្នំពេញ
                 </span>
               </div>
             </div>
