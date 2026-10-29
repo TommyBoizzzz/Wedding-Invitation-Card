@@ -334,17 +334,6 @@ export const LocationMap: React.FC = () => {
             <span className="h-px w-12 bg-gradient-to-l from-transparent to-amber-300/40" />
           </div>
         </motion.div>
-
-        {/* Footer caption */}
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.15 }}
-          className="mt-6 text-center font-khmer-body text-xs leading-6 text-stone-400 sm:mt-8 sm:text-sm"
-        >
-          សេចក្ដីស្រឡាញ់កាន់តែមានន័យ នៅពេលមានវត្តមានអ្នកទាំងអស់គ្នា
-        </motion.p>
       </div>
     </section>
   );

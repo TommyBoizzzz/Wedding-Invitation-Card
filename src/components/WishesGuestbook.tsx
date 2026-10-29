@@ -563,17 +563,17 @@ export const WishesGuestbook: React.FC<WishesGuestbookProps> = ({
           )}
         </motion.div>
       </div>
-
       {/* Thank-you footer */}
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.65 }}
-        className="mx-auto mt-9 flex max-w-2xl items-start justify-center gap-3 px-2 text-center sm:mt-12"
+        className="mx-auto mt-9 flex max-w-2xl items-start justify-center gap-2 px-3 text-center sm:mt-12 sm:gap-3"
       >
-        <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-amber-300/80" />
-        <p className="text-xs leading-7 text-stone-400 sm:text-sm">
+        <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-amber-300/80 sm:h-5 sm:w-5" />
+
+        <p className="text-xs leading-relaxed text-stone-400 sm:text-sm sm:leading-7">
           រាល់ពាក្យជូនពររបស់លោកអ្នក គឺជាអនុស្សាវរីយ៍ដ៏មានតម្លៃសម្រាប់យើងខ្ញុំ។
           សូមអរគុណដែលបានចូលរួមចែករំលែកសុភមង្គលក្នុងថ្ងៃពិសេសនេះ។
         </p>

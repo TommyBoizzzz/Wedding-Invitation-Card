@@ -177,14 +177,14 @@ export const InvitationCard: React.FC = () => {
 
             <motion.p
               {...fadeUp(0.12)}
-              className="text-fluid-xs font-semibold tracking-[0.15em] text-amber-200 sm:text-sm sm:tracking-[0.3em]"
+              className="whitespace-nowrap text-center text-[11px] font-semibold tracking-[0.05em] text-amber-200 sm:text-sm sm:tracking-[0.3em]"
             >
               លិខិតអញ្ជើញអាពាហ៍ពិពាហ៍ផ្លូវការ
             </motion.p>
 
             <motion.h2
               {...fadeUp(0.2)}
-              className="mt-3 mb-4 text-center font-khmer-title text-xl leading-relaxed text-white sm:text-5xl md:text-fluid-2xl lg:text-fluid-2xl"
+              className="mb-4 mt-3 text-center font-khmer-title text-xl leading-relaxed text-white sm:text-5xl md:text-fluid-2xl lg:text-fluid-2xl"
             >
               សិរីមង្គលអាពាហ៍ពិពាហ៍
             </motion.h2>
@@ -434,7 +434,7 @@ export const InvitationCard: React.FC = () => {
 
             <motion.h3
               {...fadeUp(0.2)}
-              className="mt-3 font-khmer-title text-lg font-bold leading-relaxed text-white sm:text-2xl md:text-3xl"
+              className="mt-3 whitespace-nowrap text-center font-khmer-title text-[11px] font-bold leading-relaxed text-white sm:text-lg md:text-3xl"
             >
               ត្រូវនឹងថ្ងៃសៅរ៍ ទី ២៣ ខែមករា ឆ្នាំ ២០២៧
             </motion.h3>
@@ -545,13 +545,13 @@ export const InvitationCard: React.FC = () => {
             className="relative mt-9 border-t border-amber-200/20 px-1 pt-7 text-center sm:mt-12 sm:px-4 sm:pt-8"
           >
             {/* Decorative divider */}
-            <div className="mb-5 flex items-center justify-center gap-3 sm:mb-6">
+            <div className="mb-6 flex items-center justify-center gap-3 sm:mb-8">
               <motion.span
                 initial={shouldReduceMotion ? false : { scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="h-px w-10 origin-right bg-gradient-to-r from-transparent to-amber-400/80 sm:w-20"
+                className="h-px w-12 origin-right bg-gradient-to-r from-transparent to-amber-400/80 sm:w-20"
               />
 
               <motion.span
@@ -565,7 +565,7 @@ export const InvitationCard: React.FC = () => {
                   repeat: Infinity,
                   ease: 'easeInOut',
                 }}
-                className="text-lg leading-none text-amber-300"
+                className="text-lg leading-none text-amber-300 sm:text-xl"
               >
                 ✦
               </motion.span>
@@ -575,20 +575,21 @@ export const InvitationCard: React.FC = () => {
                 whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="h-px w-10 origin-left bg-gradient-to-l from-transparent to-amber-400/80 sm:w-20"
+                className="h-px w-12 origin-left bg-gradient-to-l from-transparent to-amber-400/80 sm:w-20"
               />
             </div>
 
+            {/* Invitation heading */}
             <motion.p
               {...fadeUp(0.1)}
-              className="mb-3 font-cinzel text-[10px] font-semibold uppercase tracking-[0.2em] text-amber-300 sm:text-xs sm:tracking-[0.35em]"
+              className="mb-5 font-cinzel text-xs font-semibold uppercase tracking-[0.2em] text-amber-300 sm:mb-6 sm:text-sm sm:tracking-[0.35em] md:text-base"
             >
               Together With Our Families
             </motion.p>
 
             <motion.h3
               {...fadeUp(0.2)}
-              className="font-cinzel text-lg font-semibold tracking-[0.1em] text-amber-100 sm:text-2xl sm:tracking-[0.12em]"
+              className="bg-gradient-to-r from-amber-200 via-amber-50 to-amber-300 bg-clip-text font-cinzel text-2xl font-semibold tracking-[0.08em] text-transparent sm:text-3xl sm:tracking-[0.14em] md:text-4xl"
             >
               THE WEDDING DAY
             </motion.h3>
@@ -596,9 +597,9 @@ export const InvitationCard: React.FC = () => {
             {/* Couple names */}
             <motion.div
               {...fadeUp(0.3)}
-              className="mt-5 space-y-2"
+              className="mt-7 space-y-3 sm:mt-9 sm:space-y-4"
             >
-              <p className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-sm font-medium tracking-wide text-stone-100 sm:text-base">
+              <p className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 font-cinzel text-lg font-medium tracking-wide text-stone-50 sm:gap-x-4 sm:text-2xl md:text-3xl">
                 <span>Heng Kimhor</span>
 
                 <motion.span
@@ -610,62 +611,63 @@ export const InvitationCard: React.FC = () => {
                   transition={{ duration: 2, repeat: Infinity }}
                   className="inline-flex"
                 >
-                  <Heart className="h-3.5 w-3.5 shrink-0 fill-amber-400 text-amber-400" />
+                  <Heart className="h-4 w-4 shrink-0 fill-amber-400 text-amber-400 sm:h-5 sm:w-5 md:h-6 md:w-6" />
                 </motion.span>
 
                 <span>Sorn Theara</span>
               </p>
 
-              <p className="text-[10px] uppercase tracking-[0.2em] text-amber-300/80 sm:text-xs sm:tracking-[0.25em]">
-                Groom &nbsp; · &nbsp; Bride
+              <p className="font-cinzel text-xs uppercase tracking-[0.25em] text-amber-300/90 sm:text-sm sm:tracking-[0.4em]">
+                Groom <span className="mx-2 text-amber-500">·</span> Bride
               </p>
             </motion.div>
 
-            {/* Date, time and venue */}
+            {/* Wedding date and venue */}
             <motion.div
               {...fadeUp(0.2)}
-              whileHover={
-                shouldReduceMotion ? undefined : { y: -3 }
-              }
-              className="mt-6 rounded-xl border-y border-amber-300/20 bg-amber-100/[0.04] px-3 py-5 transition-colors duration-300 hover:border-amber-300/40 sm:px-6"
+              whileHover={shouldReduceMotion ? undefined : { y: -3 }}
+              className="mt-8 rounded-2xl border-y border-amber-300/25 bg-gradient-to-b from-amber-100/[0.07] to-transparent px-3 py-7 transition-colors duration-300 hover:border-amber-300/50 sm:mt-10 sm:px-8 sm:py-9"
             >
-              <p className="font-cinzel text-sm tracking-wide text-amber-200 sm:text-base sm:tracking-wider">
+              <p className="font-cinzel text-base font-semibold leading-relaxed tracking-wide text-amber-200 sm:text-xl sm:tracking-[0.1em] md:text-2xl">
                 Saturday, 23 January 2027
               </p>
 
-              <div className="mt-3 inline-flex flex-wrap items-center justify-center gap-2 text-xs text-stone-100 sm:text-sm">
-                <span className="text-amber-300">✦</span>
+              <div className="mt-5 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 font-cinzel text-xs text-stone-100 sm:mt-6 sm:gap-x-4 sm:text-base md:text-lg">
+                <span className="text-amber-400">✦</span>
                 <span>Guest Reception: 5:00 PM</span>
-                <span className="text-amber-300">✦</span>
+                <span className="text-amber-400">✦</span>
               </div>
 
-              <p className="mt-2 text-xs text-stone-200 sm:text-sm">
+              <p className="mt-3 font-cinzel text-sm tracking-wide text-stone-200 sm:text-base md:text-lg">
                 Dinner: 5:30 PM
               </p>
 
-              <p className="mt-4 text-xs leading-relaxed text-stone-200 sm:text-sm">
+              {/* Decorative separator */}
+              <div className="mx-auto my-6 h-px w-20 bg-gradient-to-r from-transparent via-amber-400/60 to-transparent sm:my-7 sm:w-28" />
+
+              <p className="font-cinzel text-sm font-semibold leading-relaxed tracking-wide text-stone-100 sm:text-lg md:text-xl">
                 Phka Chhouk Tep Wedding Hall
-                <br />
-                <span className="text-amber-200/80">
-                  Building G · Phnom Penh, Cambodia
-                </span>
+              </p>
+
+              <p className="mt-2 font-cinzel text-xs leading-relaxed tracking-wide text-amber-200/90 sm:text-sm md:text-base">
+                Building G · Phnom Penh, Cambodia
               </p>
             </motion.div>
 
             {/* Closing message */}
             <motion.div
               {...fadeUp(0.2)}
-              className="mt-6 space-y-2"
+              className="mt-8 space-y-3 sm:mt-10 sm:space-y-4"
             >
-              <p className="font-cinzel text-xs font-semibold tracking-[0.15em] text-amber-300 sm:text-sm sm:tracking-[0.2em]">
+              <p className="font-cinzel text-sm font-semibold tracking-[0.15em] text-amber-300 sm:text-base sm:tracking-[0.25em] md:text-lg">
                 WITH LOVE &amp; GRATITUDE
               </p>
 
-              <p className="text-xs leading-relaxed text-stone-300 sm:text-sm">
+              <p className="mx-auto max-w-lg text-sm leading-8 text-stone-200 sm:text-base sm:leading-9 md:text-lg">
                 Thank you for sharing in our special day.
               </p>
 
-              <p className="text-[10px] italic leading-relaxed text-amber-200/80 sm:text-xs">
+              <p className="font-cinzel text-xs italic leading-relaxed tracking-wide text-amber-200/80 sm:text-sm md:text-base">
                 Kindly refer to the map below for directions.
               </p>
             </motion.div>
@@ -682,19 +684,19 @@ export const InvitationCard: React.FC = () => {
                 repeat: Infinity,
                 ease: 'easeInOut',
               }}
-              className="mt-6 text-sm tracking-[0.5em] text-amber-400/80"
+              className="mt-8 font-cinzel text-base tracking-[0.5em] text-amber-400/80 sm:mt-10 sm:text-lg sm:tracking-[0.7em]"
             >
               ❧ ✦ ❧
             </motion.div>
-          </motion.div>
 
-          {/* Bottom greeting */}
-          <motion.p
-            {...fadeUp(0.15)}
-            className="mt-8 text-center text-[10px] tracking-wider text-stone-400 sm:text-xs"
-          >
-            WITH JOYFUL HEARTS, WE LOOK FORWARD TO CELEBRATING WITH YOU
-          </motion.p>
+            {/* Bottom greeting */}
+            <motion.p
+              {...fadeUp(0.15)}
+              className="mx-auto mt-9 max-w-2xl font-cinzel text-[10px] leading-7 tracking-[0.12em] text-stone-400 sm:mt-12 sm:text-xs sm:leading-8 sm:tracking-[0.2em] md:text-sm"
+            >
+              WITH JOYFUL HEARTS, WE LOOK FORWARD TO CELEBRATING WITH YOU
+            </motion.p>
+          </motion.div>
         </div>
       </motion.div>
     </section>

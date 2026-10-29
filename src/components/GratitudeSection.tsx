@@ -96,9 +96,14 @@ export const GratitudeSection: React.FC = () => {
               <span className="h-px w-6 bg-amber-300/30" />
             </div>
 
-            <p className="text-center font-semibold text-amber-100">
-              សូមជូនពរ ឯកឧត្តម លោកឧកញ៉ា លោកជំទាវ លោក លោកស្រី អ្នកនាងកញ្ញា សូមមានសុខភាពល្អ និងទទួលបានជោគជ័យគ្រប់ភារកិច្ច។
+            <p className="w-full whitespace-normal break-words text-center text-sm font-semibold leading-relaxed text-amber-100 sm:text-base">
+              សូមជូនពរ ឯកឧត្តម លោកឧកញ៉ា លោកជំទាវ លោក លោកស្រី អ្នកនាងកញ្ញា
             </p>
+            
+            <p className="w-full whitespace-normal break-words text-center text-sm font-semibold leading-relaxed text-amber-100 sm:text-base">
+              សូមមានសុខភាពល្អ និងទទួលបានជោគជ័យគ្រប់ភារកិច្ច។
+            </p>
+
           </div>
 
           {/* Signature Divider */}

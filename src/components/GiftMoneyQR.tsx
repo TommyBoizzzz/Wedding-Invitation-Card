@@ -278,14 +278,6 @@ export const GiftMoneyQR: React.FC<GiftMoneyQRProps> = ({
             <Download className="h-4 w-4 text-amber-300" />
             រក្សាទុក QR Code
           </button>
-
-          <div className="mt-5 flex items-start gap-3 rounded-2xl border border-white/10 bg-black/10 p-4">
-            <Wallet className="mt-0.5 h-5 w-5 shrink-0 text-amber-300" />
-            <p className="text-xs leading-6 text-stone-300">
-              បន្ទាប់ពីផ្ទេរចំណងដៃរួច លោកអ្នកអាចបំពេញឈ្មោះ និងចំនួនទឹកប្រាក់
-              នៅក្នុងទម្រង់ខាងស្តាំ។
-            </p>
-          </div>
         </motion.div>
 
         {/* Gift form card */}
@@ -537,27 +529,6 @@ export const GiftMoneyQR: React.FC<GiftMoneyQRProps> = ({
           </div>
         </motion.div>
       </div>
-
-      {/* Closing Note */}
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
-        className="mx-auto mt-10 max-w-xl px-5 pb-6 text-center sm:mt-12"
-      >
-        <Heart className="mx-auto mb-4 h-4 w-4 text-amber-300/70" />
-
-        <p className="font-khmer-title text-xs leading-8 text-stone-400 sm:text-sm sm:leading-9">
-          វត្តមាន និងទឹកចិត្តរបស់លោកអ្នក គឺជាកាដូដ៏មានតម្លៃបំផុតសម្រាប់យើងខ្ញុំ។
-          សូមអរគុណយ៉ាងជ្រាលជ្រៅ ដែលបានចំណាយពេលដ៏មានតម្លៃ
-          ដើម្បីចូលរួមចែករំលែកសុភមង្គលក្នុងថ្ងៃពិសេសរបស់យើងខ្ញុំ។
-        </p>
-
-        <p className="mt-4 font-serif text-[10px] italic tracking-[0.2em] text-amber-200/50 sm:text-xs">
-          With Love &amp; Gratitude
-        </p>
-      </motion.div>
     </section>
   );
 };
