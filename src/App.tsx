@@ -12,14 +12,21 @@ import { GratitudeSection } from './components/GratitudeSection';
 import { AudioPlayer } from './components/AudioPlayer';
 import { AdminGuestListModal } from './components/AdminGuestListModal';
 import { InviteLinkGeneratorModal } from './components/InviteLinkGeneratorModal';
+import { PreWeddingVideo } from './components/PreWeddingVideo';
 import { Heart } from 'lucide-react';
 
 export default function App() {
   const [isAdminOpen, setIsAdminOpen] = useState<boolean>(false);
   const [isInviteModalOpen, setIsInviteModalOpen] = useState<boolean>(false);
   const [guestName, setGuestName] = useState<string>('');
+  const [isPreWeddingVisible, setIsPreWeddingVisible] = useState<boolean>(false);
   const [isSplashVisible, setIsSplashVisible] = useState<boolean>(true);
   const [isMusicPlaying, setIsMusicPlaying] = useState<boolean>(false);
+
+  const handlePreWeddingComplete = () => {
+    setIsPreWeddingVisible(false);
+    setIsSplashVisible(false);
+  };
 
   useEffect(() => {
     // Read URL search params: ?to=... or ?guest=... or ?name=...
@@ -47,12 +54,16 @@ export default function App() {
     <div className="theme-olive relative min-h-screen overflow-x-hidden text-stone-100 font-khmer-body flex flex-col selection:bg-amber-200 selection:text-amber-900">
       <AudioPlayer isPlaying={isMusicPlaying} onPlayingChange={setIsMusicPlaying} />
 
-      {isSplashVisible ? (
+      {isPreWeddingVisible ? (
+        <PreWeddingVideo onComplete={handlePreWeddingComplete} />
+      ) : isSplashVisible ? (
         <SplashScreen
-          guestName={guestName || 'Mr. Alexandro Hale'}
           isMusicPlaying={isMusicPlaying}
           onMusicToggle={() => setIsMusicPlaying((prev) => !prev)}
-          onOpenInvitation={() => setIsSplashVisible(false)}
+          onOpenInvitation={() => {
+            setIsSplashVisible(false);
+            setIsPreWeddingVisible(true);
+          }}
         />
       ) : (
         <>

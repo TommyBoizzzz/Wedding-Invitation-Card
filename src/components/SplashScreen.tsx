@@ -8,6 +8,7 @@ import {
   Check,
   Sparkles,
 } from 'lucide-react';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 
 type SplashScreenProps = {
   isMusicPlaying?: boolean;
@@ -15,18 +16,12 @@ type SplashScreenProps = {
   onOpenInvitation?: () => void;
 };
 
-// Read the guest name from the invitation URL.
-// Your InviteLinkGeneratorModal generates ?to=...
+// Read guest name from ?to= or ?name=
 const getGuestNameFromUrl = (): string => {
   if (typeof window === 'undefined') return '';
 
   const params = new URLSearchParams(window.location.search);
-
-  return (
-    params.get('to')?.trim() ||
-    params.get('name')?.trim() ||
-    ''
-  );
+  return params.get('to')?.trim() || params.get('name')?.trim() || '';
 };
 
 export const SplashScreen: React.FC<SplashScreenProps> = ({
@@ -34,17 +29,22 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
   onMusicToggle,
   onOpenInvitation,
 }) => {
-  const [guestName, setGuestName] = useState<string>(
-    getGuestNameFromUrl
-  );
+  const shouldReduceMotion = useReducedMotion();
 
+  const [guestName, setGuestName] = useState<string>(getGuestNameFromUrl);
   const [isEditingGuest, setIsEditingGuest] = useState(false);
   const [isOpening, setIsOpening] = useState(false);
 
   const t = {
-    coupleNames: 'គីមហ៊ 💓 ធារ៉ា',
+    groomLabel: 'កូនកំលោះ · GROOM',
+    brideLabel: 'កូនក្រមុំ · BRIDE',
+    groomKhmer: 'ហេង គីមហ៊',
+    groomEnglish: 'Heng Kimhor',
+    brideKhmer: 'សន ធារ៉ា',
+    brideEnglish: 'Sorn Theara',
     weddingTitle: 'មង្គលការ',
     subtitle: 'សូមគោរពអញ្ជើញ',
+    weddingSubtitle: 'សិរីមង្គលអាពាហ៍ពិពាហ៍',
     invitationFor: 'លិខិតអញ្ជើញជូនចំពោះ',
     editGuest: 'ចុចលើឈ្មោះដើម្បីកែប្រែ',
     guestPlaceholder: 'សូមបញ្ចូលឈ្មោះ',
@@ -57,10 +57,28 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
     opening: 'សូមអញ្ជើញចូលរួមអបអរសាទរ',
   };
 
-  // Save the guest name and keep it synchronized with ?to=.
-  const handleSaveGuest = (
-    e: React.FormEvent<HTMLFormElement>
-  ) => {
+  // Animation settings
+  const fadeUp = (delay = 0) => ({
+    initial: shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 24 },
+    animate: { opacity: 1, y: 0 },
+    transition: {
+      duration: shouldReduceMotion ? 0 : 0.85,
+      delay: shouldReduceMotion ? 0 : delay,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
+  });
+
+  const fadeDown = (delay = 0) => ({
+    initial: shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: -22 },
+    animate: { opacity: 1, y: 0 },
+    transition: {
+      duration: shouldReduceMotion ? 0 : 1,
+      delay: shouldReduceMotion ? 0 : delay,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
+  });
+
+  const handleSaveGuest = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const name = guestName.trim();
@@ -76,9 +94,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
       url.searchParams.delete('to');
     }
 
-    // Remove the old parameter to avoid conflicting names.
     url.searchParams.delete('name');
-
     window.history.replaceState({}, '', url.toString());
   };
 
@@ -89,16 +105,34 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
 
     window.setTimeout(() => {
       onOpenInvitation?.();
-    }, 650);
+    }, shouldReduceMotion ? 0 : 1000);
   };
 
+  const petals = [
+    { left: '8%', delay: 0, duration: 12, size: 24, symbol: '✿' },
+    { left: '20%', delay: 2, duration: 15, size: 17, symbol: '✧' },
+    { left: '35%', delay: 4, duration: 13, size: 21, symbol: '❀' },
+    { left: '68%', delay: 1, duration: 14, size: 19, symbol: '✧' },
+    { left: '82%', delay: 3, duration: 12, size: 25, symbol: '✿' },
+    { left: '92%', delay: 5, duration: 16, size: 16, symbol: '❀' },
+  ];
+
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{
+        opacity: 1,
+        scale: isOpening && !shouldReduceMotion ? 1.025 : 1,
+      }}
+      transition={{
+        opacity: { duration: 0.8 },
+        scale: { duration: 1, ease: [0.65, 0, 0.35, 1] },
+      }}
       className={`wedding-splash fixed inset-0 z-50 h-screen h-[100dvh] w-full overflow-hidden overscroll-none ${
         isOpening ? 'splash-opening' : 'splash-enter'
       }`}
     >
-      {/* Ambient background decorations */}
+      {/* Luxury background */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 overflow-hidden"
@@ -106,52 +140,150 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
         <div className="splash-ambient splash-ambient-one" />
         <div className="splash-ambient splash-ambient-two" />
         <div className="wedding-splash-pattern absolute inset-0" />
-        <div className="splash-petal splash-petal-one">✿</div>
-        <div className="splash-petal splash-petal-two">✧</div>
-        <div className="splash-petal splash-petal-three">❀</div>
-        <div className="splash-petal splash-petal-four">✧</div>
+
+        {/* Floating flower petals */}
+        {!shouldReduceMotion &&
+          petals.map((petal, index) => (
+            <motion.span
+              key={index}
+              className="absolute top-[-30px] select-none text-[#d9bd7b]/60"
+              style={{
+                left: petal.left,
+                fontSize: petal.size,
+                filter: 'drop-shadow(0 0 8px rgba(201,150,53,0.25))',
+              }}
+              animate={{
+                y: ['0vh', '110vh'],
+                x: [0, 22, -16, 12, 0],
+                rotate: [0, 100, 220, 320],
+                opacity: [0, 0.8, 0.7, 0],
+              }}
+              transition={{
+                duration: petal.duration,
+                delay: petal.delay,
+                repeat: Infinity,
+                ease: 'linear',
+              }}
+            >
+              {petal.symbol}
+            </motion.span>
+          ))}
+
+        {/* Ambient golden light */}
+        <motion.div
+          className="absolute left-1/2 top-1/3 h-64 w-64 -translate-x-1/2 rounded-full bg-[#c99635]/10 blur-[90px] sm:h-96 sm:w-96"
+          animate={
+            shouldReduceMotion
+              ? {}
+              : {
+                  opacity: [0.3, 0.8, 0.3],
+                  scale: [0.85, 1.15, 0.85],
+                }
+          }
+          transition={{
+            duration: 7,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+
+        {/* Decorative symbols */}
+        <motion.div
+          className="splash-petal splash-petal-one"
+          animate={
+            shouldReduceMotion
+              ? {}
+              : { rotate: [0, 12, -12, 0], y: [0, -8, 0] }
+          }
+          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+        >
+          ✿
+        </motion.div>
+
+        <motion.div
+          className="splash-petal splash-petal-two"
+          animate={
+            shouldReduceMotion
+              ? {}
+              : { rotate: [0, 180, 360], opacity: [0.4, 1, 0.4] }
+          }
+          transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
+        >
+          ✧
+        </motion.div>
+
+        <motion.div
+          className="splash-petal splash-petal-three"
+          animate={
+            shouldReduceMotion
+              ? {}
+              : { rotate: [0, -15, 15, 0], scale: [1, 1.12, 1] }
+          }
+          transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+        >
+          ❀
+        </motion.div>
+
+        <motion.div
+          className="splash-petal splash-petal-four"
+          animate={
+            shouldReduceMotion
+              ? {}
+              : { rotate: [0, 180, 360], y: [0, 8, 0] }
+          }
+          transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
+        >
+          ✧
+        </motion.div>
       </div>
 
       {/* Music control */}
-      <div className="absolute left-3 right-3 top-3 z-30 flex justify-end sm:left-6 sm:right-6 sm:top-5">
-        <button
+      <motion.div
+        {...fadeDown(0.3)}
+        className="absolute left-3 right-3 top-3 z-30 flex justify-end sm:left-6 sm:right-6 sm:top-5"
+      >
+        <motion.button
           type="button"
           onClick={onMusicToggle}
           disabled={isOpening}
           aria-label={isMusicPlaying ? t.musicOff : t.musicOn}
           aria-pressed={isMusicPlaying}
+          whileHover={shouldReduceMotion ? {} : { scale: 1.05, y: -2 }}
+          whileTap={shouldReduceMotion ? {} : { scale: 0.94 }}
           className="splash-control"
         >
           {isMusicPlaying ? (
-            <Volume2
-              size={17}
-              className="animate-pulse text-[#e6c77f]"
-            />
+            <Volume2 size={17} className="animate-pulse text-[#e6c77f]" />
           ) : (
-            <VolumeX
-              size={17}
-              className="text-[#ded5bd]"
-            />
+            <VolumeX size={17} className="text-[#ded5bd]" />
           )}
 
           <span className="font-khmer-body">
             {isMusicPlaying ? t.musicOn : t.musicOff}
           </span>
-        </button>
-      </div>
+        </motion.button>
+      </motion.div>
 
       {/* Invitation cover */}
       <main className="relative z-10 flex h-full min-h-0 w-full flex-col items-center justify-between overflow-hidden px-4 pb-3 pt-16 text-center sm:px-8 sm:pb-5 sm:pt-20">
-        {/* Decorative floral arch */}
-        <div
+        {/* Floral arch */}
+        <motion.div
           aria-hidden="true"
           className="splash-floral-arch pointer-events-none absolute left-0 right-0 top-0"
+          initial={shouldReduceMotion ? false : { opacity: 0, y: -35 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: shouldReduceMotion ? 0 : 1.5,
+            ease: [0.22, 1, 0.36, 1],
+          }}
         >
-          <svg
+          <motion.svg
             viewBox="0 0 400 190"
             className="h-full w-full"
             preserveAspectRatio="xMidYMin slice"
             xmlns="http://www.w3.org/2000/svg"
+            animate={shouldReduceMotion ? {} : { y: [0, 4, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
           >
             <defs>
               <linearGradient
@@ -163,16 +295,8 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
                 gradientUnits="userSpaceOnUse"
               >
                 <stop stopColor="#c99635" stopOpacity=".5" />
-                <stop
-                  offset=".5"
-                  stopColor="#fdfbf7"
-                  stopOpacity=".9"
-                />
-                <stop
-                  offset="1"
-                  stopColor="#b8c6a7"
-                  stopOpacity=".5"
-                />
+                <stop offset=".5" stopColor="#fdfbf7" stopOpacity=".9" />
+                <stop offset="1" stopColor="#b8c6a7" stopOpacity=".5" />
               </linearGradient>
             </defs>
 
@@ -181,12 +305,18 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
               fill="url(#splash-arch-gradient)"
             />
 
-            <path
+            <motion.path
               d="M0 78C60 137 125 165 200 165S340 137 400 78"
               stroke="#c99635"
               strokeOpacity=".65"
               strokeWidth="1.3"
               fill="none"
+              initial={shouldReduceMotion ? false : { pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{
+                duration: shouldReduceMotion ? 0 : 2,
+                delay: 0.3,
+              }}
             />
 
             <path
@@ -195,191 +325,439 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
               strokeOpacity=".3"
               fill="none"
             />
-          </svg>
+          </motion.svg>
 
-          <span className="absolute left-4 top-10 text-2xl sm:left-10 sm:top-12 sm:text-4xl">
-            🌿
-          </span>
-          <span className="absolute right-4 top-10 text-2xl sm:right-10 sm:top-12 sm:text-4xl">
-            🌿
-          </span>
-          <span className="absolute left-8 top-16 text-xl sm:top-20 sm:text-2xl">
-            🌸
-          </span>
-          <span className="absolute right-8 top-16 text-xl sm:top-20 sm:text-2xl">
-            🌸
-          </span>
-          <span className="absolute left-1/2 top-20 -translate-x-1/2 text-lg sm:top-24 sm:text-xl">
+          {[
+            { position: 'left-4 top-10 sm:left-10 sm:top-12', icon: '🌿' },
+            { position: 'right-4 top-10 sm:right-10 sm:top-12', icon: '🌿' },
+            { position: 'left-8 top-16 sm:top-20', icon: '🌸' },
+            { position: 'right-8 top-16 sm:top-20', icon: '🌸' },
+          ].map((flower, index) => (
+            <motion.span
+              key={index}
+              className={`absolute ${flower.position} text-2xl sm:text-4xl`}
+              animate={
+                shouldReduceMotion
+                  ? {}
+                  : {
+                      y: [0, index % 2 === 0 ? -7 : 7, 0],
+                      rotate: [0, index % 2 === 0 ? 7 : -7, 0],
+                    }
+              }
+              transition={{
+                duration: 4 + index,
+                delay: index * 0.3,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+            >
+              {flower.icon}
+            </motion.span>
+          ))}
+
+          <motion.span
+            className="absolute left-1/2 top-20 -translate-x-1/2 text-lg sm:top-24 sm:text-xl"
+            animate={
+              shouldReduceMotion
+                ? {}
+                : {
+                    opacity: [0.4, 1, 0.4],
+                    scale: [0.85, 1.15, 0.85],
+                    rotate: [0, 20, 0],
+                  }
+            }
+            transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+          >
             ✨
-          </span>
-        </div>
+          </motion.span>
+        </motion.div>
 
-        {/* Couple's names */}
-        <section className="splash-content relative z-10 mt-1 w-full space-y-2 sm:mt-3 sm:space-y-4">
-          <div className="splash-monogram mx-auto">
-            <Heart
-              size={24}
-              className="fill-[#c99635] text-[#c99635]"
+        {/* Groom and bride names */}
+        <motion.section
+          {...fadeUp(0.35)}
+          className="splash-content relative z-10 mt-1 w-full space-y-2 sm:mt-3 sm:space-y-3"
+        >
+          {/* Glowing heart monogram */}
+          <motion.div
+            className="splash-monogram relative mx-auto flex items-center justify-center"
+            animate={
+              shouldReduceMotion
+                ? {}
+                : {
+                    scale: [1, 1.07, 1],
+                    boxShadow: [
+                      '0 0 12px rgba(201,150,53,0.12)',
+                      '0 0 30px rgba(201,150,53,0.4)',
+                      '0 0 12px rgba(201,150,53,0.12)',
+                    ],
+                  }
+            }
+            transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
+          >
+            <motion.div
+              animate={shouldReduceMotion ? {} : { scale: [1, 1.12, 1] }}
+              transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              <Heart size={24} className="fill-[#c99635] text-[#c99635]" />
+            </motion.div>
+
+            {!shouldReduceMotion && (
+              <motion.span
+                className="absolute -right-3 -top-2 text-xs text-[#FFE8A3]"
+                animate={{ opacity: [0, 1, 0], y: [5, -5, 5] }}
+                transition={{ duration: 2.5, repeat: Infinity }}
+              >
+                ✨
+              </motion.span>
+            )}
+          </motion.div>
+
+          {/* Wedding subtitle */}
+          <motion.p
+            {...fadeUp(0.55)}
+            className="text-fluid-xs font-khmer-body font-semibold tracking-[0.08em] text-[#FFF0C2] [text-shadow:0_1px_3px_rgba(35,45,30,0.9),0_0_10px_rgba(201,150,53,0.35)] sm:tracking-[0.2em]"
+          >
+            {t.weddingSubtitle}
+          </motion.p>
+
+          {/* Groom */}
+          <motion.div
+            {...fadeUp(0.7)}
+            className="space-y-0.5 sm:space-y-1"
+          >
+            <p className="font-khmer-body text-[10px] font-semibold tracking-[0.12em] text-[#FFE8A3] [text-shadow:0_1px_3px_rgba(35,45,30,0.9)] sm:text-xs sm:tracking-[0.18em]">
+              {t.groomLabel}
+            </p>
+
+            <h1 className="splash-couple-name text-fluid-xl font-khmer-title sm:text-fluid-2xl">
+              {t.groomKhmer}
+            </h1>
+
+            <p className="font-serif text-sm font-medium tracking-[0.1em] text-[#FFF0C2] [text-shadow:0_1px_3px_rgba(35,45,30,0.85)] sm:text-base sm:tracking-[0.15em]">
+              {t.groomEnglish}
+            </p>
+          </motion.div>
+
+          {/* Decorative divider */}
+          <motion.div
+            {...fadeUp(0.85)}
+            className="flex items-center justify-center gap-4 py-1"
+          >
+            <motion.span
+              className="h-px w-10 bg-gradient-to-r from-transparent to-[#e6c77f] sm:w-14"
+              initial={shouldReduceMotion ? false : { scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 1.1, delay: 0.8 }}
+              style={{ transformOrigin: 'right' }}
             />
-          </div>
 
-          <p className="text-fluid-xs font-khmer-body uppercase tracking-[0.15em] text-[#d9bd7b] sm:tracking-[0.3em]">
-            សិរីមង្គលអាពាហ៍ពិពាហ៍
-          </p>
+            <motion.div
+              animate={shouldReduceMotion ? {} : { rotate: [0, 10, -10, 0] }}
+              transition={{ duration: 5, repeat: Infinity }}
+            >
+              <Heart size={19} className="fill-[#e6c77f] text-[#e6c77f]" />
+            </motion.div>
 
-          <h1 className="splash-couple-name text-fluid-xl font-khmer-title sm:text-fluid-2xl">
-            {t.coupleNames}
-          </h1>
-
-          <div className="flex items-center justify-center gap-4">
-            <span className="h-px w-10 bg-gradient-to-r from-transparent to-[#c99635] sm:w-12" />
-
-            <Heart
-              size={18}
-              className="fill-[#c99635] text-[#c99635]"
+            <motion.span
+              className="h-px w-10 bg-gradient-to-l from-transparent to-[#e6c77f] sm:w-14"
+              initial={shouldReduceMotion ? false : { scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 1.1, delay: 0.8 }}
+              style={{ transformOrigin: 'left' }}
             />
+          </motion.div>
 
-            <span className="h-px w-10 bg-gradient-to-l from-transparent to-[#c99635] sm:w-12" />
-          </div>
+          {/* Bride */}
+          <motion.div
+            {...fadeUp(1)}
+            className="space-y-0.5 sm:space-y-1"
+          >
+            <p className="font-khmer-body text-[10px] font-semibold tracking-[0.12em] text-[#FFE8A3] [text-shadow:0_1px_3px_rgba(35,45,30,0.9)] sm:text-xs sm:tracking-[0.18em]">
+              {t.brideLabel}
+            </p>
 
-          <h2 className="text-fluid-lg font-khmer-title text-[#fdfbf7] sm:text-2xl">
+            <h2 className="text-fluid-xl font-khmer-title text-[#FFF8E8] [text-shadow:0_1px_4px_rgba(25,35,25,0.85)] sm:text-fluid-2xl">
+              {t.brideKhmer}
+            </h2>
+
+            <p className="font-serif text-sm font-medium tracking-[0.1em] text-[#FFF0C2] [text-shadow:0_1px_3px_rgba(35,45,30,0.85)] sm:text-base sm:tracking-[0.15em]">
+              {t.brideEnglish}
+            </p>
+          </motion.div>
+
+          {/* Wedding title */}
+          <motion.h2
+            {...fadeUp(1.15)}
+            className="pt-1 text-fluid-lg font-khmer-title text-[#FFF8E8] [text-shadow:0_1px_4px_rgba(25,35,25,0.85)] sm:text-2xl"
+          >
             {t.weddingTitle}
-          </h2>
+          </motion.h2>
 
-          <p className="font-khmer-body text-base text-[#e0d5b8] sm:text-xl">
+          <motion.p
+            {...fadeUp(1.3)}
+            className="font-khmer-body text-sm text-[#F8E8C4] [text-shadow:0_1px_3px_rgba(35,45,30,0.9)] sm:text-xl"
+          >
             {t.subtitle}
-          </p>
-        </section>
+          </motion.p>
+        </motion.section>
 
-        {/* Guest name card: hidden when no name is provided */}
-        {(guestName.trim() || isEditingGuest) && (
-          <section className="splash-guest-section relative z-10 my-2 w-full max-w-xs shrink-0 sm:my-4 sm:max-w-sm">
-            <div className="mb-1 flex items-center justify-center gap-3 text-[#d9bd7b] sm:mb-2">
-              <span>❦</span>
-              <span className="h-px w-12 bg-[#c99635]/60 sm:w-16" />
-              <Sparkles size={17} />
-              <span className="h-px w-12 bg-[#c99635]/60 sm:w-16" />
-              <span>❦</span>
-            </div>
-
-            <div className="splash-guest-card relative rounded-2xl border p-4 sm:p-7">
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-2 rounded-xl border border-[#c99635]/25"
-              />
-
-              <div className="relative z-10 space-y-3 sm:space-y-4">
-                <p className="text-fluid-xs font-khmer-body tracking-[0.08em] text-[#68725a] sm:tracking-[0.12em]">
-                  {t.invitationFor}
-                </p>
-
-                <div className="mx-auto h-px w-12 bg-[#c99635]" />
-
-                {isEditingGuest ? (
-                  <form
-                    onSubmit={handleSaveGuest}
-                    className="space-y-3"
-                  >
-                    <input
-                      type="text"
-                      value={guestName}
-                      onChange={(e) =>
-                        setGuestName(e.target.value)
-                      }
-                      placeholder={t.guestPlaceholder}
-                      aria-label={t.guestPlaceholder}
-                      autoFocus
-                      className="splash-guest-input font-khmer-body"
-                    />
-
-                    <button
-                      type="submit"
-                      className="splash-save-button font-khmer-body"
-                    >
-                      <Check size={16} />
-                      {t.saveName}
-                    </button>
-                  </form>
-                ) : (
-                  <button
-                    type="button"
-                    onClick={() => setIsEditingGuest(true)}
-                    disabled={isOpening}
-                    title={t.editGuest}
-                    className="group w-full rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c99635]"
-                  >
-                    <span className="block break-words font-khmer-body text-lg font-semibold leading-relaxed text-[#243629] transition-colors group-hover:text-[#9b7429] sm:text-xl">
-                      {guestName.trim()}
-                    </span>
-
-                    <span className="mt-1 block text-fluid-xs font-khmer-body text-[#7a806c] sm:mt-2">
-                      {t.editGuest}
-                    </span>
-                  </button>
-                )}
+        {/* Guest name card */}
+        <AnimatePresence mode="wait">
+          {(guestName.trim() || isEditingGuest) && (
+            <motion.section
+              key="guest-card"
+              initial={
+                shouldReduceMotion
+                  ? false
+                  : { opacity: 0, y: 35, scale: 0.96 }
+              }
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={
+                shouldReduceMotion
+                  ? {}
+                  : { opacity: 0, y: 15, scale: 0.97 }
+              }
+              transition={{
+                duration: shouldReduceMotion ? 0 : 0.75,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="splash-guest-section relative z-10 my-1 w-full max-w-xs shrink-0 sm:my-3 sm:max-w-sm"
+            >
+              <div className="mb-1 flex items-center justify-center gap-3 text-[#d9bd7b] sm:mb-2">
+                <span>❦</span>
+                <span className="h-px w-12 bg-[#c99635]/60 sm:w-16" />
+                <Sparkles size={17} />
+                <span className="h-px w-12 bg-[#c99635]/60 sm:w-16" />
+                <span>❦</span>
               </div>
-            </div>
 
-            <div className="mt-1 flex items-center justify-center gap-3 text-[#d9bd7b] sm:mt-2">
-              <span>❦</span>
-              <span className="h-px w-12 bg-[#c99635]/60 sm:w-16" />
-              <Heart
-                size={14}
-                className="fill-[#c99635]"
-              />
-              <span className="h-px w-12 bg-[#c99635]/60 sm:w-16" />
-              <span>❦</span>
-            </div>
-          </section>
-        )}
+              <motion.div
+                className="splash-guest-card relative rounded-2xl border p-3 sm:p-7"
+                whileHover={
+                  shouldReduceMotion
+                    ? {}
+                    : {
+                        y: -3,
+                        boxShadow: '0 12px 40px rgba(201,150,53,0.17)',
+                      }
+                }
+                transition={{ duration: 0.3 }}
+              >
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-2 rounded-xl border border-[#c99635]/25"
+                />
+
+                {!shouldReduceMotion && (
+                  <motion.div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute right-5 top-5 text-[#c99635]/60"
+                    animate={{
+                      rotate: [0, 90, 180],
+                      opacity: [0.3, 1, 0.3],
+                    }}
+                    transition={{ duration: 5, repeat: Infinity }}
+                  >
+                    <Sparkles size={15} />
+                  </motion.div>
+                )}
+
+                <div className="relative z-10 space-y-3 sm:space-y-4">
+                  <p className="text-fluid-xs font-khmer-body tracking-[0.08em] text-[#68725a] sm:tracking-[0.12em]">
+                    {t.invitationFor}
+                  </p>
+
+                  <div className="mx-auto h-px w-12 bg-[#c99635]" />
+
+                  {isEditingGuest ? (
+                    <form onSubmit={handleSaveGuest} className="space-y-3">
+                      <input
+                        type="text"
+                        value={guestName}
+                        onChange={(e) => setGuestName(e.target.value)}
+                        placeholder={t.guestPlaceholder}
+                        aria-label={t.guestPlaceholder}
+                        autoFocus
+                        className="splash-guest-input font-khmer-body"
+                      />
+
+                      <motion.button
+                        type="submit"
+                        whileHover={shouldReduceMotion ? {} : { scale: 1.03 }}
+                        whileTap={shouldReduceMotion ? {} : { scale: 0.96 }}
+                        className="splash-save-button font-khmer-body"
+                      >
+                        <Check size={16} />
+                        {t.saveName}
+                      </motion.button>
+                    </form>
+                  ) : (
+                    <motion.button
+                      type="button"
+                      onClick={() => setIsEditingGuest(true)}
+                      disabled={isOpening}
+                      title={t.editGuest}
+                      whileHover={
+                        shouldReduceMotion ? {} : { scale: 1.025 }
+                      }
+                      whileTap={
+                        shouldReduceMotion ? {} : { scale: 0.985 }
+                      }
+                      className="group w-full rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c99635]"
+                    >
+                      <span className="block break-words font-khmer-body text-lg font-semibold leading-relaxed text-[#243629] transition-colors group-hover:text-[#9b7429] sm:text-xl">
+                        {guestName.trim()}
+                      </span>
+
+                      <span className="mt-1 block text-fluid-xs font-khmer-body text-[#7a806c] sm:mt-2">
+                        {t.editGuest}
+                      </span>
+                    </motion.button>
+                  )}
+                </div>
+              </motion.div>
+
+              <div className="mt-1 flex items-center justify-center gap-3 text-[#d9bd7b] sm:mt-2">
+                <span>❦</span>
+                <span className="h-px w-12 bg-[#c99635]/60 sm:w-16" />
+                <Heart size={14} className="fill-[#c99635]" />
+                <span className="h-px w-12 bg-[#c99635]/60 sm:w-16" />
+                <span>❦</span>
+              </div>
+            </motion.section>
+          )}
+        </AnimatePresence>
 
         {/* Open invitation */}
-        <section className="splash-content relative z-10 mb-1 w-full max-w-xs shrink-0 space-y-2 sm:mb-2 sm:max-w-sm sm:space-y-3">
-          <button
+        <motion.section
+          {...fadeUp(1.35)}
+          className="splash-content relative z-10 mb-1 w-full max-w-xs shrink-0 space-y-2 sm:mb-2 sm:max-w-sm sm:space-y-3"
+        >
+          <motion.button
             type="button"
             onClick={handleOpenInvitation}
             disabled={isOpening}
-            className={`splash-open-button ${
+            whileHover={
+              shouldReduceMotion
+                ? {}
+                : {
+                    scale: 1.035,
+                    y: -3,
+                    boxShadow: '0 0 32px rgba(201,150,53,0.3)',
+                  }
+            }
+            whileTap={shouldReduceMotion ? {} : { scale: 0.96 }}
+            className={`splash-open-button relative overflow-hidden ${
               isOpening ? 'splash-open-button-active' : ''
             }`}
           >
-            <span className="splash-open-icon">
-              <MailOpen size={21} />
-            </span>
+            {/* Moving gold shimmer */}
+            {!shouldReduceMotion && !isOpening && (
+              <motion.span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-y-0 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                initial={{ left: '-50%' }}
+                animate={{ left: '140%' }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  repeatDelay: 1.8,
+                  ease: 'easeInOut',
+                }}
+              />
+            )}
 
-            <span className="font-khmer-body text-sm font-semibold tracking-wide sm:text-base">
+            <motion.span
+              className="splash-open-icon relative z-10"
+              animate={
+                shouldReduceMotion || isOpening
+                  ? {}
+                  : {
+                      y: [0, -2, 0],
+                      rotate: [0, -4, 4, 0],
+                    }
+              }
+              transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              <MailOpen size={21} />
+            </motion.span>
+
+            <span className="relative z-10 font-khmer-body text-sm font-semibold tracking-wide sm:text-base">
               {isOpening ? t.opening : t.openBtn}
             </span>
-          </button>
+          </motion.button>
 
-          <p className="text-fluid-xs font-khmer-body text-[#e0d5b8]">
+          <motion.p
+            className="text-fluid-xs font-khmer-body text-[#FFF0D0] [text-shadow:0_1px_3px_rgba(35,45,30,0.9)]"
+            animate={
+              shouldReduceMotion ? {} : { opacity: [0.65, 1, 0.65] }
+            }
+            transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+          >
             {t.openHint}
-          </p>
-        </section>
+          </motion.p>
+        </motion.section>
 
         {/* Bottom decorations */}
         <div
           aria-hidden="true"
           className="pointer-events-none absolute bottom-0 left-0 right-0 h-16 overflow-hidden sm:h-24"
         >
-          <div className="absolute -bottom-16 left-1/2 h-32 w-72 -translate-x-1/2 rounded-full border border-[#c99635]/30" />
-          <div className="absolute -bottom-20 left-1/2 h-32 w-60 -translate-x-1/2 rounded-full border border-[#c99635]/20" />
+          <motion.div
+            className="absolute -bottom-16 left-1/2 h-32 w-72 -translate-x-1/2 rounded-full border border-[#c99635]/30"
+            animate={
+              shouldReduceMotion
+                ? {}
+                : { scale: [1, 1.08, 1], opacity: [0.3, 0.7, 0.3] }
+            }
+            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+          />
 
-          <span className="absolute bottom-2 left-3 text-2xl sm:bottom-4 sm:left-5 sm:text-3xl">
+          <motion.div
+            className="absolute -bottom-20 left-1/2 h-32 w-60 -translate-x-1/2 rounded-full border border-[#c99635]/20"
+            animate={
+              shouldReduceMotion
+                ? {}
+                : { scale: [1.05, 1, 1.05], opacity: [0.2, 0.5, 0.2] }
+            }
+            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+          />
+
+          <motion.span
+            className="absolute bottom-2 left-3 text-2xl sm:bottom-4 sm:left-5 sm:text-3xl"
+            animate={
+              shouldReduceMotion
+                ? {}
+                : { rotate: [0, 8, -5, 0], y: [0, -4, 0] }
+            }
+            transition={{ duration: 5, repeat: Infinity }}
+          >
             🌿
-          </span>
-          <span className="absolute bottom-2 right-3 text-2xl sm:bottom-4 sm:right-5 sm:text-3xl">
+          </motion.span>
+
+          <motion.span
+            className="absolute bottom-2 right-3 text-2xl sm:bottom-4 sm:right-5 sm:text-3xl"
+            animate={
+              shouldReduceMotion
+                ? {}
+                : { rotate: [0, -8, 5, 0], y: [0, -4, 0] }
+            }
+            transition={{ duration: 5, repeat: Infinity, delay: 0.5 }}
+          >
             🌿
-          </span>
+          </motion.span>
         </div>
 
         {/* Footer */}
-        <footer className="relative z-10 mt-1 shrink-0 px-3 text-center">
-          <p className="font-khmer-body text-xs text-[#d9bd7b] sm:text-sm">
+        <motion.footer
+          {...fadeUp(1.55)}
+          className="relative z-10 mt-1 shrink-0 px-3 text-center"
+        >
+          <p className="font-khmer-body text-xs text-[#FFE8A3] [text-shadow:0_1px_3px_rgba(35,45,30,0.9)] sm:text-sm">
             {t.footer}
           </p>
-        </footer>
+        </motion.footer>
       </main>
-    </div>
+    </motion.div>
   );
 };
