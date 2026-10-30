@@ -36,17 +36,14 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
   const [isOpening, setIsOpening] = useState(false);
 
   const t = {
-    groomLabel: 'កូនកំលោះ · GROOM',
-    brideLabel: 'កូនក្រមុំ · BRIDE',
+    groomLabel: 'កូនកំលោះ',
+    brideLabel: 'កូនក្រមុំ',
     groomKhmer: 'ហេង គីមហ៊',
-    groomEnglish: 'Heng Kimhor',
     brideKhmer: 'សន ធារ៉ា',
-    brideEnglish: 'Sorn Theara',
     weddingTitle: 'មង្គលការ',
     subtitle: 'សូមគោរពអញ្ជើញ',
     weddingSubtitle: 'សិរីមង្គលអាពាហ៍ពិពាហ៍',
     invitationFor: 'លិខិតអញ្ជើញជូនចំពោះ',
-    editGuest: 'ចុចលើឈ្មោះដើម្បីកែប្រែ',
     guestPlaceholder: 'សូមបញ្ចូលឈ្មោះ',
     saveName: 'រក្សាទុក',
     musicOn: 'បើកតន្ត្រី',
@@ -265,7 +262,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
       </motion.div>
 
       {/* Invitation cover */}
-      <main className="relative z-10 flex h-full min-h-0 w-full flex-col items-center justify-between overflow-hidden px-4 pb-3 pt-16 text-center sm:px-8 sm:pb-5 sm:pt-20">
+      <main className="relative z-10 flex h-full min-h-0 w-full flex-col items-center gap-4 overflow-x-hidden overflow-y-auto px-4 pb-8 pt-20 text-center sm:gap-6 sm:px-8 sm:pb-10 sm:pt-24 lg:gap-7">
         {/* Floral arch */}
         <motion.div
           aria-hidden="true"
@@ -373,9 +370,11 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
         </motion.div>
 
         {/* Groom and bride names */}
+        <div className="h-[clamp(1.5rem,5vh,4rem)] w-full shrink-0" aria-hidden="true" />
+
         <motion.section
           {...fadeUp(0.35)}
-          className="splash-content relative z-10 mt-1 w-full space-y-2 sm:mt-3 sm:space-y-3"
+          className="splash-content relative z-10 mt-1 w-full max-w-3xl shrink-0 space-y-3 sm:mt-3 sm:space-y-4 lg:space-y-5"
         >
           {/* Glowing heart monogram */}
           <motion.div
@@ -415,87 +414,63 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
           {/* Wedding subtitle */}
           <motion.p
             {...fadeUp(0.55)}
-            className="text-fluid-xs font-khmer-body font-semibold tracking-[0.08em] text-[#FFF0C2] [text-shadow:0_1px_3px_rgba(35,45,30,0.9),0_0_10px_rgba(201,150,53,0.35)] sm:tracking-[0.2em]"
+            className="text-lg font-khmer-body font-semibold tracking-[0.12em] text-[#FFF0C2] [text-shadow:0_1px_3px_rgba(35,45,30,0.9),0_0_10px_rgba(201,150,53,0.35)] sm:text-xl sm:tracking-[0.2em] md:text-2xl md:tracking-[0.25em] lg:text-3xl"
           >
             {t.weddingSubtitle}
           </motion.p>
 
-          {/* Groom */}
           <motion.div
             {...fadeUp(0.7)}
-            className="space-y-0.5 sm:space-y-1"
+            className="mx-auto flex w-full max-w-2xl items-center justify-center gap-2 sm:gap-5 md:gap-8"
           >
-            <p className="font-khmer-body text-[10px] font-semibold tracking-[0.12em] text-[#FFE8A3] [text-shadow:0_1px_3px_rgba(35,45,30,0.9)] sm:text-xs sm:tracking-[0.18em]">
-              {t.groomLabel}
-            </p>
+            {/* Groom */}
+            <div className="min-w-0 flex-1 space-y-1 text-center sm:space-y-2">
+              <p className="break-words font-khmer-body text-xs font-semibold tracking-[0.06em] text-[#FFE8A3] [text-shadow:0_1px_3px_rgba(35,45,30,0.9)] sm:text-sm sm:tracking-[0.12em] md:text-base">
+                {t.groomLabel}
+              </p>
 
-            <h1 className="splash-couple-name text-fluid-xl font-khmer-title sm:text-fluid-2xl">
-              {t.groomKhmer}
-            </h1>
+              <h1 className="splash-couple-name text-[clamp(1.35rem,4.5vw,2.5rem)] font-khmer-title leading-tight" >
+                {t.groomKhmer}
+              </h1>
+            </div>
 
-            <p className="font-serif text-sm font-medium tracking-[0.1em] text-[#FFF0C2] [text-shadow:0_1px_3px_rgba(35,45,30,0.85)] sm:text-base sm:tracking-[0.15em]">
-              {t.groomEnglish}
-            </p>
-          </motion.div>
-
-          {/* Decorative divider */}
-          <motion.div
-            {...fadeUp(0.85)}
-            className="flex items-center justify-center gap-4 py-1"
-          >
-            <motion.span
-              className="h-px w-10 bg-gradient-to-r from-transparent to-[#e6c77f] sm:w-14"
-              initial={shouldReduceMotion ? false : { scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 1.1, delay: 0.8 }}
-              style={{ transformOrigin: 'right' }}
-            />
-
+            {/* Decorative divider */}
             <motion.div
-              animate={shouldReduceMotion ? {} : { rotate: [0, 10, -10, 0] }}
-              transition={{ duration: 5, repeat: Infinity }}
+              {...fadeUp(0.85)}
+              className="flex flex-shrink-0 items-center justify-center"
             >
-              <Heart size={19} className="fill-[#e6c77f] text-[#e6c77f]" />
+              <motion.span
+                className="h-12 w-px shrink-0 bg-gradient-to-b from-transparent via-[#e6c77f] to-transparent sm:h-16"
+                initial={shouldReduceMotion ? false : { scaleY: 0 }}
+                animate={{ scaleY: 1 }}
+                transition={{ duration: 1.1, delay: 0.8 }}
+                style={{ transformOrigin: 'center' }}
+              />
             </motion.div>
 
-            <motion.span
-              className="h-px w-10 bg-gradient-to-l from-transparent to-[#e6c77f] sm:w-14"
-              initial={shouldReduceMotion ? false : { scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 1.1, delay: 0.8 }}
-              style={{ transformOrigin: 'left' }}
-            />
-          </motion.div>
+            {/* Bride */}
+            <div className="min-w-0 flex-1 space-y-1 text-center sm:space-y-2">
+              <p className="break-words font-khmer-body text-xs font-semibold tracking-[0.06em] text-[#FFE8A3] [text-shadow:0_1px_3px_rgba(35,45,30,0.9)] sm:text-sm sm:tracking-[0.12em] md:text-base">
+                {t.brideLabel}
+              </p>
 
-          {/* Bride */}
-          <motion.div
-            {...fadeUp(1)}
-            className="space-y-0.5 sm:space-y-1"
-          >
-            <p className="font-khmer-body text-[10px] font-semibold tracking-[0.12em] text-[#FFE8A3] [text-shadow:0_1px_3px_rgba(35,45,30,0.9)] sm:text-xs sm:tracking-[0.18em]">
-              {t.brideLabel}
-            </p>
-
-            <h2 className="text-fluid-xl font-khmer-title text-[#FFF8E8] [text-shadow:0_1px_4px_rgba(25,35,25,0.85)] sm:text-fluid-2xl">
-              {t.brideKhmer}
-            </h2>
-
-            <p className="font-serif text-sm font-medium tracking-[0.1em] text-[#FFF0C2] [text-shadow:0_1px_3px_rgba(35,45,30,0.85)] sm:text-base sm:tracking-[0.15em]">
-              {t.brideEnglish}
-            </p>
+              <h2 className="splash-couple-name text-[clamp(1.35rem,4.5vw,2.5rem)] font-khmer-title leading-tight" >
+                {t.brideKhmer}
+              </h2>
+            </div>
           </motion.div>
 
           {/* Wedding title */}
           <motion.h2
             {...fadeUp(1.15)}
-            className="pt-1 text-fluid-lg font-khmer-title text-[#FFF8E8] [text-shadow:0_1px_4px_rgba(25,35,25,0.85)] sm:text-2xl"
+            className="pt-1 text-2xl font-khmer-title text-[#FFF8E8] [text-shadow:0_1px_4px_rgba(25,35,25,0.85)] sm:text-3xl md:text-4xl"
           >
             {t.weddingTitle}
           </motion.h2>
 
           <motion.p
             {...fadeUp(1.3)}
-            className="font-khmer-body text-sm text-[#F8E8C4] [text-shadow:0_1px_3px_rgba(35,45,30,0.9)] sm:text-xl"
+            className="font-khmer-body text-base text-[#F8E8C4] [text-shadow:0_1px_3px_rgba(35,45,30,0.9)] sm:text-xl md:text-2xl"
           >
             {t.subtitle}
           </motion.p>
@@ -503,7 +478,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
 
         {/* Guest name card */}
         <AnimatePresence mode="wait">
-          {(guestName.trim() || isEditingGuest) && (
+          {true && (
             <motion.section
               key="guest-card"
               initial={
@@ -521,7 +496,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
                 duration: shouldReduceMotion ? 0 : 0.75,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="splash-guest-section relative z-10 my-1 w-full max-w-xs shrink-0 sm:my-3 sm:max-w-sm"
+              className="splash-guest-section relative z-10 my-1 w-full max-w-md shrink-0 sm:my-2 sm:max-w-lg lg:max-w-xl"
             >
               <div className="mb-1 flex items-center justify-center gap-3 text-[#d9bd7b] sm:mb-2">
                 <span>❦</span>
@@ -532,7 +507,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
               </div>
 
               <motion.div
-                className="splash-guest-card relative rounded-2xl border p-3 sm:p-7"
+                className="splash-guest-card relative rounded-2xl border p-5 sm:p-7 md:p-8"
                 whileHover={
                   shouldReduceMotion
                     ? {}
@@ -562,12 +537,12 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
                   </motion.div>
                 )}
 
-                <div className="relative z-10 space-y-3 sm:space-y-4">
-                  <p className="text-fluid-xs font-khmer-body tracking-[0.08em] text-[#68725a] sm:tracking-[0.12em]">
+                <div className="relative z-10 space-y-4 sm:space-y-5">
+                  <p className="font-khmer-body text-base leading-relaxed tracking-[0.06em] text-[#68725a] sm:text-lg sm:tracking-[0.1em] md:text-xl">
                     {t.invitationFor}
                   </p>
 
-                  <div className="mx-auto h-px w-12 bg-[#c99635]" />
+                  <div className="mx-auto h-0.5 w-16 bg-[#c99635] sm:w-24" />
 
                   {isEditingGuest ? (
                     <form onSubmit={handleSaveGuest} className="space-y-3">
@@ -596,7 +571,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
                       type="button"
                       onClick={() => setIsEditingGuest(true)}
                       disabled={isOpening}
-                      title={t.editGuest}
+                      title=""
                       whileHover={
                         shouldReduceMotion ? {} : { scale: 1.025 }
                       }
@@ -605,12 +580,11 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
                       }
                       className="group w-full rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c99635]"
                     >
-                      <span className="block break-words font-khmer-body text-lg font-semibold leading-relaxed text-[#243629] transition-colors group-hover:text-[#9b7429] sm:text-xl">
+                      <span className="block break-words [overflow-wrap:anywhere] font-khmer-body text-2xl font-bold leading-snug text-[#243629] transition-colors group-hover:text-[#9b7429] sm:text-3xl md:text-4xl">
                         {guestName.trim()}
                       </span>
 
-                      <span className="mt-1 block text-fluid-xs font-khmer-body text-[#7a806c] sm:mt-2">
-                        {t.editGuest}
+                      <span className="mt-2 block text-sm leading-relaxed font-khmer-body text-[#7a806c] sm:mt-3 sm:text-base md:text-lg">
                       </span>
                     </motion.button>
                   )}
@@ -631,7 +605,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
         {/* Open invitation */}
         <motion.section
           {...fadeUp(1.35)}
-          className="splash-content relative z-10 mb-1 w-full max-w-xs shrink-0 space-y-2 sm:mb-2 sm:max-w-sm sm:space-y-3"
+          className="splash-content relative z-10 mb-2 w-full max-w-md shrink-0 space-y-3 sm:mb-3 sm:max-w-lg sm:space-y-4"
         >
           <motion.button
             type="button"
@@ -682,13 +656,13 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
               <MailOpen size={21} />
             </motion.span>
 
-            <span className="relative z-10 font-khmer-body text-sm font-semibold tracking-wide sm:text-base">
+            <span className="relative z-10 font-khmer-body text-lg font-semibold tracking-wide sm:text-xl md:text-2xl">
               {isOpening ? t.opening : t.openBtn}
             </span>
           </motion.button>
 
           <motion.p
-            className="text-fluid-xs font-khmer-body text-[#FFF0D0] [text-shadow:0_1px_3px_rgba(35,45,30,0.9)]"
+            className="font-khmer-body text-sm leading-relaxed text-[#FFF0D0] [text-shadow:0_1px_3px_rgba(35,45,30,0.9)] sm:text-base md:text-lg"
             animate={
               shouldReduceMotion ? {} : { opacity: [0.65, 1, 0.65] }
             }
@@ -753,7 +727,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
           {...fadeUp(1.55)}
           className="relative z-10 mt-1 shrink-0 px-3 text-center"
         >
-          <p className="font-khmer-body text-xs text-[#FFE8A3] [text-shadow:0_1px_3px_rgba(35,45,30,0.9)] sm:text-sm">
+          <p className="font-khmer-body text-sm text-[#FFE8A3] [text-shadow:0_1px_3px_rgba(35,45,30,0.9)] sm:text-base md:text-lg">
             {t.footer}
           </p>
         </motion.footer>

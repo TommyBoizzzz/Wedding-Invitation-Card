@@ -199,7 +199,7 @@ export const InvitationCard: React.FC = () => {
                   shouldReduceMotion ? undefined : { y: -2 }
                 }
               >
-                ហេង គីមហ៊
+              គីមហ៊
               </motion.span>
 
               <motion.span
@@ -223,7 +223,7 @@ export const InvitationCard: React.FC = () => {
                   shouldReduceMotion ? undefined : { y: -2 }
                 }
               >
-                សន ធារ៉ា
+              ធារ៉ា
               </motion.span>
             </motion.div>
 
@@ -282,10 +282,8 @@ export const InvitationCard: React.FC = () => {
             {/* Groom's family */}
             <motion.div
               {...fadeUp(0.1)}
-              whileHover={
-                shouldReduceMotion ? undefined : { y: -3 }
-              }
-              className="space-y-2 rounded-xl p-2 transition-colors duration-300 hover:bg-white/[0.02] sm:p-3"
+              whileHover={shouldReduceMotion ? undefined : { y: -3 }}
+              className="space-y-1.5 rounded-xl p-2 transition-colors duration-300 hover:bg-white/[0.02] sm:space-y-2 sm:p-3"
             >
               <p className="text-xs font-semibold tracking-wide text-amber-200 sm:text-sm">
                 មាតាបិតាខាងកូនប្រុស
@@ -295,19 +293,19 @@ export const InvitationCard: React.FC = () => {
                 លោក មាស សុផល
               </p>
 
-              <p className="text-sm font-semibold leading-relaxed text-stone-200 sm:text-base">
+              <p className="font-khmer-title text-base font-bold leading-relaxed text-stone-200 sm:text-lg">
                 និង លោកស្រី{' '}
                 <span className="font-bold text-amber-100">
                   ប្រាក់ ប៊ុនអេង
                 </span>
               </p>
 
-              <div className="pt-3">
+              <div className="pt-2 sm:pt-3">
                 <span className="text-xs text-stone-300 sm:text-sm">
                   កូនប្រុសនាម៖
                 </span>
 
-                <p className="mt-1 font-khmer-title text-lg font-bold text-amber-200 sm:text-xl">
+                <p className="mt-1 font-khmer-title text-lg font-bold leading-relaxed text-amber-200 sm:text-xl">
                   ហេង គីមហ៊
                 </p>
 
@@ -320,10 +318,8 @@ export const InvitationCard: React.FC = () => {
             {/* Bride's family */}
             <motion.div
               {...fadeUp(0.2)}
-              whileHover={
-                shouldReduceMotion ? undefined : { y: -3 }
-              }
-              className="space-y-2 rounded-xl border-t border-amber-200/25 p-2 pt-5 transition-colors duration-300 hover:bg-white/[0.02] sm:p-3 sm:pt-5 md:border-l md:border-t-0 md:pl-5 md:pt-3"
+              whileHover={shouldReduceMotion ? undefined : { y: -3 }}
+              className="space-y-1.5 rounded-xl border-t border-amber-200/25 p-2 pt-5 transition-colors duration-300 hover:bg-white/[0.02] sm:space-y-2 sm:p-3 sm:pt-5 md:border-l md:border-t-0 md:pl-5 md:pt-3"
             >
               <p className="text-xs font-semibold tracking-wide text-amber-200 sm:text-sm">
                 មាតាបិតាខាងកូនស្រី
@@ -333,19 +329,19 @@ export const InvitationCard: React.FC = () => {
                 លោក សន ចិត្រា
               </p>
 
-              <p className="text-sm font-semibold leading-relaxed text-stone-200 sm:text-base">
+              <p className="font-khmer-title text-base font-bold leading-relaxed text-stone-200 sm:text-lg">
                 និង លោកស្រី{' '}
                 <span className="font-bold text-amber-100">
                   សួង ចន្ធី
                 </span>
               </p>
 
-              <div className="pt-3">
+              <div className="pt-2 sm:pt-3">
                 <span className="text-xs text-stone-300 sm:text-sm">
                   កូនស្រីនាម៖
                 </span>
 
-                <p className="mt-1 font-khmer-title text-lg font-bold text-amber-200 sm:text-xl">
+                <p className="mt-1 font-khmer-title text-lg font-bold leading-relaxed text-amber-200 sm:text-xl">
                   សន ធារ៉ា
                 </p>
 
@@ -376,8 +372,8 @@ export const InvitationCard: React.FC = () => {
             >
               ឯកឧត្តម លោកជំទាវ លោកឧកញ៉ា លោក លោកស្រី អ្នកនាងកញ្ញា និងប្រិយមិត្ត
               អញ្ជើញចូលរួមជាអធិបតី និងជាភ្ញៀវកិត្តិយស ដើម្បីប្រសិទ្ធពរជ័យ
-              សិរីសួស្តី ជ័យមង្គលក្នុងពិធីរៀបអាពាហ៍ពិពាហ៍ កូនប្រុស-កូនស្រី
-              របស់យើងខ្ញុំ និងពិសារបាយអាហារ ដែលនឹងប្រព្រឹត្តទៅតាមពេលវេលា
+              សិរីសួស្តី ជ័យមង្គលក្នុងពិធីរៀបអាពាហ៍ពិពាហ៍ កូនប្រុស កូនស្រី
+              របស់យើងខ្ញុំ និងពិសារភោជនាហារ ដែលនឹងប្រព្រឹត្តទៅតាមពេលវេលា
               និងទីកន្លែងដូចខាងក្រោម៖
             </motion.p>
           </motion.div>
@@ -533,7 +529,7 @@ export const InvitationCard: React.FC = () => {
               {...fadeUp(0.2)}
               className="pt-2 text-center text-xs font-medium leading-relaxed text-stone-300 sm:text-sm"
             >
-              ដោយមេត្រីភាព (សូមពិនិត្យមើលផ្លង់ និងស្កេនទីតាំងខាងក្រោម)
+              ដោយមេត្រីភាព (សូមពិនិត្យមើលប្លង់ និងស្កេនទីតាំងខាងក្រោម)
             </motion.p>
           </motion.div>
 

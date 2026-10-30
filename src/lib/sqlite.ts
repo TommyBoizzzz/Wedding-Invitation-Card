@@ -72,7 +72,10 @@ export async function addGift(params: {
   currency: 'USD' | 'KHR';
   wish_message?: string;
 }): Promise<boolean> {
-  await request('/api/gifts', { method: 'POST', body: JSON.stringify(params) });
+  await request('/api/gifts', { method: 'POST', body: JSON.stringify({
+    ...params,
+    wish_message: params.wish_message ?? '',
+  }) });
   return true;
 }
 

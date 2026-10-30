@@ -73,7 +73,9 @@ export const GiftMoneyQR: React.FC<GiftMoneyQRProps> = ({
   const handleRecordGift = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!senderName.trim()) return;
+    const trimmedSenderName = senderName.trim();
+
+    if (!trimmedSenderName) return;
 
     const parsedAmount =
       customAmount.trim() === '' ? undefined : Number(customAmount);
@@ -91,7 +93,7 @@ export const GiftMoneyQR: React.FC<GiftMoneyQRProps> = ({
 
     try {
       await addGift({
-        sender_name: senderName.trim(),
+        sender_name: trimmedSenderName,
         bank: activeBank,
         amount: parsedAmount,
         currency,
@@ -247,10 +249,10 @@ export const GiftMoneyQR: React.FC<GiftMoneyQRProps> = ({
           <AnimatePresence mode="wait">
             <motion.div
               key={activeBank}
-              initial={{ opacity: 0, scale: 0.96, y: 8 }}
+              initial={{ opacity: 0, scale: 0.98, y: 6 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.97 }}
-              transition={{ duration: 0.25 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.08, ease: 'easeOut' }}
               className="mx-auto w-full max-w-[300px]"
             >
               <div className="rounded-[26px] border border-amber-200/60 bg-gradient-to-br from-amber-100 via-white to-amber-50 p-2 shadow-[0_18px_55px_rgba(0,0,0,0.3)] sm:p-3">
