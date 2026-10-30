@@ -202,13 +202,12 @@ export default async function handler(req: VercelRequest, res: ApiResponse) {
       if (!body) return json(res, 400, { error: 'Invalid request body' });
 
       const senderName = getString(body, 'sender_name', 120);
-      const wishMessage = getString(body, 'wish_message', 1000);
+      const wishMessage = getString(body, 'wish_message', 1000) ?? '';
       const bank = body.bank;
       const currency = body.currency;
       const amount = body.amount === undefined ? 0 : body.amount;
       if (
         !senderName ||
-        wishMessage === null ||
         !isOneOf(bank, ['ABA', 'ACLEDA'] as const) ||
         !isOneOf(currency, ['USD', 'KHR'] as const) ||
         typeof amount !== 'number' ||
