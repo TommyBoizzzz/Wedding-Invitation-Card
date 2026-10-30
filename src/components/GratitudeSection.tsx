@@ -139,7 +139,7 @@ export const GratitudeSection: React.FC = () => {
 
             {/* Wedding Date */}
             <p className="text-center font-cinzel text-xs tracking-wider text-amber-100/75">
-              P · 23 January 2027
+              23 January 2027
             </p>
           </div>
         </div>

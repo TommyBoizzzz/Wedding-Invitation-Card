@@ -1065,9 +1065,15 @@ html {
 }
 
 .splash-couple-name {
+  display: block;
+  margin-block: 0.08em;
   color: var(--color-ivory);
-  line-height: 1.8;
-  text-shadow: 0 3px 24px rgba(0, 0, 0, 0.16);
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  white-space: nowrap;
+  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.16);
+  font-size: clamp(1.05rem, 2.5vw, 2.5rem);
 }
 
 @keyframes splash-button-glow {
